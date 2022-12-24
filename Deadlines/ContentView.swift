@@ -15,37 +15,72 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @State private var showingNewDeadline = false
+    @State private var date = Date()
+    @State private var name = ""
 
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
-                    } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
-                    }
+        
+        NavigationStack {
+            List(items) { item in
+                
+                NavigationLink(item.name!) {
+                    Text(item.date!, style: .date)
+                    .navigationTitle(item.name!)
                 }
-                .onDelete(perform: deleteItems)
+
             }
+            .navigationTitle("Deadlines")
             .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                Button("New") {
+                    $showingNewDeadline.wrappedValue.toggle()
                 }
             }
-            Text("Select an item")
+            
+            .sheet(isPresented: $showingNewDeadline) {
+                NavigationView {
+                    Form {
+                        TextField("Name", text: $name)
+                        DatePicker("Due in", selection: $date, in: Date.now...)
+                        Button("Create") {
+                            withAnimation {
+                                
+                                if name.isEmpty {
+                                    return
+                                }
+                                
+                                let newItem = Item(context: viewContext)
+                                newItem.id = UUID()
+                                newItem.date = $date.wrappedValue
+                                newItem.name = $name.wrappedValue
+
+                                do {
+                                    try viewContext.save()
+                                } catch {
+                                    // Replace this implementation with code to handle the error appropriately.
+                                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                                    let nsError = error as NSError
+                                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
+                                }
+                            }
+                            $showingNewDeadline.wrappedValue.toggle()
+                        }
+                    }
+                    .navigationTitle("New deadline")
+                }
+            }
+            Text("Alpha")
         }
+        
     }
 
     private func addItem() {
         withAnimation {
             let newItem = Item(context: viewContext)
+            newItem.id = UUID()
             newItem.timestamp = Date()
+            newItem.name = "a"
 
             do {
                 try viewContext.save()
