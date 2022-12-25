@@ -10,6 +10,8 @@ import SwiftUI
 @main
 struct DeadlinesApp: App {
     let persistenceController = PersistenceController.shared
+    
+    var store = Store()
 
     var body: some Scene {
         WindowGroup {

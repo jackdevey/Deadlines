@@ -16,7 +16,10 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
-    @State private var showingNewDeadline = false
+    @State private var showNew = false
+    @State private var showSettings = false
+    
+    
     @State private var date = Date()
     @State private var name = ""
 
@@ -26,49 +29,35 @@ struct ContentView: View {
             List(items) { item in
                 
                 NavigationLink(item.name!) {
-                    Text(item.date!, style: .date)
+                    List {
+                        LinkPreview(item: item)
+                    }
                     .navigationTitle(item.name!)
                 }
 
             }
             .navigationTitle("Deadlines")
             .toolbar {
-                Button("New") {
-                    $showingNewDeadline.wrappedValue.toggle()
+                ToolbarItem(id: "new") {
+                    Button {
+                        $showNew.wrappedValue.toggle()
+                    } label: {
+                        Label("New Deadline", systemImage: "plus")
+                    }
+                }
+                ToolbarItem(id: "settings") {
+                    Button {
+                        $showSettings.wrappedValue.toggle()
+                    } label: {
+                        Label("Settings", systemImage: "gearshape")
+                    }
                 }
             }
-            
-            .sheet(isPresented: $showingNewDeadline) {
-                NavigationView {
-                    Form {
-                        TextField("Name", text: $name)
-                        DatePicker("Due in", selection: $date, in: Date.now...)
-                        Button("Create") {
-                            withAnimation {
-                                
-                                if name.isEmpty {
-                                    return
-                                }
-                                
-                                let newItem = Item(context: viewContext)
-                                newItem.id = UUID()
-                                newItem.date = $date.wrappedValue
-                                newItem.name = $name.wrappedValue
-
-                                do {
-                                    try viewContext.save()
-                                } catch {
-                                    // Replace this implementation with code to handle the error appropriately.
-                                    // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                                    let nsError = error as NSError
-                                    fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-                                }
-                            }
-                            $showingNewDeadline.wrappedValue.toggle()
-                        }
-                    }
-                    .navigationTitle("New deadline")
-                }
+            .navigationDestination(isPresented: $showSettings) {
+                Settings()
+            }
+            .sheet(isPresented: $showNew) {
+                NewDeadline()
             }
             Text("Alpha")
         }

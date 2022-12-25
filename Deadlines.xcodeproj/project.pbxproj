@@ -13,6 +13,11 @@
 		04478C47295560DA00F76701 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04478C46295560DA00F76701 /* Preview Assets.xcassets */; };
 		04478C49295560DA00F76701 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04478C48295560DA00F76701 /* Persistence.swift */; };
 		04478C4C295560DA00F76701 /* Deadlines.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04478C4A295560DA00F76701 /* Deadlines.xcdatamodeld */; };
+		0468732B2958040900B12C4C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732A2958040900B12C4C /* Settings.swift */; };
+		0468732D295805B600B12C4C /* NewDeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732C295805B600B12C4C /* NewDeadline.swift */; };
+		0468733029580BDC00B12C4C /* LinkPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732F29580BDC00B12C4C /* LinkPreview.swift */; };
+		0468733229580C3000B12C4C /* LinkEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468733129580C3000B12C4C /* LinkEditor.swift */; };
+		046873362958EC3100B12C4C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873352958EC3100B12C4C /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +29,11 @@
 		04478C46295560DA00F76701 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04478C48295560DA00F76701 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		04478C4B295560DA00F76701 /* Deadlines.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deadlines.xcdatamodel; sourceTree = "<group>"; };
+		0468732A2958040900B12C4C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		0468732C295805B600B12C4C /* NewDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadline.swift; sourceTree = "<group>"; };
+		0468732F29580BDC00B12C4C /* LinkPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkPreview.swift; sourceTree = "<group>"; };
+		0468733129580C3000B12C4C /* LinkEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkEditor.swift; sourceTree = "<group>"; };
+		046873352958EC3100B12C4C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,13 +66,17 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				0468732E29580BBC00B12C4C /* Links */,
 				0429D9412957A6E900D6F8D2 /* Deadlines.entitlements */,
 				04478C3F295560D900F76701 /* DeadlinesApp.swift */,
 				04478C41295560D900F76701 /* ContentView.swift */,
+				0468732C295805B600B12C4C /* NewDeadline.swift */,
+				0468732A2958040900B12C4C /* Settings.swift */,
 				04478C43295560DA00F76701 /* Assets.xcassets */,
 				04478C48295560DA00F76701 /* Persistence.swift */,
 				04478C4A295560DA00F76701 /* Deadlines.xcdatamodeld */,
 				04478C45295560DA00F76701 /* Preview Content */,
+				046873352958EC3100B12C4C /* Store.swift */,
 			);
 			path = Deadlines;
 			sourceTree = "<group>";
@@ -73,6 +87,15 @@
 				04478C46295560DA00F76701 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0468732E29580BBC00B12C4C /* Links */ = {
+			isa = PBXGroup;
+			children = (
+				0468732F29580BDC00B12C4C /* LinkPreview.swift */,
+				0468733129580C3000B12C4C /* LinkEditor.swift */,
+			);
+			path = Links;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,10 +168,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0468733229580C3000B12C4C /* LinkEditor.swift in Sources */,
+				0468732D295805B600B12C4C /* NewDeadline.swift in Sources */,
 				04478C49295560DA00F76701 /* Persistence.swift in Sources */,
+				046873362958EC3100B12C4C /* Store.swift in Sources */,
+				0468733029580BDC00B12C4C /* LinkPreview.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
 				04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */,
 				04478C4C295560DA00F76701 /* Deadlines.xcdatamodeld in Sources */,
+				0468732B2958040900B12C4C /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
