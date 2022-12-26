@@ -14,6 +14,8 @@ struct NewDeadlineLinkSheet: View {
     
     @State private var name: String = ""
     @State private var url: String = ""
+    
+    @State private var showURLInvalid: Bool = false
     var create: (DeadlineLink) -> ()
     
     
@@ -38,7 +40,15 @@ struct NewDeadlineLinkSheet: View {
                         let link = DeadlineLink(context: viewContext)
                         link.id = UUID()
                         link.name = name
-                        link.url = URL(string: url)
+                        
+                        // URL is wrong
+                        if !url.isValidURL {
+                            showURLInvalid = true
+                            return
+                        }
+                        
+                        link.url = URL(string: url)!
+                        
                         create(link)
                         dismiss()
                     } label: {
@@ -46,7 +56,25 @@ struct NewDeadlineLinkSheet: View {
                     }
                 }
             }
+            .alert("URL is invalid", isPresented: $showURLInvalid) {
+                
+            }
         }
     }
 }
 
+                                                                                                                    extension String {
+
+                                                                                                                        var isValidURL: Bool {
+                                                                                                                            guard !contains("..") else { return false }
+                                                                                                                        
+                                                                                                                            let head     = "((http|https)://)?([(w|W)]{3}+\\.)?"
+                                                                                                                            let tail     = "\\.+[A-Za-z]{2,3}+(\\.)?+(/(.)*)?"
+                                                                                                                            let urlRegEx = head+"+(.)+"+tail
+                                                                                                                        
+                                                                                                                            let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+
+                                                                                                                            return urlTest.evaluate(with: trimmingCharacters(in: .whitespaces))
+                                                                                                                        }
+
+                                                                                                                    }
