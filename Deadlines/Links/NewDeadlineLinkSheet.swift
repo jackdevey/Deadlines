@@ -40,7 +40,7 @@ struct NewDeadlineLinkSheet: View {
                     Button {
                         // Name is empty
                         if name.isEmpty {
-                            showURLInvalid = true
+                            showEmptyName = true
                             return
                         }
                         // URL is wrong
