@@ -10,6 +10,7 @@ import SwiftUI
 struct NewDeadline: View {
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.managedObjectContext) private var viewContext
     
     @State private var name: String = ""
     @State private var desc: String = "Anything you need to remember related to this deadline can go here"
@@ -42,7 +43,10 @@ struct NewDeadline: View {
                 }
                 ToolbarItem(id: "create", placement: .confirmationAction) {
                     Button {
-                        dismiss()
+                        let link = Item(context: viewContext)
+                        link.id = UUID()
+                        link.name = "Awa"
+                        Store().save(viewContext: viewContext)
                     } label: {
                         Text("Create")
                     }

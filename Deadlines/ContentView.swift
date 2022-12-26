@@ -30,7 +30,14 @@ struct ContentView: View {
                 
                 NavigationLink(item.name!) {
                     List {
-                        LinkPreview(item: item)
+                        Section {
+                            // Notes
+                            Label("Notes", systemImage: "text.justify.leading")
+                            // Link
+                            NavigationLink(destination: DeadlineLinkView(item: item)) {
+                                Label("Links", systemImage: "link")
+                            }
+                        }
                     }
                     .navigationTitle(item.name!)
                 }
