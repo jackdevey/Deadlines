@@ -16,6 +16,7 @@ struct NewDeadlineLinkSheet: View {
     @State private var url: String = ""
     
     @State private var showURLInvalid: Bool = false
+    @State private var showEmptyName: Bool = false
     var create: (DeadlineLink) -> ()
     
     
@@ -37,18 +38,23 @@ struct NewDeadlineLinkSheet: View {
                 }
                 ToolbarItem(id: "create", placement: .confirmationAction) {
                     Button {
-                        let link = DeadlineLink(context: viewContext)
-                        link.id = UUID()
-                        link.name = name
-                        
+                        // Name is empty
+                        if name.isEmpty {
+                            showURLInvalid = true
+                            return
+                        }
                         // URL is wrong
                         if !url.isValidURL {
                             showURLInvalid = true
                             return
                         }
-                        
+                        // New DeadlineLink object
+                        let link = DeadlineLink(context: viewContext)
+                        link.id = UUID()
+                        link.name = name
                         link.url = URL(string: url)!
-                        
+                        // Pass to DeadlineLinkView to manage
+                        // placement & save
                         create(link)
                         dismiss()
                     } label: {
@@ -56,9 +62,8 @@ struct NewDeadlineLinkSheet: View {
                     }
                 }
             }
-            .alert("URL is invalid", isPresented: $showURLInvalid) {
-                
-            }
+            .alert("Name is empty", isPresented: $showEmptyName) {}
+            .alert("URL is invalid", isPresented: $showURLInvalid) {}
         }
     }
 }
