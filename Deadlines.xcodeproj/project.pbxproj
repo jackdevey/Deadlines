@@ -34,6 +34,7 @@
 		0468733129580C3000B12C4C /* DeadlineLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineLinkView.swift; sourceTree = "<group>"; };
 		046873352958EC3100B12C4C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineLinkSheet.swift; sourceTree = "<group>"; };
+		046873392959CC0200B12C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				046873392959CC0200B12C4C /* Info.plist */,
 				0468732E29580BBC00B12C4C /* Links */,
 				0429D9412957A6E900D6F8D2 /* Deadlines.entitlements */,
 				04478C3F295560D900F76701 /* DeadlinesApp.swift */,
@@ -309,8 +311,10 @@
 				DEVELOPMENT_TEAM = G2D5W96ZY7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Deadlines/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Deadlines;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Secure stuff";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -345,8 +349,10 @@
 				DEVELOPMENT_TEAM = G2D5W96ZY7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Deadlines/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Deadlines;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Secure stuff";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

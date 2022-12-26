@@ -25,6 +25,8 @@ struct NewDeadlineLinkSheet: View {
             Form {
                 TextField("Name", text: $name)
                 TextField("URL", text: $url)
+                    .keyboardType(.URL)
+                    .textContentType(.URL)
             }
             .navigationTitle("New link")
             .navigationBarTitleDisplayMode(.inline)
@@ -62,24 +64,27 @@ struct NewDeadlineLinkSheet: View {
                     }
                 }
             }
+            // If name is empty
             .alert("Name is empty", isPresented: $showEmptyName) {}
+            // If URL is invalid
             .alert("URL is invalid", isPresented: $showURLInvalid) {}
         }
     }
 }
 
-                                                                                                                    extension String {
+extension String {
 
-                                                                                                                        var isValidURL: Bool {
-                                                                                                                            guard !contains("..") else { return false }
+    // Check if its a URL
+    var isValidURL: Bool {
+        guard !contains("..") else { return false }
                                                                                                                         
-                                                                                                                            let head     = "((http|https)://)?([(w|W)]{3}+\\.)?"
-                                                                                                                            let tail     = "\\.+[A-Za-z]{2,3}+(\\.)?+(/(.)*)?"
-                                                                                                                            let urlRegEx = head+"+(.)+"+tail
+        let head     = "((http|https)://)?([(w|W)]{3}+\\.)?"
+        let tail     = "\\.+[A-Za-z]{2,3}+(\\.)?+(/(.)*)?"
+        let urlRegEx = head+"+(.)+"+tail
                                                                                                                         
-                                                                                                                            let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
+        let urlTest = NSPredicate(format:"SELF MATCHES %@", urlRegEx)
 
-                                                                                                                            return urlTest.evaluate(with: trimmingCharacters(in: .whitespaces))
-                                                                                                                        }
+        return urlTest.evaluate(with: trimmingCharacters(in: .whitespaces))
+    }
 
-                                                                                                                    }
+}
