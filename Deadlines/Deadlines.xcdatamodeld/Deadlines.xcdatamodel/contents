@@ -12,6 +12,6 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="?" spotlightIndexingEnabled="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineLink" inverseName="deadline" inverseEntity="DeadlineLink"/>
+        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DeadlineLink" inverseName="deadline" inverseEntity="DeadlineLink"/>
     </entity>
 </model>

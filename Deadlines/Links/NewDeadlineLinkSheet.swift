@@ -7,31 +7,23 @@
 
 import SwiftUI
 
-struct NewDeadline: View {
+struct NewDeadlineLinkSheet: View {
     
     @Environment(\.dismiss) private var dismiss
     @Environment(\.managedObjectContext) private var viewContext
     
     @State private var name: String = ""
-    @State private var desc: String = "Anything you need to remember related to this deadline can go here"
-    @State private var date: Date = Date()
+    @State private var url: String = ""
+    var create: (DeadlineLink) -> ()
+    
     
     var body: some View {
         NavigationView {
             Form {
-                Section {
-                    TextField("Name", text: $name)
-                    TextEditor(text: $desc)
-                }
-                
-                Section {
-                    TextEditor(text: $desc)
-                        .lineLimit(4)
-                } header: {
-                    Text("Notes")
-                }
+                TextField("Name", text: $name)
+                TextField("URL", text: $url)
             }
-            .navigationTitle("New deadline")
+            .navigationTitle("New link")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(id: "cancel", placement: .cancellationAction) {
@@ -43,10 +35,12 @@ struct NewDeadline: View {
                 }
                 ToolbarItem(id: "create", placement: .confirmationAction) {
                     Button {
-                        let link = Item(context: viewContext)
+                        let link = DeadlineLink(context: viewContext)
                         link.id = UUID()
-                        link.name = "Awa"
-                        Store().save(viewContext: viewContext)
+                        link.name = name
+                        link.url = URL(string: url)
+                        create(link)
+                        dismiss()
                     } label: {
                         Text("Create")
                     }
@@ -55,3 +49,4 @@ struct NewDeadline: View {
         }
     }
 }
+
