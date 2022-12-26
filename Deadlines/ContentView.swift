@@ -7,6 +7,7 @@
 
 import SwiftUI
 import CoreData
+import LocalAuthentication
 
 struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
@@ -19,56 +20,95 @@ struct ContentView: View {
     @State private var showNew = false
     @State private var showSettings = false
     
+    @AppStorage("useBiometrics") private var useBiometrics = false
+    @State private var showContent = false
+    
     
     @State private var date = Date()
     @State private var name = ""
 
     var body: some View {
         
-        NavigationStack {
-            List(items) { item in
-                
-                NavigationLink(item.name!) {
-                    List {
-                        Section {
-                            // Notes
-                            Label("Notes", systemImage: "text.justify.leading")
-                            // Link
-                            NavigationLink(destination: DeadlineLinkView(item: item)) {
-                                Label("Links", systemImage: "link")
+        VStack {
+            
+            
+            if showContent {
+                NavigationStack {
+                    List(items) { item in
+                        
+                        NavigationLink(item.name!) {
+                            List {
+                                Section {
+                                    // Notes
+                                    Label("Notes", systemImage: "text.justify.leading")
+                                    // Link
+                                    NavigationLink(destination: DeadlineLinkView(item: item)) {
+                                        Label("Links", systemImage: "link")
+                                    }
+                                }
+                            }
+                            .navigationTitle(item.name!)
+                        }
+                        
+                    }
+                    .navigationTitle("Deadlines")
+                    .toolbar {
+                        ToolbarItem(id: "new") {
+                            Button {
+                                $showNew.wrappedValue.toggle()
+                            } label: {
+                                Label("New Deadline", systemImage: "plus")
+                            }
+                        }
+                        ToolbarItem(id: "settings") {
+                            Button {
+                                $showSettings.wrappedValue.toggle()
+                            } label: {
+                                Label("Settings", systemImage: "gearshape")
                             }
                         }
                     }
-                    .navigationTitle(item.name!)
-                }
-
-            }
-            .navigationTitle("Deadlines")
-            .toolbar {
-                ToolbarItem(id: "new") {
-                    Button {
-                        $showNew.wrappedValue.toggle()
-                    } label: {
-                        Label("New Deadline", systemImage: "plus")
+                    .navigationDestination(isPresented: $showSettings) {
+                        Settings()
                     }
-                }
-                ToolbarItem(id: "settings") {
-                    Button {
-                        $showSettings.wrappedValue.toggle()
-                    } label: {
-                        Label("Settings", systemImage: "gearshape")
+                    .sheet(isPresented: $showNew) {
+                        NewDeadline()
                     }
+                    Text("Alpha")
                 }
             }
-            .navigationDestination(isPresented: $showSettings) {
-                Settings()
-            }
-            .sheet(isPresented: $showNew) {
-                NewDeadline()
-            }
-            Text("Alpha")
         }
+        .onAppear(perform: authenticate)
+    }
+    
+    func authenticate() {
+        let context = LAContext()
+        var error: NSError?
         
+        // If not using biometrics
+        if !useBiometrics {
+            showContent = true
+            return
+        }
+
+        // check whether biometric authentication is possible
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            // it's possible, so go ahead and use it
+            let reason = "We need to unlock your data."
+
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, authenticationError in
+                // authentication has now completed
+                if success {
+                    showContent = true
+                    // authenticated successfully
+                } else {
+                    // there was a problem
+                }
+            }
+        } else {
+            // no biometrics
+            showContent = true
+        }
     }
 
     private func addItem() {

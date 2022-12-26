@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct Settings: View {
+    
+    @AppStorage("useBiometrics") private var useBiometrics = false
+    
     var body: some View {
         List {
 
@@ -16,6 +19,10 @@ struct Settings: View {
             Text("App icon")
             Text("App icon")
             Text("App icon")
+            
+            Section {
+                Toggle("Require Biometrics", isOn: $useBiometrics)
+            }
             
             Section {
                 Link(destination: URL(string: "https://github.com/jackdevey/Deadlines")!) {
