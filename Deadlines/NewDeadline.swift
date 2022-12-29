@@ -21,14 +21,7 @@ struct NewDeadline: View {
             Form {
                 Section {
                     TextField("Name", text: $name)
-                    TextEditor(text: $desc)
-                }
-                
-                Section {
-                    TextEditor(text: $desc)
-                        .lineLimit(4)
-                } header: {
-                    Text("Notes")
+                    DatePicker("Due date", selection: $date, in: Date.now...)
                 }
             }
             .navigationTitle("New deadline")
@@ -45,8 +38,10 @@ struct NewDeadline: View {
                     Button {
                         let link = Item(context: viewContext)
                         link.id = UUID()
-                        link.name = "Awa"
+                        link.name = $name.wrappedValue
+                        link.date = $date.wrappedValue
                         Store().save(viewContext: viewContext)
+                        dismiss()
                     } label: {
                         Text("Create")
                     }

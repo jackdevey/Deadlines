@@ -18,6 +18,7 @@
 		0468733229580C3000B12C4C /* DeadlineLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468733129580C3000B12C4C /* DeadlineLinkView.swift */; };
 		046873362958EC3100B12C4C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873352958EC3100B12C4C /* Store.swift */; };
 		046873382958FFD400B12C4C /* NewDeadlineLinkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */; };
+		0468733C295CC1B900B12C4C /* GetDeadlineDateIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468733B295CC1B900B12C4C /* GetDeadlineDateIntent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		046873352958EC3100B12C4C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineLinkSheet.swift; sourceTree = "<group>"; };
 		046873392959CC0200B12C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		0468733B295CC1B900B12C4C /* GetDeadlineDateIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDeadlineDateIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +69,7 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				0468733A295CC16900B12C4C /* Intents */,
 				046873392959CC0200B12C4C /* Info.plist */,
 				0468732E29580BBC00B12C4C /* Links */,
 				0429D9412957A6E900D6F8D2 /* Deadlines.entitlements */,
@@ -98,6 +101,14 @@
 				046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */,
 			);
 			path = Links;
+			sourceTree = "<group>";
+		};
+		0468733A295CC16900B12C4C /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				0468733B295CC1B900B12C4C /* GetDeadlineDateIntent.swift */,
+			);
+			path = Intents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,6 +185,7 @@
 				0468732D295805B600B12C4C /* NewDeadline.swift in Sources */,
 				04478C49295560DA00F76701 /* Persistence.swift in Sources */,
 				046873362958EC3100B12C4C /* Store.swift in Sources */,
+				0468733C295CC1B900B12C4C /* GetDeadlineDateIntent.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
 				04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */,
 				04478C4C295560DA00F76701 /* Deadlines.xcdatamodeld in Sources */,

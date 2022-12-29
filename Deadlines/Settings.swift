@@ -14,11 +14,7 @@ struct Settings: View {
     var body: some View {
         List {
 
-            Text("App theme")
-            Text("App icon")
-            Text("App icon")
-            Text("App icon")
-            Text("App icon")
+            Text("Sorry, much much better features are coming soon! Deadlines will get better.")
             
             Section {
                 Toggle("Require Biometrics", isOn: $useBiometrics)
@@ -31,13 +27,13 @@ struct Settings: View {
                 Link(destination: URL(string: "https://github.com/jackdevey/Deadlines/issues")!) {
                     Label("Support", systemImage: "questionmark.circle")
                 }
-                Link(destination: URL(string: "https://github.com/jackdevey/Deadlines")!) {
+                Link(destination: URL(string: "https://deadlines.jw3.uk/privacy")!) {
                     Label("Privacy Policy", systemImage: "doc.text")
                 }
             } header: {
                 Text("About Deadlines")
             } footer: {
-                Text("Deadlines v1.1.0")
+                Text("Deadlines v\(Bundle.main.appVersionShort)")
             }
         }
         .navigationTitle("Settings")

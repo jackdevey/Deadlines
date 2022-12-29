@@ -38,6 +38,12 @@ struct ContentView: View {
                         
                         NavigationLink(item.name!) {
                             List {
+                                HStack {
+                                    Text("Due date")
+                                    Spacer()
+                                    Text(item.date ?? Date.now, style: .date)
+                                        .foregroundColor(.secondary)
+                                }
                                 Section {
                                     // Notes
                                     Label("Notes", systemImage: "text.justify.leading")
@@ -152,8 +158,27 @@ private let itemFormatter: DateFormatter = {
     return formatter
 }()
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+extension Bundle {
+    
+    public var appVersionShort: String {
+        if let result = infoDictionary?["CFBundleShortVersionString"] as? String {
+            return result
+        } else {
+            return "⚠️"
+        }
+    }
+    public var appVersionLong: String {
+        if let result = infoDictionary?["CFBundleVersion"] as? String {
+            return result
+        } else {
+            return "⚠️"
+        }
+    }
+    public var appName: String {
+        if let result = infoDictionary?["CFBundleName"] as? String {
+            return result
+        } else {
+            return "⚠️"
+        }
     }
 }
