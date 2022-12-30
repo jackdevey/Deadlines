@@ -46,10 +46,8 @@ struct ContentView: View {
                                 }
                                 Section {
                                     // Notes
-                                    NavigationLink(destination: NotesView(item: item)) {
-                                        Label("Notes", systemImage: "text.justify.leading")
-                                    }
-                                    // Links
+                                    Label("Notes", systemImage: "text.justify.leading")
+                                    // Link
                                     NavigationLink(destination: DeadlineLinkView(item: item)) {
                                         Label("Links", systemImage: "link")
                                     }
@@ -77,7 +75,7 @@ struct ContentView: View {
                         }
                     }
                     .navigationDestination(isPresented: $showSettings) {
-                        Settings()
+                        SettingsView()
                     }
                     .sheet(isPresented: $showNew) {
                         NewDeadline()
