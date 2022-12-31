@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIX
 import CoreData
 import LocalAuthentication
 
@@ -44,7 +45,22 @@ struct ContentView: View {
                                     Text(item.date ?? Date.now, style: .date)
                                         .foregroundColor(.secondary)
                                 }
+                                HStack {
+                                    Text("Status")
+                                    Spacer()
+                                    Image(systemName: "checkmark.circle")
+                                        .foregroundColor(.systemGreen)
+                                    Text("Complete")
+                                        .foregroundColor(.secondary)
+                                    Text("100%")
+                                        .foregroundColor(.tertiaryLabel)
+                                        .monospacedDigit()
+                                }
                                 Section {
+                                    // Todos
+                                    NavigationLink(destination: NotesView(item: item)) {
+                                        Label("Checklist", systemImage: "checklist")
+                                    }
                                     // Notes
                                     NavigationLink(destination: NotesView(item: item)) {
                                         Label("Notes", systemImage: "text.justify.leading")
