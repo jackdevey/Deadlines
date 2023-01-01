@@ -58,7 +58,7 @@ struct ContentView: View {
                                 }
                                 Section {
                                     // Todos
-                                    NavigationLink(destination: NotesView(item: item)) {
+                                    NavigationLink(destination: DeadlineTodoView(item: item)) {
                                         Label("Checklist", systemImage: "checklist")
                                     }
                                     // Notes
