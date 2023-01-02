@@ -24,6 +24,8 @@ struct ContentView: View {
     @AppStorage("useBiometrics") private var useBiometrics = false
     @State private var showContent = false
     
+    @State private var showingStatusPopover = false
+    
     
     @State private var date = Date()
     @State private var name = ""
@@ -52,6 +54,8 @@ struct ContentView: View {
                                         .foregroundColor(item.getStatus().getIconColor())
                                     Text(item.getStatus().getName())
                                         .foregroundColor(.secondary)
+                                }.onPress {
+                                    showingStatusPopover.toggle()
                                 }
                                 Section {
                                     // Todos
@@ -75,6 +79,14 @@ struct ContentView: View {
                                 }
                             }
                             .navigationTitle(item.name!)
+                            .sheet(isPresented: $showingStatusPopover) {
+                                VStack(alignment: .leading) {
+                                    StatusView(status: item.getStatus(), showDescription: true)
+                                        .fill(alignment: .leading)
+                                        .padding(10)
+
+                                }.presentationDetents([.fraction(0.15)])
+                            }
                         }
                         
                     }

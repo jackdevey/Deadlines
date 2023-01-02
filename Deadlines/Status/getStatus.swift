@@ -12,6 +12,8 @@ extension Item {
     func getStatus() -> Status {
         if self.submitted {
             return Status.submitted
+        } else if Date.now > self.date! {
+            return Status.pastDue
         } else {
             return Status.progressing
         }
