@@ -20,7 +20,9 @@ struct DeadlineTodoView: View {
     // The store class functions
     var store = Store()
     
-    @State var isOn1 = false
+    @State var percentComplete: Float
+    
+    
     
     // Constructor hack to allow the use
     // of links as state (this is so the
@@ -28,6 +30,7 @@ struct DeadlineTodoView: View {
     init(item: Item) {
         self.item = item
         self.todos = item.todos?.array as! [DeadlineTodo]
+        self.percentComplete = item.percentComplete
     }
     
     var body: some View {
@@ -40,7 +43,7 @@ struct DeadlineTodoView: View {
                             .foregroundColor(.systemYellow)
                         Text("Partial")
                         Spacer()
-                        Text("33%")
+                        Text(String(Int(percentComplete.rounded())) + "%")
                             .monospacedDigit()
                             .foregroundColor(.secondary)
                     }
@@ -53,9 +56,11 @@ struct DeadlineTodoView: View {
                 }
                 // Show each todo for the item
                 ForEach(todos.sorted(using: SortDescriptor(\DeadlineTodo.placement))) { todo in
-                    // Show each link as a link (with label)
-                    Toggle(todo.name!, isOn: $isOn1)
-                        .toggleStyle(CheckboxToggleStyle())
+                    TodoView(todo: todo, onChange: {
+                        percentComplete = item.percentComplete
+                        try? viewContext.save()
+                    })
+                        
                 }
                 // When a todo is moved (order has changed)
                 .onMove { from, to in

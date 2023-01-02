@@ -18,5 +18,18 @@ extension Item {
             return Status.progressing
         }
     }
+    
+    var percentComplete: Float {
+        let total = Float(self.todos?.array.count ?? 0)
+        var done = 0.0
+        
+        for todo in self.todos!.array {
+            if (todo as! DeadlineTodo).done {
+                done += 1
+            }
+        }
+        
+        return Float(done) / total * 100
+    }
 
 }

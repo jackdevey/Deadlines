@@ -24,7 +24,7 @@ struct ContentView: View {
     @AppStorage("useBiometrics") private var useBiometrics = false
     @State private var showContent = false
     
-    @State private var showingStatusPopover = false
+    
     
     
     @State private var date = Date()
@@ -39,53 +39,12 @@ struct ContentView: View {
                 NavigationStack {
                     List(items) { item in
                         
-                        NavigationLink(item.name!) {
-                            List {
-                                HStack {
-                                    Text("Due date")
-                                    Spacer()
-                                    Text(item.date ?? Date.now, style: .date)
-                                        .foregroundColor(.secondary)
-                                }
-                                HStack {
-                                    Text("Status")
-                                    Spacer()
-                                    Image(systemName: item.getStatus().getIconName())
-                                        .foregroundColor(item.getStatus().getIconColor())
-                                    Text(item.getStatus().getName())
-                                        .foregroundColor(.secondary)
-                                }.onPress {
-                                    showingStatusPopover.toggle()
-                                }
-                                Section {
-                                    // Todos
-                                    NavigationLink(destination: DeadlineTodoView(item: item)) {
-                                        HStack {
-                                            Label("Checklist", systemImage: "checklist")
-                                            Spacer()
-                                            Text("100%")
-                                                .foregroundColor(.secondary)
-                                                .monospacedDigit()
-                                        }
-                                    }
-                                    // Notes
-                                    NavigationLink(destination: NotesView(item: item)) {
-                                        Label("Notes", systemImage: "text.justify.leading")
-                                    }
-                                    // Links
-                                    NavigationLink(destination: DeadlineLinkView(item: item)) {
-                                        Label("Links", systemImage: "link")
-                                    }
-                                }
-                            }
-                            .navigationTitle(item.name!)
-                            .sheet(isPresented: $showingStatusPopover) {
-                                VStack(alignment: .leading) {
-                                    StatusView(status: item.getStatus(), showDescription: true)
-                                        .fill(alignment: .leading)
-                                        .padding(10)
-
-                                }.presentationDetents([.fraction(0.15)])
+                        NavigationLink(destination: DeadlineView(item: item)) {
+                            HStack {
+                                Image(systemName: item.getStatus().getIconName() + ".circle")
+                                    .imageScale(.large)
+                                    .foregroundColor(item.getStatus().getIconColor())
+                                Text(item.name!)
                             }
                         }
                         

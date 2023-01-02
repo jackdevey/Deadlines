@@ -17,6 +17,8 @@
 		044A457829634ED100AEC0F3 /* DeadlineStatusExplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457729634ED100AEC0F3 /* DeadlineStatusExplainView.swift */; };
 		044A457B296362A200AEC0F3 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457A296362A200AEC0F3 /* Status.swift */; };
 		044A457D29636EE600AEC0F3 /* getStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457C29636EE600AEC0F3 /* getStatus.swift */; };
+		044A457F29637EF400AEC0F3 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457E29637EF400AEC0F3 /* DeadlineView.swift */; };
+		044A45812963876E00AEC0F3 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A45802963876E00AEC0F3 /* TodoView.swift */; };
 		04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04561CA9295F1C060087ABE7 /* NotesView.swift */; };
 		04561CB2296092520087ABE7 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 04561CB1296092520087ABE7 /* SwiftUIX */; };
 		0468732B2958040900B12C4C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732A2958040900B12C4C /* Settings.swift */; };
@@ -41,6 +43,8 @@
 		044A457729634ED100AEC0F3 /* DeadlineStatusExplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineStatusExplainView.swift; sourceTree = "<group>"; };
 		044A457A296362A200AEC0F3 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		044A457C29636EE600AEC0F3 /* getStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getStatus.swift; sourceTree = "<group>"; };
+		044A457E29637EF400AEC0F3 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
+		044A45802963876E00AEC0F3 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 		04561CA9295F1C060087ABE7 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		0468732A2958040900B12C4C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0468732C295805B600B12C4C /* NewDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadline.swift; sourceTree = "<group>"; };
@@ -98,6 +102,7 @@
 				04478C4A295560DA00F76701 /* Deadlines.xcdatamodeld */,
 				04478C45295560DA00F76701 /* Preview Content */,
 				046873352958EC3100B12C4C /* Store.swift */,
+				044A457E29637EF400AEC0F3 /* DeadlineView.swift */,
 			);
 			path = Deadlines;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */,
 				044A45752963431700AEC0F3 /* CheckboxToggleStyle.swift */,
 				044A457729634ED100AEC0F3 /* DeadlineStatusExplainView.swift */,
+				044A45802963876E00AEC0F3 /* TodoView.swift */,
 			);
 			path = Todos;
 			sourceTree = "<group>";
@@ -226,8 +232,10 @@
 				0468733229580C3000B12C4C /* DeadlineLinkView.swift in Sources */,
 				0468732D295805B600B12C4C /* NewDeadline.swift in Sources */,
 				04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */,
+				044A457F29637EF400AEC0F3 /* DeadlineView.swift in Sources */,
 				04478C49295560DA00F76701 /* Persistence.swift in Sources */,
 				04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */,
+				044A45812963876E00AEC0F3 /* TodoView.swift in Sources */,
 				046873362958EC3100B12C4C /* Store.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
 				044A45762963431700AEC0F3 /* CheckboxToggleStyle.swift in Sources */,
