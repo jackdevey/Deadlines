@@ -48,18 +48,21 @@ struct ContentView: View {
                                 HStack {
                                     Text("Status")
                                     Spacer()
-                                    Image(systemName: "checkmark.circle")
-                                        .foregroundColor(.systemGreen)
-                                    Text("Complete")
+                                    Image(systemName: item.getStatus().getIconName())
+                                        .foregroundColor(item.getStatus().getIconColor())
+                                    Text(item.getStatus().getName())
                                         .foregroundColor(.secondary)
-                                    Text("100%")
-                                        .foregroundColor(.tertiaryLabel)
-                                        .monospacedDigit()
                                 }
                                 Section {
                                     // Todos
                                     NavigationLink(destination: DeadlineTodoView(item: item)) {
-                                        Label("Checklist", systemImage: "checklist")
+                                        HStack {
+                                            Label("Checklist", systemImage: "checklist")
+                                            Spacer()
+                                            Text("100%")
+                                                .foregroundColor(.secondary)
+                                                .monospacedDigit()
+                                        }
                                     }
                                     // Notes
                                     NavigationLink(destination: NotesView(item: item)) {

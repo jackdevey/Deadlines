@@ -15,6 +15,8 @@
 		04478C4C295560DA00F76701 /* Deadlines.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04478C4A295560DA00F76701 /* Deadlines.xcdatamodeld */; };
 		044A45762963431700AEC0F3 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A45752963431700AEC0F3 /* CheckboxToggleStyle.swift */; };
 		044A457829634ED100AEC0F3 /* DeadlineStatusExplainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457729634ED100AEC0F3 /* DeadlineStatusExplainView.swift */; };
+		044A457B296362A200AEC0F3 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457A296362A200AEC0F3 /* Status.swift */; };
+		044A457D29636EE600AEC0F3 /* getStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457C29636EE600AEC0F3 /* getStatus.swift */; };
 		04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04561CA9295F1C060087ABE7 /* NotesView.swift */; };
 		04561CB2296092520087ABE7 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 04561CB1296092520087ABE7 /* SwiftUIX */; };
 		0468732B2958040900B12C4C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732A2958040900B12C4C /* Settings.swift */; };
@@ -37,6 +39,8 @@
 		04478C4B295560DA00F76701 /* Deadlines.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deadlines.xcdatamodel; sourceTree = "<group>"; };
 		044A45752963431700AEC0F3 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		044A457729634ED100AEC0F3 /* DeadlineStatusExplainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineStatusExplainView.swift; sourceTree = "<group>"; };
+		044A457A296362A200AEC0F3 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		044A457C29636EE600AEC0F3 /* getStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = getStatus.swift; sourceTree = "<group>"; };
 		04561CA9295F1C060087ABE7 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		0468732A2958040900B12C4C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0468732C295805B600B12C4C /* NewDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadline.swift; sourceTree = "<group>"; };
@@ -79,6 +83,7 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				044A45792963629000AEC0F3 /* Status */,
 				046873392959CC0200B12C4C /* Info.plist */,
 				04561CA8295F1BEB0087ABE7 /* Notes */,
 				04C627BD296240F100130206 /* Todos */,
@@ -103,6 +108,15 @@
 				04478C46295560DA00F76701 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		044A45792963629000AEC0F3 /* Status */ = {
+			isa = PBXGroup;
+			children = (
+				044A457A296362A200AEC0F3 /* Status.swift */,
+				044A457C29636EE600AEC0F3 /* getStatus.swift */,
+			);
+			path = Status;
 			sourceTree = "<group>";
 		};
 		04561CA8295F1BEB0087ABE7 /* Notes */ = {
@@ -220,8 +234,10 @@
 				04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */,
 				04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */,
 				044A457829634ED100AEC0F3 /* DeadlineStatusExplainView.swift in Sources */,
+				044A457B296362A200AEC0F3 /* Status.swift in Sources */,
 				04478C4C295560DA00F76701 /* Deadlines.xcdatamodeld in Sources */,
 				046873382958FFD400B12C4C /* NewDeadlineLinkSheet.swift in Sources */,
+				044A457D29636EE600AEC0F3 /* getStatus.swift in Sources */,
 				0468732B2958040900B12C4C /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,7 +375,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Deadlines;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Secure your deadlines";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -397,7 +412,6 @@
 				INFOPLIST_KEY_CFBundleDisplayName = Deadlines;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.productivity";
 				INFOPLIST_KEY_NSFaceIDUsageDescription = "Secure your deadlines";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

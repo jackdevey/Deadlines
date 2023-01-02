@@ -19,6 +19,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="?" spotlightIndexingEnabled="YES"/>
         <attribute name="note" attributeType="String" defaultValueString=""/>
+        <attribute name="submitted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DeadlineLink" inverseName="deadline" inverseEntity="DeadlineLink"/>
         <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DeadlineTodo" inverseName="deadline" inverseEntity="DeadlineTodo"/>

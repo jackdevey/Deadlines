@@ -14,64 +14,12 @@ struct DeadlineStatusExplainView: View {
                 Text("A status represents how complete a deadline is, taking into account how much time is left to complete it")
                     .foregroundColor(.secondary)
                     .font(.headline)
-                Text("Deadlines can fall in to any of the 5 categories below")
+                Text("Deadlines can fall in to any of the categories below")
                     .foregroundColor(.secondary)
             }
             Section {
-                // Submitted
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "paperplane.circle")
-                            .imageScale(.large)
-                            .foregroundColor(.systemBlue)
-                        Text("Submitted")
-                    }
-                    Text("Work has been submitted")
-                        .foregroundColor(.secondary)
-                }
-                // Complete
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "checkmark.circle")
-                            .imageScale(.large)
-                            .foregroundColor(.systemGreen)
-                        Text("Completed")
-                    }
-                    Text("All required work is completed")
-                        .foregroundColor(.secondary)
-                }
-                // Progressing
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "bolt.circle")
-                            .imageScale(.large)
-                            .foregroundColor(.systemPurple)
-                        Text("Progressing")
-                    }
-                    Text("Work is happening at a suitable pace")
-                        .foregroundColor(.secondary)
-                }
-                // Warning
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "exclamationmark.circle")
-                            .imageScale(.large)
-                            .foregroundColor(.systemYellow)
-                        Text("Stale")
-                    }
-                    Text("No progress made in a few days")
-                        .foregroundColor(.secondary)
-                }
-                // Past due
-                VStack(alignment: .leading) {
-                    HStack {
-                        Image(systemName: "calendar.circle")
-                            .imageScale(.large)
-                            .foregroundColor(.systemRed)
-                        Text("Past due")
-                    }
-                    Text("Due date has passed")
-                        .foregroundColor(.secondary)
+                ForEach(Status.allCases, id: \.hashValue) { status in
+                    StatusView(status: status, showDescription: true)
                 }
             } footer: {
                 Text("A status will automatically update throughout the duration of the deadline, until the deadline is marked as submitted")
