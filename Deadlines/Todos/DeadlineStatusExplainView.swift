@@ -11,10 +11,10 @@ struct DeadlineStatusExplainView: View {
     var body: some View {
         List {
             Section {
-                Text("A deadline's status represents how complete a deadline is, taking into account how much time is left to complete it.")
+                Text("A status represents how complete a deadline is, taking into account how much time is left to complete it")
                     .foregroundColor(.secondary)
                     .font(.headline)
-                Text("Deadlines can fall in to 1 of the 5 categories below")
+                Text("Deadlines can fall in to any of the 5 categories below")
                     .foregroundColor(.secondary)
             }
             Section {
@@ -73,6 +73,8 @@ struct DeadlineStatusExplainView: View {
                     Text("Due date has passed")
                         .foregroundColor(.secondary)
                 }
+            } footer: {
+                Text("A status will automatically update throughout the duration of the deadline, until the deadline is marked as submitted")
             }
         }
         .navigationTitle("Status explained")
