@@ -17,7 +17,10 @@ struct Settings: View {
             Text("Sorry, much much better features are coming soon! Deadlines will get better.")
             
             Section {
-                Toggle("Require Biometrics", isOn: $useBiometrics)
+                // Biometric unlock toggle
+                Toggle(isOn: $useBiometrics) {
+                    Label("Biometric Unlock", systemImage: "lock.open")
+                }
             }
             
             Section {
@@ -37,6 +40,6 @@ struct Settings: View {
             }
         }
         .navigationTitle("Settings")
-        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarTitleDisplayMode(.large)
     }
 }

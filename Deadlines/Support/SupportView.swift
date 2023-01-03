@@ -11,11 +11,7 @@ struct SupportView: View {
     var body: some View {
         List {
             NavigationLink(destination: SupportStatusView()) {
-                HStack {
-                    Image(systemName: "exclamationmark.circle")
-                        .imageScale(.large)
-                    Text("Status explained")
-                }
+                Label("Status Explained", systemImage: "questionmark.circle ")
                 .foregroundColor(.secondaryLabel)
             }
         }
