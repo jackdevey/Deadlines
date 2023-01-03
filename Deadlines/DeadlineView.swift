@@ -32,11 +32,11 @@ struct DeadlineView: View {
             }
             Section {
                 // Todos
-                NavigationLink(destination: DeadlineTodoView(item: item)) {
+                NavigationLink(destination: DeadlineTodoView(deadline: item)) {
                     HStack {
                         Label("Checklist", systemImage: "checklist")
                         Spacer()
-                        Text("100%")
+                        Text(String(item.checklistItemsCompletedPercentage) + "%")
                             .foregroundColor(.secondary)
                             .monospacedDigit()
                     }
@@ -48,6 +48,10 @@ struct DeadlineView: View {
                 // Links
                 NavigationLink(destination: DeadlineLinkView(item: item)) {
                     Label("Links", systemImage: "link")
+                }
+                // Submitted
+                Toggle(isOn: $item.submitted) {
+                    Label("Submitted", systemImage: "paperplane")
                 }
             }
         }

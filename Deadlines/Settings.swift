@@ -24,7 +24,7 @@ struct Settings: View {
                 Link(destination: URL(string: "https://github.com/jackdevey/Deadlines")!) {
                     Label("Contribute on GitHub", systemImage: "link")
                 }
-                Link(destination: URL(string: "https://github.com/jackdevey/Deadlines/issues")!) {
+                NavigationLink(destination: SupportView()) {
                     Label("Support", systemImage: "questionmark.circle")
                 }
                 Link(destination: URL(string: "https://deadlines.jw3.uk/privacy")!) {

@@ -10,10 +10,9 @@ import SwiftUI
 
 struct TodoView: View {
     
-    @Environment(\.managedObjectContext) var moc
     @ObservedObject var todo: DeadlineTodo
     
-    var onChange: () -> ()
+    var handler: (DeadlineTodo) -> ()
     
     
     var body: some View {
@@ -23,7 +22,7 @@ struct TodoView: View {
             .toggleStyle(CheckboxToggleStyle())
             .onChange(of: todo.done) { _ in
                 // Save changes
-                onChange()
+                handler(todo)
             }
         
     }

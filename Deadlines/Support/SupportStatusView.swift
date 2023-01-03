@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct DeadlineStatusExplainView: View {
+struct SupportStatusView: View {
     var body: some View {
         List {
             Section {

@@ -7,6 +7,20 @@
 
 import CoreData
 
+
+class PersistentContainer: NSPersistentContainer {
+
+    func saveContext(backgroundContext: NSManagedObjectContext? = nil) {
+        let context = backgroundContext ?? viewContext
+        guard context.hasChanges else { return }
+        do {
+            try context.save()
+        } catch let error as NSError {
+            print("Error: \(error), \(error.userInfo)")
+        }
+    }
+}
+
 struct PersistenceController {
     static let shared = PersistenceController()
 
@@ -28,10 +42,10 @@ struct PersistenceController {
         return result
     }()
 
-    let container: NSPersistentContainer
+    let container: PersistentContainer
 
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "Deadlines")
+        container = PersistentContainer(name: "Deadlines")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
