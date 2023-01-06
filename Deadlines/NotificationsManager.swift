@@ -10,6 +10,8 @@ import UserNotifications
 
 struct NotificationsManager {
     
+    let notificationsCenter = UNUserNotificationCenter.current()
+    
     func askForPermission(accepted: (() -> Void)? = nil, rejected: (() -> Void)? = nil) {
         // Request permissions for notifications
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { success, error in
@@ -46,6 +48,11 @@ struct NotificationsManager {
         schedule(identifier: "\(deadline.id!).now", content: content, trigger: trigger)
     }
     
+    func removeDeadlineDueNowAlert(deadline: Item) {
+        // Remove notification for now
+        return remove(identifiers: ["\(deadline.id!).now"])
+    }
+    
     func scheduleDeadlineDueIn30MinsAlert(deadline: Item) {
         // If deadline is due in less than 30 minutes
         if deadline.date! - (30 * 60) < Date.now {
@@ -59,6 +66,11 @@ struct NotificationsManager {
         schedule(identifier: "\(deadline.id!).30mins", content: content, trigger: trigger)
     }
     
+    func removeDeadlineDueIn30MinsAlert(deadline: Item) {
+        // Remove notification for 30 minutes
+        return remove(identifiers: ["\(deadline.id!).30mins"])
+    }
+    
     func scheduleDeadlineDueIn1DayAlert(deadline: Item) {
         // If deadline is due in less than
         if deadline.date! - (60 * 60 * 24) < Date.now {
@@ -70,6 +82,11 @@ struct NotificationsManager {
         let trigger = triggerToDate(date: deadline.date! - (60 * 60 * 24))
         // Schedule the notification
         schedule(identifier: "\(deadline.id!).1day", content: content, trigger: trigger)
+    }
+    
+    func removeDeadlineDueIn1DayAlert(deadline: Item) {
+        // Remove notification for 1 day
+        return remove(identifiers: ["\(deadline.id!).1day"])
     }
     
     func setContent(title: String, subtitle: String, sound: UNNotificationSound = UNNotificationSound.default) -> UNMutableNotificationContent {
@@ -91,7 +108,12 @@ struct NotificationsManager {
         // Build a notification request
         let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         // Add notification request
-        UNUserNotificationCenter.current().add(request)
+        notificationsCenter.add(request)
+    }
+    
+    func remove(identifiers: [String]) {
+        // Remove notifications with identifier
+        notificationsCenter.removePendingNotificationRequests(withIdentifiers: identifiers)
     }
     
 }
