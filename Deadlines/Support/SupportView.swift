@@ -11,7 +11,7 @@ struct SupportView: View {
     var body: some View {
         List {
             NavigationLink(destination: SupportStatusView()) {
-                Label("Status Explained", systemImage: "questionmark.circle ")
+                Label("Status Explained", systemImage: "questionmark.circle")
                 .foregroundColor(.secondaryLabel)
             }
         }

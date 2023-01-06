@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 struct Settings: View {
     
@@ -20,6 +21,11 @@ struct Settings: View {
                 // Biometric unlock toggle
                 Toggle(isOn: $useBiometrics) {
                     Label("Biometric Unlock", systemImage: "lock.open")
+                }
+                NavigationLink {
+                    NotificationsView()
+                } label: {
+                    Label("Notifications", systemImage: "bell")
                 }
             }
             
@@ -42,4 +48,47 @@ struct Settings: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
     }
+    
+    
+    struct NotificationsView: View {
+        
+        @AppStorage("allowNotifications") private var allowNotifications: Bool = false
+        
+        private var notificationsManager: NotificationsManager = NotificationsManager()
+        
+        var body: some View {
+            Form {
+                Toggle("Allow notifications", isOn: $allowNotifications)
+                // When the toggle changes
+                    .onChange(of: allowNotifications) { _ in
+                        // Request permissions for notifications
+                        notificationsManager.askForPermission(rejected: {
+                            // Set the notifications to off
+                            allowNotifications = false
+                        })
+                    }
+                Section {
+                    Button("Test") {
+                        let content = UNMutableNotificationContent()
+                        content.title = "Feed the cat"
+                        content.subtitle = "It looks hungry"
+                        content.sound = UNNotificationSound.default
+
+                        // show this notification five seconds from now
+                        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+
+                        // choose a random identifier
+                        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+
+                        // add our notification request
+                        UNUserNotificationCenter.current().add(request)
+                    }
+                }
+            }
+            // Notifications title
+                .navigationTitle("Notifications")
+        }
+        
+    }
+    
 }

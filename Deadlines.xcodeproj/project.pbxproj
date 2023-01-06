@@ -26,6 +26,7 @@
 		0468733229580C3000B12C4C /* DeadlineLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468733129580C3000B12C4C /* DeadlineLinkView.swift */; };
 		046873362958EC3100B12C4C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873352958EC3100B12C4C /* Store.swift */; };
 		046873382958FFD400B12C4C /* NewDeadlineLinkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */; };
+		04688B592967B6ED00B68EB4 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04688B582967B6ED00B68EB4 /* NotificationsManager.swift */; };
 		04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627BE2962477F00130206 /* DeadlineTodoView.swift */; };
 		04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */; };
 		04D059002964C90E0091E58C /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D058FF2964C90E0091E58C /* SupportView.swift */; };
@@ -53,6 +54,7 @@
 		046873352958EC3100B12C4C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineLinkSheet.swift; sourceTree = "<group>"; };
 		046873392959CC0200B12C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		04688B582967B6ED00B68EB4 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
 		04C627BE2962477F00130206 /* DeadlineTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTodoView.swift; sourceTree = "<group>"; };
 		04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineTodoSheet.swift; sourceTree = "<group>"; };
 		04D058FF2964C90E0091E58C /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				04478C45295560DA00F76701 /* Preview Content */,
 				046873352958EC3100B12C4C /* Store.swift */,
 				044A457E29637EF400AEC0F3 /* DeadlineView.swift */,
+				04688B582967B6ED00B68EB4 /* NotificationsManager.swift */,
 			);
 			path = Deadlines;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				04478C4C295560DA00F76701 /* Deadlines.xcdatamodeld in Sources */,
 				046873382958FFD400B12C4C /* NewDeadlineLinkSheet.swift in Sources */,
 				044A457D29636EE600AEC0F3 /* getStatus.swift in Sources */,
+				04688B592967B6ED00B68EB4 /* NotificationsManager.swift in Sources */,
 				0468732B2958040900B12C4C /* Settings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
