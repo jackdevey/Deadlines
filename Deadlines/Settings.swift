@@ -25,7 +25,12 @@ struct Settings: View {
                 NavigationLink {
                     NotificationsView()
                 } label: {
-                    Label("Notifications", systemImage: "bell")
+                    HStack {
+                        Label("Notifications", systemImage: "bell")
+                        Text("BETA")
+                            .font(.caption2)
+                            .foregroundColor(.secondary)
+                    }
                 }
             }
             

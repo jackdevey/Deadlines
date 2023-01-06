@@ -37,20 +37,32 @@ struct ContentView: View {
             
             if showContent {
                 NavigationStack {
-                    List(items) { item in
-                        
-                        NavigationLink(destination: DeadlineView(item: item)) {
-                            HStack {
-                                Image(systemName: item.getStatus().getIconName() + ".circle")
-                                    .imageScale(.large)
-                                    .foregroundColor(item.getStatus().getIconColor())
-                                Text(item.name!)
+                    List {
+                        ForEach(items) { item in
+                            NavigationLink(destination: DeadlineView(item: item)) {
+                                HStack {
+                                    Image(systemName: item.getStatus().getIconName() + ".circle")
+                                        .imageScale(.large)
+                                        .foregroundColor(item.getStatus().getIconColor())
+                                    Text(item.name!)
+                                }
                             }
                         }
-                        
+                        .onDelete { offsets in
+                            // Delete a link from the deadline
+                            withAnimation {
+                                offsets.map { items[$0] }
+                                    .forEach(viewContext.delete)
+                                //items.remove(atOffsets: offsets)
+                                Store().save(viewContext: viewContext) // Save changes
+                            }
+                        }
                     }
                     .navigationTitle("Deadlines")
                     .toolbar {
+                        ToolbarItem(id: "edit") {
+                            EditButton()
+                        }
                         ToolbarItem(id: "new") {
                             Button {
                                 $showNew.wrappedValue.toggle()
