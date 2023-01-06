@@ -41,7 +41,7 @@ struct NewDeadline: View {
                         link.name = $name.wrappedValue
                         link.date = $date.wrappedValue
                         Store().save(viewContext: viewContext)
-                        NotificationsManager().scheduleDeadlineDueAlert(deadline: link)
+                        NotificationsManager().scheduleDeadlineNotifications(deadline: link)
                         dismiss()
                     } label: {
                         Text("Create")

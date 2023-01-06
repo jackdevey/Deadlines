@@ -72,7 +72,6 @@ struct ContentView: View {
                     .sheet(isPresented: $showNew) {
                         NewDeadline()
                     }
-                    Text("Alpha")
                 }
             }
         }

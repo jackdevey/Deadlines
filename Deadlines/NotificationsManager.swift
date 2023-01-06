@@ -32,13 +32,44 @@ struct NotificationsManager {
         }
     }
     
-    func scheduleDeadlineDueAlert(deadline: Item) {
+    func scheduleDeadlineNotifications(deadline: Item) {
+        scheduleDeadlineDueNowAlert(deadline: deadline)
+        scheduleDeadlineDueIn30MinsAlert(deadline: deadline)
+    }
+    
+    func scheduleDeadlineDueNowAlert(deadline: Item) {
         // Create the notification
         let content = setContent(title: deadline.name!, subtitle: "Due in now")
         // Set trigger to deadline due date
         let trigger = triggerToDate(date: deadline.date!)
         // Schedule the notification
-        schedule(content: content, trigger: trigger)
+        schedule(identifier: "\(deadline.id!).now", content: content, trigger: trigger)
+    }
+    
+    func scheduleDeadlineDueIn30MinsAlert(deadline: Item) {
+        // If deadline is due in less than 30 minutes
+        if deadline.date! - (30 * 60) < Date.now {
+            return
+        }
+        // Create the notification
+        let content = setContent(title: deadline.name!, subtitle: "Due in 30 minutes")
+        // Set trigger to deadline due date
+        let trigger = triggerToDate(date: deadline.date! - (30 * 60))
+        // Schedule the notification
+        schedule(identifier: "\(deadline.id!).30mins", content: content, trigger: trigger)
+    }
+    
+    func scheduleDeadlineDueIn1DayAlert(deadline: Item) {
+        // If deadline is due in less than
+        if deadline.date! - (60 * 60 * 24) < Date.now {
+            return
+        }
+        // Create the notification
+        let content = setContent(title: deadline.name!, subtitle: "Due tomorrow")
+        // Set trigger to deadline due date
+        let trigger = triggerToDate(date: deadline.date! - (60 * 60 * 24))
+        // Schedule the notification
+        schedule(identifier: "\(deadline.id!).1day", content: content, trigger: trigger)
     }
     
     func setContent(title: String, subtitle: String, sound: UNNotificationSound = UNNotificationSound.default) -> UNMutableNotificationContent {
@@ -56,9 +87,9 @@ struct NotificationsManager {
         return UNTimeIntervalNotificationTrigger(timeInterval: Date.now.distance(to: date), repeats: false)
     }
     
-    func schedule(content: UNMutableNotificationContent, trigger: UNTimeIntervalNotificationTrigger) {
+    func schedule(identifier: String, content: UNMutableNotificationContent, trigger: UNTimeIntervalNotificationTrigger) {
         // Build a notification request
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
         // Add notification request
         UNUserNotificationCenter.current().add(request)
     }
