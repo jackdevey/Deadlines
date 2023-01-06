@@ -23,13 +23,25 @@ struct DeadlineTodoView: View {
     }
     
     var body: some View {
-        List(todos, id: \.id) { todo in
-            TodoView(todo: todo, handler: { todo in
-                // Save the change when an item is toggled
-                deadline.replaceTodos(at: Int(todo.placement), with: todo)
-                try? viewContext.save()
-            })
+        List {
+            ForEach(todos, id: \.id) { todo in
+                TodoView(todo: todo, handler: { todo in
+                    // Save the change when an item is toggled
+                    deadline.replaceTodos(at: Int(todo.placement), with: todo)
+                    try? viewContext.save()
+                })
+            }
+            .onDelete { offsets in
+                // Delete a link from the deadline
+                withAnimation {
+                    offsets.map { todos[$0] }.forEach(viewContext.delete)
+                    todos.remove(atOffsets: offsets)
+                    //items.remove(atOffsets: offsets)
+                    Store().save(viewContext: viewContext) // Save changes
+                }
+            }
         }
+        .listStyle(InsetListStyle())
         .navigationTitle("Checklist")
         .toolbar {
             // Percentage reminder

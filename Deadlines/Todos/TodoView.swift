@@ -18,7 +18,7 @@ struct TodoView: View {
     var body: some View {
         
         // Show each link as a link (with label)
-        Toggle(todo.name!, isOn: $todo.done)
+        Toggle(todo.name ?? "", isOn: $todo.done)
             .toggleStyle(CheckboxToggleStyle())
             .onChange(of: todo.done) { _ in
                 // Save changes

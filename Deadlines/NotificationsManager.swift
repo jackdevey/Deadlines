@@ -34,9 +34,24 @@ struct NotificationsManager {
         }
     }
     
+    /**
+     Schedule all notifications for a deadline
+     */
+    
     func scheduleDeadlineNotifications(deadline: Item) {
         scheduleDeadlineDueNowAlert(deadline: deadline)
         scheduleDeadlineDueIn30MinsAlert(deadline: deadline)
+        scheduleDeadlineDueIn1DayAlert(deadline: deadline)
+    }
+    
+    /**
+     Remove all notifications for a deadline
+     */
+    
+    func removeDeadlineNotifications(deadline: Item) {
+        removeDeadlineDueNowAlert(deadline: deadline)
+        removeDeadlineDueIn30MinsAlert(deadline: deadline)
+        removeDeadlineDueIn1DayAlert(deadline: deadline)
     }
     
     func scheduleDeadlineDueNowAlert(deadline: Item) {
