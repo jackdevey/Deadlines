@@ -10,6 +10,17 @@ import SwiftUI
 
 extension Item {
     
+    func getColour() -> Color {
+        switch self.color {
+        default: return .gray
+        }
+    }
+    
+    func getIconName() -> String {
+        return self.iconName ?? "square"
+    }
+
+    
     func getStatus() -> Status {
         if self.submitted {
             return Status.submitted

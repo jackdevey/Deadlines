@@ -39,10 +39,33 @@ struct ContentView: View {
                         ForEach(items) { item in
                             NavigationLink(destination: DeadlineView(item: item)) {
                                 HStack {
-                                    Image(systemName: item.getStatus().getIconName() + ".circle")
-                                        .imageScale(.large)
-                                        .foregroundColor(item.getStatus().getIconColor())
-                                    Text(item.name!)
+                                    ZStack(alignment: .bottomTrailing) {
+                                        ZStack {
+                                            RoundedRectangle(cornerRadius: 15)
+                                                .fill(item.getColour().gradient)
+                                                .frame(width: 45, height: 45)
+                                                .shadow(radius: 5)
+                                            Image(systemName: item.getIconName())
+                                                .foregroundColor(.white)
+                                        }
+                                        .padding(3)
+                                        ZStack {
+                                            Circle()
+                                                .fill(item.getStatus().getIconColor())
+                                                .frame(width: 25, height: 25)
+                                                .shadow(radius: 5)
+                                            Image(systemName: item.getStatus().getIconName())
+                                                .foregroundColor(.white)
+                                                .font(.system(size: 12))
+                                        }
+                                    }
+                                    VStack(alignment: .leading) {
+                                        Text(item.name!)
+                                            .bold()
+                                        Text(item.date!, style: .date)
+                                            .foregroundColor(.secondary)
+                                    }
+                                    .padding([.leading], 5)
                                 }
                             }
                         }
@@ -56,6 +79,7 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .listStyle(InsetListStyle())
                     .navigationTitle("Deadlines")
                     .toolbar {
                         ToolbarItem(id: "edit") {
