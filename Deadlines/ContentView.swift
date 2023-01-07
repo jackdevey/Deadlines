@@ -44,7 +44,7 @@ struct ContentView: View {
                                             RoundedRectangle(cornerRadius: 15)
                                                 .fill(item.getColour().gradient)
                                                 .frame(width: 45, height: 45)
-                                                .shadow(radius: 5)
+                                                .shadow(radius: 1)
                                             Image(systemName: item.getIconName())
                                                 .foregroundColor(.white)
                                         }
@@ -66,6 +66,22 @@ struct ContentView: View {
                                             .foregroundColor(.secondary)
                                     }
                                     .padding([.leading], 5)
+                                }
+                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                    Button {
+                                        print("Awesome!")
+                                    } label: {
+                                        Label("Pin", systemImage: "pin")
+                                    }
+                                    .tint(.systemBlue)
+                                }
+                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+                                    Button {
+                                        print("Awesome!")
+                                    } label: {
+                                        Label("See", systemImage: "square")
+                                    }
+                                    .tint(.systemGreen)
                                 }
                             }
                         }
