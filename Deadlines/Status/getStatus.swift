@@ -12,12 +12,12 @@ extension Item {
     
     func getColour() -> Color {
         switch self.color {
-        default: return .gray
+        default: return .purple
         }
     }
     
     func getIconName() -> String {
-        return self.iconName ?? "square"
+        return self.iconName ?? "figure.dance"
     }
 
     
