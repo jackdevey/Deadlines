@@ -48,7 +48,7 @@ struct ContentView: View {
                                             Image(systemName: item.getIconName())
                                                 .foregroundColor(.white)
                                         }
-                                        .padding(3)
+                                        .padding(5)
                                         ZStack {
                                             Circle()
                                                 .fill(item.getStatus().getIconColor())
