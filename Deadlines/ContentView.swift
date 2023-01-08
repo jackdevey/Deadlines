@@ -97,8 +97,9 @@ struct ContentView: View {
                     }
                     .listStyle(InsetListStyle())
                     .navigationTitle("Deadlines")
+                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
-                        ToolbarItem(id: "edit") {
+                        ToolbarItem(id: "edit", placement: .navigationBarLeading) {
                             EditButton()
                         }
                         ToolbarItem(id: "new") {
