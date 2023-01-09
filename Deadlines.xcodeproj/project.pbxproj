@@ -27,6 +27,7 @@
 		046873362958EC3100B12C4C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873352958EC3100B12C4C /* Store.swift */; };
 		046873382958FFD400B12C4C /* NewDeadlineLinkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */; };
 		04688B592967B6ED00B68EB4 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04688B582967B6ED00B68EB4 /* NotificationsManager.swift */; };
+		0484C77E296C84990014DBFB /* DeadlineSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */; };
 		04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627BE2962477F00130206 /* DeadlineTodoView.swift */; };
 		04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */; };
 		04D059002964C90E0091E58C /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D058FF2964C90E0091E58C /* SupportView.swift */; };
@@ -55,6 +56,7 @@
 		046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineLinkSheet.swift; sourceTree = "<group>"; };
 		046873392959CC0200B12C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		04688B582967B6ED00B68EB4 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineSettingsView.swift; sourceTree = "<group>"; };
 		04C627BE2962477F00130206 /* DeadlineTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTodoView.swift; sourceTree = "<group>"; };
 		04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineTodoSheet.swift; sourceTree = "<group>"; };
 		04D058FF2964C90E0091E58C /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
@@ -91,6 +93,7 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				0484C77C296C84850014DBFB /* Deadline */,
 				04D058FE2964C9000091E58C /* Support */,
 				044A45792963629000AEC0F3 /* Status */,
 				046873392959CC0200B12C4C /* Info.plist */,
@@ -145,6 +148,14 @@
 				046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */,
 			);
 			path = Links;
+			sourceTree = "<group>";
+		};
+		0484C77C296C84850014DBFB /* Deadline */ = {
+			isa = PBXGroup;
+			children = (
+				0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */,
+			);
+			path = Deadline;
 			sourceTree = "<group>";
 		};
 		04C627BD296240F100130206 /* Todos */ = {
@@ -255,6 +266,7 @@
 				04D059002964C90E0091E58C /* SupportView.swift in Sources */,
 				044A45762963431700AEC0F3 /* CheckboxToggleStyle.swift in Sources */,
 				04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */,
+				0484C77E296C84990014DBFB /* DeadlineSettingsView.swift in Sources */,
 				04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */,
 				044A457829634ED100AEC0F3 /* SupportStatusView.swift in Sources */,
 				044A457B296362A200AEC0F3 /* Status.swift in Sources */,

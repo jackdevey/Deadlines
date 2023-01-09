@@ -14,26 +14,111 @@ struct DeadlineView: View {
     var body: some View {
         
         List {
-            HStack {
-                // Show status icon
-                ZStack {
-                    Circle()
-                        .fill(item.getStatus().getIconColor())
-                        .frame(width: 26, height: 26)
-                    Image(systemName: item.getStatus().getIconName())
-                        .imageScale(.small)
-                        .foregroundColor(.white)
+            Section {
+                // Due date
+                HStack {
+                    Text("Due Date")
+                        .font(.headline)
+                    Spacer()
+                    Text(item.date!, format: .dateTime)
+                        .foregroundColor(.secondaryLabel)
                 }
-                // Text
-                VStack(alignment: .leading) {
-                    Text(item.getStatus().getName())
-                        .bold()
-                    Text(item.getStatus().getDescription())
-                        .foregroundColor(.secondary)
+                .padding(5)
+                // Time left
+                HStack {
+                    Text("Days Remaining")
+                        .font(.headline)
+                    Spacer()
+                    Text(item.daysUntil)
+                        .foregroundColor(.secondaryLabel)
                 }
-                // Add padding to left side
-                .padding([.leading], 5)
+                .padding(5)
+                // Status
+                HStack {
+                    Text("Status")
+                        .font(.headline)
+                    Spacer()
+                    HStack {
+                        Image(systemName: item.getStatus().getIconName())
+                            .imageScale(.small)
+                            .foregroundColor(item.getStatus().getIconColor())
+                        Text(item.getStatus().getName())
+                            .foregroundColor(.secondaryLabel)
+                    }
+                }
+                .padding(5)
             }
+            // Deadline type
+            Section {
+                // Checklist
+                NavigationLink {
+                    DeadlineTodoView(deadline: item)
+                } label: {
+                    HStack {
+                        // Show status icon
+                        NiceIconLabel(text: "Checklist", color: .blue, iconName: "checklist")
+                        // Space apart
+                        Spacer()
+                        // Show status
+                        Text("\(item.checklistItemsCompletedPercentage)%")
+                            .monospacedDigit()
+                            .foregroundColor(.secondaryLabel)
+                    }
+                }
+                // Plan
+                NavigationLink {
+                    DeadlineLinkView(item: item)
+                } label: {
+                    NiceIconLabel(text: "Work Plan", color: .systemTeal, iconName: "book.closed.fill")
+                }
+                // Target
+                NavigationLink {
+                    DeadlineLinkView(item: item)
+                } label: {
+                    NiceIconLabel(text: "Target", color: .green, iconName: "target")
+                }
+                // Documents
+                NavigationLink {
+                    NotesView(item: item)
+                } label: {
+                    NiceIconLabel(text: "Documents", color: .indigo, iconName: "folder.fill")
+                }
+                // Reminders
+                NavigationLink {
+                    NotesView(item: item)
+                } label: {
+                    NiceIconLabel(text: "Reminders", color: .red, iconName: "bell.badge.fill")
+                }
+                // Tags
+                NavigationLink {
+                    NotesView(item: item)
+                } label: {
+                    NiceIconLabel(text: "Tags", color: .mint, iconName: "tag.fill")
+                }
+                // Links
+                NavigationLink {
+                    DeadlineLinkView(item: item)
+                } label: {
+                    NiceIconLabel(text: "Links", color: .purple, iconName: "link")
+                }
+                // Notes
+                NavigationLink {
+                    NotesView(item: item)
+                } label: {
+                    NiceIconLabel(text: "Notes", color: .orange, iconName: "note")
+                }
+            }
+            
+            Section {
+                // Choose Icon
+                NavigationLink {
+                    // Show settings view
+                    DeadlineSettingsView(deadline: item)
+                } label: {
+                    NiceIconLabel(text: "Settings", color: .gray, iconName: "gearshape.fill")
+                }
+            }
+        
         }
         // Allow deadline title to be edited
         .navigationTitle($item.name.toUnwrapped(defaultValue: ""))
@@ -64,27 +149,7 @@ struct DeadlineView: View {
             }
             // Add title menu options
             ToolbarTitleMenu {
-                Section {
-                    HStack {
-                        // Show deadline icon
-                        ZStack {
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(item.getColour().gradient)
-                                .frame(width: 25, height: 25)
-                            Image(systemName: item.getIconName())
-                                .imageScale(.small)
-                                .foregroundColor(.white)
-                        }
-                        // Show deadline name
-                        VStack(alignment: .leading) {
-                            Text(item.name!)
-                                .bold()
-                        }
-                    }
-                }
-                Button("Hi") {
-                    
-                }
+                
                 // Rename the deadline
                 RenameButton()
             }
@@ -132,6 +197,28 @@ struct DeadlineView: View {
 //            }
 //        }
     
+}
+
+@ViewBuilder
+func NiceIconLabel(text: String, color: Color, iconName: String) -> some View {
+    // Show label
+    Label {
+        Text(text)
+            .font(.headline)
+    } icon: {
+        // Icon frame
+        ZStack {
+            // Background
+            RoundedRectangle(cornerRadius: 5)
+                .fill(color.gradient)
+                .frame(width: 30, height: 30)
+            // Icon
+            Image(systemName: iconName)
+                .imageScale(.small)
+                .foregroundColor(.white)
+        }
+    }
+    .padding(5)
 }
 
                          extension Binding {
