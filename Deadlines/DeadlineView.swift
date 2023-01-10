@@ -85,7 +85,7 @@ struct DeadlineView: View {
                 }
                 // Reminders
                 NavigationLink {
-                    NotesView(item: item)
+                    RemindersView(deadline: item)
                 } label: {
                     NiceIconLabel(text: "Reminders", color: .red, iconName: "bell.badge.fill")
                 }
