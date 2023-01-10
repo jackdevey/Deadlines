@@ -6,38 +6,5 @@
 	<true/>
 	<key>com.apple.security.network.client</key>
 	<true/>
-    <key>CFBundleIcons</key>
-    <dict>
-        <key>CFBundlePrimaryIcon</key>
-        <dict>
-            <key>CFBundleIconFiles</key>
-            <array>
-                <string>CustomIcons/IconDefault</string>
-            </array>
-            <key>UIPrerenderedIcon</key>
-            <false/>
-        </dict>
-        <key>CFBundleAlternateIcons</key>
-        <dict>
-            <key>IconAside</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>CustomIcons/IconAside</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-            <key>IconMacros</key>
-            <dict>
-                <key>CFBundleIconFiles</key>
-                <array>
-                    <string>CustomIcons/IconMacros</string>
-                </array>
-                <key>UIPrerenderedIcon</key>
-                <false/>
-            </dict>
-        </dict>
-    </dict>
 </dict>
 </plist>
