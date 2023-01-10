@@ -34,7 +34,7 @@ struct DeadlineSettingsView: View {
                 Text("Due Date")
                     .font(.headline)
                 Spacer()
-                DatePicker("", selection: $deadline.date.toUnwrapped(defaultValue: Date.now), in: Date.now...)
+                DatePicker("", selection: $deadline.date.toUnwrapped(defaultValue: Date.now), in: Date.now..., displayedComponents: .date)
             }.padding([.leading, .trailing], 5)
             // Edit deadline submission status
             HStack {

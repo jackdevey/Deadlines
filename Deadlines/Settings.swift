@@ -34,6 +34,10 @@ struct Settings: View {
                 }
             }
             
+            Button("Aside icon") {
+                UIApplication.shared.setAlternateIconName("IconAside")
+            }
+            
             Section {
                 Link(destination: URL(string: "https://github.com/jackdevey/Deadlines")!) {
                     Label("Contribute on GitHub", systemImage: "link")

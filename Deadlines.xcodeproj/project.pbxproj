@@ -27,6 +27,19 @@
 		046873362958EC3100B12C4C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873352958EC3100B12C4C /* Store.swift */; };
 		046873382958FFD400B12C4C /* NewDeadlineLinkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */; };
 		04688B592967B6ED00B68EB4 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04688B582967B6ED00B68EB4 /* NotificationsManager.swift */; };
+		0480770A296DD5C700D5596D /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04807709296DD5C700D5596D /* RemindersView.swift */; };
+		04807716296DE2E900D5596D /* IconEmoji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480770C296DE2E800D5596D /* IconEmoji@2x.png */; };
+		04807717296DE2E900D5596D /* IconFlat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480770D296DE2E800D5596D /* IconFlat@3x.png */; };
+		04807718296DE2E900D5596D /* IconFlat@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480770E296DE2E800D5596D /* IconFlat@2x.png */; };
+		04807719296DE2E900D5596D /* IconEmoji@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480770F296DE2E800D5596D /* IconEmoji@3x.png */; };
+		0480771A296DE2E900D5596D /* IconAside@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807710296DE2E800D5596D /* IconAside@2x.png */; };
+		0480771B296DE2E900D5596D /* IconAside@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807711296DE2E800D5596D /* IconAside@3x.png */; };
+		0480771C296DE2E900D5596D /* IconMacros@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807712296DE2E800D5596D /* IconMacros@3x.png */; };
+		0480771D296DE2E900D5596D /* IconMacros@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807713296DE2E800D5596D /* IconMacros@2x.png */; };
+		0480771E296DE2E900D5596D /* IconOG@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807714296DE2E800D5596D /* IconOG@3x.png */; };
+		0480771F296DE2E900D5596D /* IconOG@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807715296DE2E800D5596D /* IconOG@2x.png */; };
+		04807722296DE48B00D5596D /* IconDefault@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807720296DE48B00D5596D /* IconDefault@3x.png */; };
+		04807723296DE48B00D5596D /* IconDefault@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04807721296DE48B00D5596D /* IconDefault@2x.png */; };
 		0484C77E296C84990014DBFB /* DeadlineSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */; };
 		04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627BE2962477F00130206 /* DeadlineTodoView.swift */; };
 		04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */; };
@@ -56,6 +69,19 @@
 		046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineLinkSheet.swift; sourceTree = "<group>"; };
 		046873392959CC0200B12C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		04688B582967B6ED00B68EB4 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		04807709296DD5C700D5596D /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
+		0480770C296DE2E800D5596D /* IconEmoji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconEmoji@2x.png"; sourceTree = "<group>"; };
+		0480770D296DE2E800D5596D /* IconFlat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconFlat@3x.png"; sourceTree = "<group>"; };
+		0480770E296DE2E800D5596D /* IconFlat@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconFlat@2x.png"; sourceTree = "<group>"; };
+		0480770F296DE2E800D5596D /* IconEmoji@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconEmoji@3x.png"; sourceTree = "<group>"; };
+		04807710296DE2E800D5596D /* IconAside@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconAside@2x.png"; sourceTree = "<group>"; };
+		04807711296DE2E800D5596D /* IconAside@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconAside@3x.png"; sourceTree = "<group>"; };
+		04807712296DE2E800D5596D /* IconMacros@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconMacros@3x.png"; sourceTree = "<group>"; };
+		04807713296DE2E800D5596D /* IconMacros@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconMacros@2x.png"; sourceTree = "<group>"; };
+		04807714296DE2E800D5596D /* IconOG@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconOG@3x.png"; sourceTree = "<group>"; };
+		04807715296DE2E800D5596D /* IconOG@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconOG@2x.png"; sourceTree = "<group>"; };
+		04807720296DE48B00D5596D /* IconDefault@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconDefault@3x.png"; sourceTree = "<group>"; };
+		04807721296DE48B00D5596D /* IconDefault@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconDefault@2x.png"; sourceTree = "<group>"; };
 		0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineSettingsView.swift; sourceTree = "<group>"; };
 		04C627BE2962477F00130206 /* DeadlineTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTodoView.swift; sourceTree = "<group>"; };
 		04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineTodoSheet.swift; sourceTree = "<group>"; };
@@ -93,6 +119,8 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				0480770B296DE2E800D5596D /* CustomIcons */,
+				04807708296DD5B400D5596D /* Reminders */,
 				0484C77C296C84850014DBFB /* Deadline */,
 				04D058FE2964C9000091E58C /* Support */,
 				044A45792963629000AEC0F3 /* Status */,
@@ -148,6 +176,33 @@
 				046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */,
 			);
 			path = Links;
+			sourceTree = "<group>";
+		};
+		04807708296DD5B400D5596D /* Reminders */ = {
+			isa = PBXGroup;
+			children = (
+				04807709296DD5C700D5596D /* RemindersView.swift */,
+			);
+			path = Reminders;
+			sourceTree = "<group>";
+		};
+		0480770B296DE2E800D5596D /* CustomIcons */ = {
+			isa = PBXGroup;
+			children = (
+				04807721296DE48B00D5596D /* IconDefault@2x.png */,
+				04807720296DE48B00D5596D /* IconDefault@3x.png */,
+				0480770C296DE2E800D5596D /* IconEmoji@2x.png */,
+				0480770D296DE2E800D5596D /* IconFlat@3x.png */,
+				0480770E296DE2E800D5596D /* IconFlat@2x.png */,
+				0480770F296DE2E800D5596D /* IconEmoji@3x.png */,
+				04807710296DE2E800D5596D /* IconAside@2x.png */,
+				04807711296DE2E800D5596D /* IconAside@3x.png */,
+				04807712296DE2E800D5596D /* IconMacros@3x.png */,
+				04807713296DE2E800D5596D /* IconMacros@2x.png */,
+				04807714296DE2E800D5596D /* IconOG@3x.png */,
+				04807715296DE2E800D5596D /* IconOG@2x.png */,
+			);
+			path = CustomIcons;
 			sourceTree = "<group>";
 		};
 		0484C77C296C84850014DBFB /* Deadline */ = {
@@ -242,8 +297,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0480771E296DE2E900D5596D /* IconOG@3x.png in Resources */,
+				04807722296DE48B00D5596D /* IconDefault@3x.png in Resources */,
+				0480771D296DE2E900D5596D /* IconMacros@2x.png in Resources */,
+				04807716296DE2E900D5596D /* IconEmoji@2x.png in Resources */,
+				04807717296DE2E900D5596D /* IconFlat@3x.png in Resources */,
+				04807718296DE2E900D5596D /* IconFlat@2x.png in Resources */,
+				0480771F296DE2E900D5596D /* IconOG@2x.png in Resources */,
+				04807719296DE2E900D5596D /* IconEmoji@3x.png in Resources */,
 				04478C47295560DA00F76701 /* Preview Assets.xcassets in Resources */,
+				0480771B296DE2E900D5596D /* IconAside@3x.png in Resources */,
+				0480771A296DE2E900D5596D /* IconAside@2x.png in Resources */,
+				04807723296DE48B00D5596D /* IconDefault@2x.png in Resources */,
 				04478C44295560DA00F76701 /* Assets.xcassets in Resources */,
+				0480771C296DE2E900D5596D /* IconMacros@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +329,7 @@
 				04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */,
 				044A45812963876E00AEC0F3 /* TodoView.swift in Sources */,
 				046873362958EC3100B12C4C /* Store.swift in Sources */,
+				0480770A296DD5C700D5596D /* RemindersView.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
 				04D059002964C90E0091E58C /* SupportView.swift in Sources */,
 				044A45762963431700AEC0F3 /* CheckboxToggleStyle.swift in Sources */,
