@@ -12,6 +12,8 @@ struct Settings: View {
     
     @AppStorage("useBiometrics") private var useBiometrics = false
     
+    @StateObject var iconsManager: IconsManager = IconsManager()
+    
     var body: some View {
         List {
 
@@ -34,8 +36,10 @@ struct Settings: View {
                 }
             }
             
-            Button("Aside icon") {
-                UIApplication.shared.setAlternateIconName("IconAside")
+            NavigationLink("App icons") {
+                IconsListView()
+                    .environmentObject(iconsManager)
+                    .navigationBarTitleDisplayMode(.inline)
             }
             
             Section {
