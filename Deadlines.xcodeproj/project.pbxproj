@@ -21,6 +21,8 @@
 		044A45812963876E00AEC0F3 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A45802963876E00AEC0F3 /* TodoView.swift */; };
 		04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04561CA9295F1C060087ABE7 /* NotesView.swift */; };
 		04561CB2296092520087ABE7 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 04561CB1296092520087ABE7 /* SwiftUIX */; };
+		045D96C9296F395D0058033E /* DeadlineTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96C8296F395D0058033E /* DeadlineTagsView.swift */; };
+		045D96CD296F636C0058033E /* TagViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96CC296F636C0058033E /* TagViews.swift */; };
 		0468732B2958040900B12C4C /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732A2958040900B12C4C /* Settings.swift */; };
 		0468732D295805B600B12C4C /* NewDeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732C295805B600B12C4C /* NewDeadline.swift */; };
 		0468733229580C3000B12C4C /* DeadlineLinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468733129580C3000B12C4C /* DeadlineLinkView.swift */; };
@@ -70,6 +72,8 @@
 		044A457E29637EF400AEC0F3 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 		044A45802963876E00AEC0F3 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 		04561CA9295F1C060087ABE7 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		045D96C8296F395D0058033E /* DeadlineTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTagsView.swift; sourceTree = "<group>"; };
+		045D96CC296F636C0058033E /* TagViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViews.swift; sourceTree = "<group>"; };
 		0468732A2958040900B12C4C /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		0468732C295805B600B12C4C /* NewDeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadline.swift; sourceTree = "<group>"; };
 		0468733129580C3000B12C4C /* DeadlineLinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineLinkView.swift; sourceTree = "<group>"; };
@@ -135,6 +139,7 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				045D96C7296F394B0058033E /* Tags */,
 				04807730296DF3E900D5596D /* Settings */,
 				0480770B296DE2E800D5596D /* Assets */,
 				04807708296DD5B400D5596D /* Reminders */,
@@ -184,6 +189,15 @@
 				04561CA9295F1C060087ABE7 /* NotesView.swift */,
 			);
 			path = Notes;
+			sourceTree = "<group>";
+		};
+		045D96C7296F394B0058033E /* Tags */ = {
+			isa = PBXGroup;
+			children = (
+				045D96C8296F395D0058033E /* DeadlineTagsView.swift */,
+				045D96CC296F636C0058033E /* TagViews.swift */,
+			);
+			path = Tags;
 			sourceTree = "<group>";
 		};
 		0468732E29580BBC00B12C4C /* Links */ = {
@@ -368,9 +382,11 @@
 				04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */,
 				044A45812963876E00AEC0F3 /* TodoView.swift in Sources */,
 				046873362958EC3100B12C4C /* Store.swift in Sources */,
+				045D96CD296F636C0058033E /* TagViews.swift in Sources */,
 				04807734296DF73100D5596D /* IconsListView.swift in Sources */,
 				0480770A296DD5C700D5596D /* RemindersView.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
+				045D96C9296F395D0058033E /* DeadlineTagsView.swift in Sources */,
 				04D059002964C90E0091E58C /* SupportView.swift in Sources */,
 				044A45762963431700AEC0F3 /* CheckboxToggleStyle.swift in Sources */,
 				04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */,

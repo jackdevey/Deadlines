@@ -7,6 +7,7 @@
         <attribute name="url" optional="YES" attributeType="URI"/>
         <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="links" inverseEntity="Item"/>
     </entity>
+    <entity name="DeadlineTag" representedClassName="DeadlineTag" syncable="YES" codeGenerationType="class"/>
     <entity name="DeadlineTodo" representedClassName="DeadlineTodo" syncable="YES" codeGenerationType="class">
         <attribute name="done" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
@@ -24,6 +25,12 @@
         <attribute name="submitted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DeadlineLink" inverseName="deadline" inverseEntity="DeadlineLink"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tag"/>
         <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DeadlineTodo" inverseName="deadline" inverseEntity="DeadlineTodo"/>
+    </entity>
+    <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="text" attributeType="String" defaultValueString=""/>
+        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>

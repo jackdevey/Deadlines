@@ -26,7 +26,6 @@ struct ContentView: View {
     
     
     
-    
     @State private var date = Date()
     @State private var name = ""
 
@@ -44,7 +43,6 @@ struct ContentView: View {
                                             RoundedRectangle(cornerRadius: 15)
                                                 .fill(item.getColour().gradient)
                                                 .frame(width: 45, height: 45)
-                                                .shadow(radius: 1)
                                             Image(systemName: item.getIconName())
                                                 .foregroundColor(.white)
                                         }
@@ -53,7 +51,6 @@ struct ContentView: View {
                                             Circle()
                                                 .fill(item.getStatus().getIconColor())
                                                 .frame(width: 25, height: 25)
-                                                .shadow(radius: 5)
                                             Image(systemName: item.getStatus().getIconName())
                                                 .foregroundColor(.white)
                                                 .font(.system(size: 12))
@@ -64,6 +61,12 @@ struct ContentView: View {
                                             .bold()
                                         Text(item.date!, style: .date)
                                             .foregroundColor(.secondary)
+                                        HStack {
+                                            ForEach(item.tags!.array as! [Tag]) { tag in
+                                                tag.InlineView()
+                                                    .foregroundColor(.secondaryLabel)
+                                            }
+                                        }
                                     }
                                     .padding([.leading], 5)
                                 }
@@ -95,9 +98,7 @@ struct ContentView: View {
                             }
                         }
                     }
-                    .listStyle(InsetListStyle())
                     .navigationTitle("Deadlines")
-                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
                         ToolbarItem(id: "edit", placement: .navigationBarLeading) {
                             EditButton()

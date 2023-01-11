@@ -24,16 +24,6 @@ struct Settings: View {
                 Toggle(isOn: $useBiometrics) {
                     Label("Biometric Unlock", systemImage: "lock.open")
                 }
-                NavigationLink {
-                    NotificationsView()
-                } label: {
-                    HStack {
-                        Label("Notifications", systemImage: "bell")
-                        Text("BETA")
-                            .font(.caption2)
-                            .foregroundColor(.secondary)
-                    }
-                }
             }
             
             NavigationLink("App icons") {
@@ -61,33 +51,5 @@ struct Settings: View {
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.large)
     }
-    
-    
-    struct NotificationsView: View {
         
-        @AppStorage("allowNotifications") private var allowNotifications: Bool = false
-        
-        private var notificationsManager: NotificationsManager = NotificationsManager()
-        
-        var body: some View {
-            Form {
-                Toggle("Allow notifications", isOn: $allowNotifications)
-                // When the toggle changes
-                    .onChange(of: allowNotifications) { _ in
-                        // Request permissions for notifications
-                        notificationsManager.askForPermission(rejected: {
-                            // Set the notifications to off
-                            allowNotifications = false
-                        })
-                    }
-                Section {
-                    
-                }
-            }
-            // Notifications title
-                .navigationTitle("Notifications")
-        }
-        
-    }
-    
 }

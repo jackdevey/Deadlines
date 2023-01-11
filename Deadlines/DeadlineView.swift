@@ -77,23 +77,17 @@ struct DeadlineView: View {
                 } label: {
                     NiceIconLabel(text: "Target", color: .green, iconName: "target")
                 }
-                // Documents
-                NavigationLink {
-                    NotesView(item: item)
-                } label: {
-                    NiceIconLabel(text: "Documents", color: .indigo, iconName: "folder.fill")
-                }
-                // Reminders
-                NavigationLink {
-                    RemindersView(deadline: item)
-                } label: {
-                    NiceIconLabel(text: "Reminders", color: .red, iconName: "bell.badge.fill")
-                }
+//                // Documents
+//                NavigationLink {
+//                    NotesView(item: item)
+//                } label: {
+//                    NiceIconLabel(text: "Documents", color: .indigo, iconName: "folder.fill")
+//                }
                 // Tags
                 NavigationLink {
-                    NotesView(item: item)
+                    DeadlineTagsView(deadline: item)
                 } label: {
-                    NiceIconLabel(text: "Tags", color: .mint, iconName: "tag.fill")
+                    NiceIconLabel(text: "Tags", color: .indigo, iconName: "number")
                 }
                 // Links
                 NavigationLink {
@@ -121,37 +115,21 @@ struct DeadlineView: View {
         
         }
         // Allow deadline title to be edited
-        .navigationTitle($item.name.toUnwrapped(defaultValue: ""))
-        .navigationBarTitleDisplayMode(.inline)
-        .toolbarRole(.editor)
+        .navigationTitle(item.name!)
 
          // Add toolbar items
         .toolbar {
             // Icon and title
-            ToolbarItem(id: "title", placement: .principal) {
-                HStack {
-                    // Show deadline icon
-                    ZStack {
-                        RoundedRectangle(cornerRadius: 5)
-                            .fill(item.getColour().gradient)
-                            .frame(width: 25, height: 25)
-                        Image(systemName: item.getIconName())
-                            .imageScale(.small)
-                            .foregroundColor(.white)
-                    }
-                    // Show deadline name
-                    VStack(alignment: .leading) {
-                        Text(item.name!)
-                            .bold()
-                    }
-                    .padding([.leading], 4)
+            ToolbarItem(id: "title", placement: .primaryAction) {
+                // Show deadline icon
+                ZStack {
+                    RoundedRectangle(cornerRadius: 5)
+                        .fill(item.getColour().gradient)
+                        .frame(width: 25, height: 25)
+                    Image(systemName: item.getIconName())
+                        .imageScale(.small)
+                        .foregroundColor(.white)
                 }
-            }
-            // Add title menu options
-            ToolbarTitleMenu {
-                
-                // Rename the deadline
-                RenameButton()
             }
         }
     }
@@ -200,25 +178,60 @@ struct DeadlineView: View {
 }
 
 @ViewBuilder
+func NiceIconLabelFlat(text: String, color: Color, iconName: String) -> some View {
+    NiceIconLabel(
+        text: Text(text)
+            .font(.headline),
+        background: RoundedRectangle(cornerRadius: 5)
+            .fill(color)
+            .frame(width: 30, height: 30),
+        foreground: Image(systemName: iconName)
+            .imageScale(.small)
+            .foregroundColor(.white)
+    )
+}
+
+@ViewBuilder
 func NiceIconLabel(text: String, color: Color, iconName: String) -> some View {
+    NiceIconLabel(
+        text: Text(text)
+            .font(.headline),
+        background: RoundedRectangle(cornerRadius: 5)
+            .fill(color.gradient)
+            .frame(width: 30, height: 30),
+        foreground: Image(systemName: iconName)
+            .imageScale(.small)
+            .foregroundColor(.white)
+    )
+}
+
+@ViewBuilder
+func NiceIconLabel(text: String, material: Material, iconName: String) -> some View {
+    NiceIconLabel(
+        text: Text(text)
+            .font(.headline),
+        background: RoundedRectangle(cornerRadius: 5)
+            .background(material)
+            .frame(width: 30, height: 30),
+        foreground: Image(systemName: iconName)
+            .imageScale(.small)
+            .foregroundColor(.white)
+    )
+}
+
+
+@ViewBuilder
+func NiceIconLabel(text: some View, background: some View, foreground: some View, padding: CGFloat = 5) -> some View {
     // Show label
     Label {
-        Text(text)
-            .font(.headline)
+        text
     } icon: {
-        // Icon frame
         ZStack {
-            // Background
-            RoundedRectangle(cornerRadius: 5)
-                .fill(color.gradient)
-                .frame(width: 30, height: 30)
-            // Icon
-            Image(systemName: iconName)
-                .imageScale(.small)
-                .foregroundColor(.white)
+            background
+            foreground
         }
     }
-    .padding(5)
+    .padding(padding)
 }
 
                          extension Binding {
