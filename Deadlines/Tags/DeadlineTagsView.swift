@@ -11,7 +11,10 @@ struct DeadlineTagsView: View {
     
     @Environment(\.managedObjectContext) private var viewContext
     
-    @FetchRequest(sortDescriptors: []) private var tags: FetchedResults<Tag>
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)],
+        animation: .default)
+    private var tags: FetchedResults<Tag>
     
     @ObservedObject var deadline: Item
     
@@ -23,11 +26,20 @@ struct DeadlineTagsView: View {
                 TextField("Add new tag", text: $newTagName)
                     .onSubmit {
                         withAnimation {
+                            // If already exists, stop
+                            for tag in tags {
+                                if tag.text == newTagName {
+                                    Alert(title: "Tag already exists").show()
+                                    return
+                                }
+                            }
                             // Create new tag
                             let tag = Tag(context: viewContext)
                             tag.id = UUID()
                             tag.text = newTagName
                             tag.timestamp = Date.now
+                            // Add tag to deadline
+                            deadline.addToTags(tag)
                             // Clear newtag var
                             newTagName = ""
                             // Save
