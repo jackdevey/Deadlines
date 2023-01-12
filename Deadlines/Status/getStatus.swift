@@ -10,6 +10,14 @@ import SwiftUI
 
 extension Item {
     
+    public var tagNames: [String] {
+        var arr: [String] = []
+        for tag in self.tags?.array as! [Tag] {
+            arr.append("#\(tag.text ?? "Unknown")")
+        }
+        return arr
+    }
+    
     func getColour() -> Color {
         switch self.color {
         default: return .purple

@@ -18,6 +18,11 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        animation: .default)
+    private var tags: FetchedResults<Tag>
+    
     @State private var showNew = false
     @State private var showSettings = false
     
@@ -28,6 +33,16 @@ struct ContentView: View {
     
     @State private var date = Date()
     @State private var name = ""
+    
+    @State private var search = ""
+    
+    var searchResults: [Item] {
+        if search.isEmpty {
+            return items.filter({ _ in true })
+        } else {
+            return items.filter { $0.name!.contains(search) || $0.tagNames.contains(search) } as [Item]
+        }
+    }
 
     var body: some View {
         
@@ -35,7 +50,7 @@ struct ContentView: View {
             if showContent {
                 NavigationStack {
                     List {
-                        ForEach(items) { item in
+                        ForEach(searchResults) { item in
                             NavigationLink(destination: DeadlineView(item: item)) {
                                 HStack {
                                     ZStack(alignment: .bottomTrailing) {
@@ -61,12 +76,10 @@ struct ContentView: View {
                                             .bold()
                                         Text(item.date!, style: .date)
                                             .foregroundColor(.secondary)
-                                        HStack {
-                                            ForEach(item.tags!.array as! [Tag]) { tag in
-                                                tag.InlineView()
-                                                    .foregroundColor(.secondaryLabel)
-                                            }
-                                        }
+                                        Text(item.tagNames.joined(separator: " "))
+                                            .font(.system(.subheadline, design: .rounded))
+                                            .foregroundColor(.systemIndigo)
+                                            .bold()
                                     }
                                     .padding([.leading], 5)
                                 }
@@ -97,8 +110,15 @@ struct ContentView: View {
                                 Store().save(viewContext: viewContext) // Save changes
                             }
                         }
+
                     }
                     .navigationTitle("Deadlines")
+                    .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always)) {
+                        ForEach(tags) { tag in
+                            tag.LabelView()
+                                .searchCompletion("#\(tag.text ?? "Unknown")")
+                        }
+                    }
                     .toolbar {
                         ToolbarItem(id: "edit", placement: .navigationBarLeading) {
                             EditButton()

@@ -10,13 +10,14 @@ import SwiftUI
 @main
 struct DeadlinesApp: App {
     let persistenceController = PersistenceController.shared
+    let viewContext = PersistenceController.shared.container.viewContext
     
     var store = Store()
 
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                .environment(\.managedObjectContext, viewContext)
         }
     }
 }

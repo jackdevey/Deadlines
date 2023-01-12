@@ -9,62 +9,52 @@ import SwiftUI
 
 struct DeadlineTagsView: View {
     
-    @Environment(\.managedObjectContext) private var viewContext
-    
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)],
         animation: .default)
     private var tags: FetchedResults<Tag>
     
+    // View context
+    @Environment(\.managedObjectContext) private var viewContext
+    
+    // Deadline to add tags to
     @ObservedObject var deadline: Item
     
-    @State var newTagName: String = ""
+    // New tag text
+    @State var newTagText: String = ""
     
     var body: some View {
         List {
+            // New tag
             Section {
-                TextField("Add new tag", text: $newTagName)
+                TextField("New tag", text: $newTagText)
+                    .autocorrectionDisabled(true)
+                    .textInputAutocapitalization(.never)
                     .onSubmit {
                         withAnimation {
-                            // If already exists, stop
-                            for tag in tags {
-                                if tag.text == newTagName {
-                                    Alert(title: "Tag already exists").show()
-                                    return
-                                }
-                            }
-                            // Create new tag
-                            let tag = Tag(context: viewContext)
-                            tag.id = UUID()
-                            tag.text = newTagName
-                            tag.timestamp = Date.now
-                            // Add tag to deadline
-                            deadline.addToTags(tag)
-                            // Clear newtag var
-                            newTagName = ""
-                            // Save
-                            try? viewContext.save()
+                            newTag()
                         }
                     }
-                    .padding([.vertical], 5)
+                    .padding(5)
             }
+            // Display each tag
             ForEach(tags) { tag in
-                // Display each tag
                 TagItem(tag: tag)
             }
+            // When tag deleted
             .onDelete { offsets in
-                    // Delete a link from the deadline
-                    withAnimation {
-                        offsets.map { tags[$0] }
-                            .forEach(viewContext.delete)
-                        //items.remove(atOffsets: offsets)
-                        Store().save(viewContext: viewContext) // Save changes
-                    }
+                withAnimation {
+                    offsets.map({ tags[$0] })
+                        .forEach(deleteTag)
+                }
             }
-            
         }
         // Navigation title
         .navigationTitle("Tags")
+        // On disappear, save
+        .onDisappear {
+            _ =  try? viewContext.saveIfNeeded()
+        }
     }
     
     @ViewBuilder
@@ -87,4 +77,31 @@ struct DeadlineTagsView: View {
             .tint(.primary)
         }
     }
+    
+    func newTag() {
+        // If text is already taken
+        for tag in tags {
+            if tag.text == newTagText {
+                Alert(title: "Tag '\(newTagText)' already exists").show()
+                return
+            }
+        }
+        // Create new tag
+        let tag = Tag(context: viewContext)
+        tag.id = UUID()
+        tag.text = newTagText
+        tag.timestamp = Date.now
+        // Add to deadline
+        deadline.addToTags(tag)
+        // Clear textfield
+        newTagText = ""
+    }
+    
+    func deleteTag(_ tag: Tag) {
+        // Remove from deadline
+        deadline.removeFromTags(tag)
+        // Remove entirely
+        viewContext.delete(tag)
+    }
+    
 }

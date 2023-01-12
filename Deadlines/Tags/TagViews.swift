@@ -20,7 +20,31 @@ extension Tag {
     
     @ViewBuilder
     func LabelView() -> some View {
-        NiceIconLabelFlat(text: self.text ?? "Unknown", color: .quaternarySystemFill, iconName: "number")
+        NiceIconLabel(
+            text: Text(self.text ?? "Unknown")
+                .font(.system(.headline, design: .rounded))
+                .foregroundColor(.systemIndigo)
+                .bold(),
+            background: RoundedRectangle(cornerRadius: 5)
+                .fill(.ultraThickMaterial)
+                .frame(width: 30, height: 30),
+            foreground: Image(systemName: "number")
+                .imageScale(.small)
+                .foregroundColor(.primary)
+        )
+    }
+    
+    @ViewBuilder
+    func ButtonView() -> some View {
+        Button {
+            
+        } label: {
+            Text("#\(self.text ?? "Unknown")")
+                .font(.system(.subheadline, design: .rounded))
+                .foregroundColor(.white)
+                .bold()
+        }
+        .buttonStyle(.borderedProminent)
     }
     
 }
