@@ -12,7 +12,7 @@ struct DeadlineChangeIconView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var deadline: Item
     
-    let deadlineCustomisations = DeadlineCustomisations()
+    let dc = DeadlineCustomisations()
     
     let columns = [
         GridItem(.adaptive(minimum: 40))
@@ -26,20 +26,12 @@ struct DeadlineChangeIconView: View {
                 }
                 Section() {
                     // Show all available colours
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(0...(deadlineCustomisations.colours.endIndex - 1), id: \.self) { idx in
-                            ColorPicker(idx: idx)
-                        }
-                    }
+                    //dc.ColorPicker(selection: $deadline.color)
                     
                 }
                 Section() {
                     // Show all available icons
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        ForEach(deadlineCustomisations.icons, id: \.self) { icon in
-                            IconPicker(icon: icon)
-                        }
-                    }
+                    //dc.IconPicker(colorId: deadline.color, selection: $deadline.iconName.toUnwrapped(defaultValue: "app"))
                 }
             }
             // Set title
@@ -58,37 +50,5 @@ struct DeadlineChangeIconView: View {
         }
     }
     
-    @ViewBuilder
-    func ColorPicker(idx: Int) -> some View {
-        ZStack {
-            Circle()
-                .fill(deadlineCustomisations.colours[idx])
-                .frame(width: 40, height: 40)
-            if deadlineCustomisations.colours[Int(deadline.color)] == deadlineCustomisations.colours[idx] {
-                Image(systemName: "checkmark")
-            }
-        }
-        .onPress {
-            deadline.color = Int16(idx)
-        }
-    }
-    
-    @ViewBuilder
-    func IconPicker(icon: String) -> some View {
-        ZStack {
-            if deadline.iconName == icon {
-                Circle()
-                    .fill(Color.accentColor)
-                    .frame(width: 40, height: 40)
-            } else {
-                Circle()
-                    .fill(Color.darkGray)
-                    .frame(width: 40, height: 40)
-            }
-            Image(systemName: icon)
-        }
-        .onPress {
-            deadline.iconName = icon
-        }
-    }
+   
 }

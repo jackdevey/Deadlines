@@ -11,15 +11,18 @@ import SwiftUI
 extension Item {
     
     var colour: Color {
-        return DeadlineCustomisations().colours[Int(color)]
+        return DeadlineCustomisations().colors[Int(color)]
     }
     
     public var tagNames: [String] {
-        var arr: [String] = []
-        for tag in self.tags?.sortedArray(using: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)]) as! [Tag] {
-            arr.append("#\(tag.text ?? "Unknown")")
+        if let tags = self.tags {
+            var arr: [String] = []
+            for tag in tags.sortedArray(using: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)]) as! [Tag] {
+                arr.append("#\(tag.text ?? "Unknown")")
+            }
+            return arr
         }
-        return arr
+        return []
     }
     
     func getColour() -> Color {

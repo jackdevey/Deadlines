@@ -25,6 +25,7 @@ struct ContentView: View {
     
     @State private var showNew = false
     @State private var showSettings = false
+    @State private var selection: Item?
     
     @AppStorage("useBiometrics") private var useBiometrics = false
     @State private var showContent = false
@@ -118,7 +119,22 @@ struct ContentView: View {
                         Settings()
                     }
                     .sheet(isPresented: $showNew) {
-                        NewDeadline()
+                        EditDeadlineView(
+                            cancelHandler: {
+                                // Close the view
+                                showNew = false
+                            },
+                            confirmHandler: { name, date, color, iconName, tags in
+                                // Make a new deadline
+                                let deadline = Item(context: viewContext)
+                                deadline.id = UUID()
+                                deadline.name = name
+                                deadline.date = date
+                                deadline.color = color
+                                deadline.iconName = iconName
+                                tags.forEach(deadline.addToTags)
+                            }
+                        )
                     }
                 }
             }

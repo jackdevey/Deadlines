@@ -54,6 +54,7 @@
 		04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627BE2962477F00130206 /* DeadlineTodoView.swift */; };
 		04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */; };
 		04D059002964C90E0091E58C /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D058FF2964C90E0091E58C /* SupportView.swift */; };
+		04D8180429712F730020C3FE /* EditDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8180329712F730020C3FE /* EditDeadlineView.swift */; };
 		04E7EC00296F9EC400AB92B8 /* TagDeadlinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EBFF296F9EC400AB92B8 /* TagDeadlinesView.swift */; };
 		04E7EC042970785400AB92B8 /* DeadlineViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC032970785400AB92B8 /* DeadlineViews.swift */; };
 		04E7EC062970B55800AB92B8 /* DeadlineChangeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */; };
@@ -110,6 +111,7 @@
 		04C627BE2962477F00130206 /* DeadlineTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTodoView.swift; sourceTree = "<group>"; };
 		04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineTodoSheet.swift; sourceTree = "<group>"; };
 		04D058FF2964C90E0091E58C /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
+		04D8180329712F730020C3FE /* EditDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDeadlineView.swift; sourceTree = "<group>"; };
 		04E7EBFF296F9EC400AB92B8 /* TagDeadlinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeadlinesView.swift; sourceTree = "<group>"; };
 		04E7EC032970785400AB92B8 /* DeadlineViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViews.swift; sourceTree = "<group>"; };
 		04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineChangeIconView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				046873352958EC3100B12C4C /* Store.swift */,
 				044A457E29637EF400AEC0F3 /* DeadlineView.swift */,
 				04688B582967B6ED00B68EB4 /* NotificationsManager.swift */,
+				04D8180329712F730020C3FE /* EditDeadlineView.swift */,
 			);
 			path = Deadlines;
 			sourceTree = "<group>";
@@ -407,6 +410,7 @@
 				044A45762963431700AEC0F3 /* CheckboxToggleStyle.swift in Sources */,
 				04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */,
 				0484C77E296C84990014DBFB /* DeadlineSettingsView.swift in Sources */,
+				04D8180429712F730020C3FE /* EditDeadlineView.swift in Sources */,
 				04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */,
 				044A457829634ED100AEC0F3 /* SupportStatusView.swift in Sources */,
 				044A457B296362A200AEC0F3 /* Status.swift in Sources */,
