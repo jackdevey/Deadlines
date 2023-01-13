@@ -128,6 +128,7 @@ struct DeadlineView: View {
         // Change Icon Sheet
         .sheet(isPresented: $showChangeIconSheet) {
             NewEditDeadlineView(
+                new: false,
                 title: "Edit Details",
                 name: item.name ?? "",
                 date: item.date ?? Date.now,

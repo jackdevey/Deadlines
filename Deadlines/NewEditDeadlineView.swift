@@ -9,6 +9,9 @@ import SwiftUI
 
 struct NewEditDeadlineView: View {
     
+    // If is new or editing
+    var new: Bool = true
+    
     // Get title to show
     var title: String = "New Deadline"
     
@@ -43,7 +46,7 @@ struct NewEditDeadlineView: View {
                     // Deadline name
                     TextField("Name", text: $name)
                     // Deadline date (only allows future days)
-                    DatePicker("Date", selection: $date, in: Date.now...)
+                    DatePicker("Date", selection: $date)
                 }
                 Section {
                     dc.ColorPicker(selection: $color)
@@ -68,7 +71,7 @@ struct NewEditDeadlineView: View {
                             return
                         }
                         // If date is in future
-                        guard self.date >= Date.now else {
+                        guard !new || (self.date >= Date.now) else {
                             Alert(title: "Deadline must be due in the future").show()
                             return
                         }
