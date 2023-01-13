@@ -37,6 +37,13 @@ struct DeadlineTagsView: View {
                     }
                     .padding(5)
             }
+            // List of tags
+            Section(header: Text("Preview")) {
+                Text(deadline.tagNames.joined(separator: " "))
+                    .font(.system(.callout, design: .rounded))
+                    .foregroundColor(.systemIndigo)
+                    .bold()
+            }
             // Display each tag
             ForEach(tags) { tag in
                 TagItem(tag: tag)
@@ -89,7 +96,7 @@ struct DeadlineTagsView: View {
         // Create new tag
         let tag = Tag(context: viewContext)
         tag.id = UUID()
-        tag.text = newTagText
+        tag.text = newTagText.lowercased().replacingOccurrences(of: " ", with: "")
         tag.timestamp = Date.now
         // Add to deadline
         deadline.addToTags(tag)

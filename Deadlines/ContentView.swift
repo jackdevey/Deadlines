@@ -29,18 +29,24 @@ struct ContentView: View {
     @AppStorage("useBiometrics") private var useBiometrics = false
     @State private var showContent = false
     
-    
-    
     @State private var date = Date()
     @State private var name = ""
     
     @State private var search = ""
     
-    var searchResults: [Item] {
+    var searchItems: [Item] {
         if search.isEmpty {
             return items.filter({ _ in true })
         } else {
-            return items.filter { $0.name!.contains(search) || $0.tagNames.contains(search) } as [Item]
+            return items.filter { $0.name!.contains(search) || $0.tagNames.contains(search) }
+        }
+    }
+    
+    var searchTags: [Tag] {
+        if search.isEmpty {
+            return tags.filter({ _ in true })
+        } else {
+            return tags.filter { search.first == "#" && ("#\($0.text!)").contains(search) }
         }
     }
 
@@ -50,39 +56,9 @@ struct ContentView: View {
             if showContent {
                 NavigationStack {
                     List {
-                        ForEach(searchResults) { item in
+                        ForEach(searchItems) { item in
                             NavigationLink(destination: DeadlineView(item: item)) {
-                                HStack {
-                                    ZStack(alignment: .bottomTrailing) {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .fill(item.getColour().gradient)
-                                                .frame(width: 45, height: 45)
-                                            Image(systemName: item.getIconName())
-                                                .foregroundColor(.white)
-                                        }
-                                        .padding(5)
-                                        ZStack {
-                                            Circle()
-                                                .fill(item.getStatus().getIconColor())
-                                                .frame(width: 25, height: 25)
-                                            Image(systemName: item.getStatus().getIconName())
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 12))
-                                        }
-                                    }
-                                    VStack(alignment: .leading) {
-                                        Text(item.name!)
-                                            .bold()
-                                        Text(item.date!, style: .date)
-                                            .foregroundColor(.secondary)
-                                        Text(item.tagNames.joined(separator: " "))
-                                            .font(.system(.subheadline, design: .rounded))
-                                            .foregroundColor(.systemIndigo)
-                                            .bold()
-                                    }
-                                    .padding([.leading], 5)
-                                }
+                                item.RowView()
                                 .swipeActions(edge: .leading, allowsFullSwipe: true) {
                                     Button {
                                         print("Awesome!")
@@ -113,8 +89,8 @@ struct ContentView: View {
 
                     }
                     .navigationTitle("Deadlines")
-                    .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .always)) {
-                        ForEach(tags) { tag in
+                    .searchable(text: $search) {
+                        ForEach(searchTags) { tag in
                             tag.LabelView()
                                 .searchCompletion("#\(tag.text ?? "Unknown")")
                         }

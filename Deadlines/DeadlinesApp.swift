@@ -18,6 +18,11 @@ struct DeadlinesApp: App {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, viewContext)
+                .onDisappear {
+                    if viewContext.hasChanges {
+                        try? viewContext.save()
+                    }
+                }
         }
     }
 }

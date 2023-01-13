@@ -10,6 +10,8 @@ import SwiftUI
 struct DeadlineView: View {
     
     @StateObject var item: Item
+    
+    @State var showChangeIconSheet = false
         
     var body: some View {
         
@@ -39,10 +41,10 @@ struct DeadlineView: View {
                         .font(.headline)
                     Spacer()
                     HStack {
-                        Image(systemName: item.getStatus().getIconName())
+                        Image(systemName: item.status.iconName)
                             .imageScale(.small)
-                            .foregroundColor(item.getStatus().getIconColor())
-                        Text(item.getStatus().getName())
+                            .foregroundColor(item.status.iconColor)
+                        Text(item.status.iconName)
                             .foregroundColor(.secondaryLabel)
                     }
                 }
@@ -104,7 +106,14 @@ struct DeadlineView: View {
             }
             
             Section {
-                // Choose Icon
+                // Change Icon
+                MYNavigationLink {
+                    // Show settings view
+                    showChangeIconSheet = true
+                } label: {
+                    NiceIconLabel(text: "Change Icon", color: item.colour, iconName: item.iconName ?? "app")
+                }
+                // Settings
                 NavigationLink {
                     // Show settings view
                     DeadlineSettingsView(deadline: item)
@@ -131,6 +140,10 @@ struct DeadlineView: View {
                         .foregroundColor(.white)
                 }
             }
+        }
+        // Change Icon Sheet
+        .sheet(isPresented: $showChangeIconSheet) {
+            DeadlineChangeIconView(deadline: item)
         }
     }
 //            List {
@@ -197,7 +210,7 @@ func NiceIconLabel(text: String, color: Color, iconName: String) -> some View {
         text: Text(text)
             .font(.headline),
         background: RoundedRectangle(cornerRadius: 5)
-            .fill(color.gradient)
+            .fill(color)
             .frame(width: 30, height: 30),
         foreground: Image(systemName: iconName)
             .imageScale(.small)

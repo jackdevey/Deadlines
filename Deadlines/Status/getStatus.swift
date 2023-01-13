@@ -8,11 +8,17 @@
 import Foundation
 import SwiftUI
 
+let deadlineColors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .indigo, .pink, .purple, .brown, .darkGray]
+
 extension Item {
+    
+    var colour: Color {
+        return deadlineColors[Int(color)]
+    }
     
     public var tagNames: [String] {
         var arr: [String] = []
-        for tag in self.tags?.array as! [Tag] {
+        for tag in self.tags?.sortedArray(using: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)]) as! [Tag] {
             arr.append("#\(tag.text ?? "Unknown")")
         }
         return arr
@@ -29,7 +35,7 @@ extension Item {
     }
 
     
-    func getStatus() -> Status {
+    var status: Status {
         if self.submitted {
             return Status.submitted
         } else if Date.now > self.date! {
