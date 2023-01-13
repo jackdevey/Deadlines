@@ -236,7 +236,6 @@ func NiceIconLabel(text: String, material: Material, iconName: String) -> some V
     )
 }
 
-
 @ViewBuilder
 func NiceIconLabel(text: some View, background: some View, foreground: some View, padding: CGFloat = 5) -> some View {
     // Show label

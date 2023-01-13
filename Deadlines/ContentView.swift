@@ -76,6 +76,7 @@ struct ContentView: View {
 //                                    }
 //                                    .tint(.systemGreen)
 //                                }
+
                             }
                         }
                         .onDelete { offsets in
