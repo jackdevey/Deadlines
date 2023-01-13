@@ -111,7 +111,7 @@ struct DeadlineView: View {
                     // Show settings view
                     showChangeIconSheet = true
                 } label: {
-                    NiceIconLabel(text: "Change Icon", color: item.colour, iconName: item.iconName ?? "app")
+                    NiceIconLabel(text: "Edit Details", color: item.colour, iconName: item.iconName ?? "app")
                 }
                 // Settings
                 NavigationLink {
@@ -127,7 +127,26 @@ struct DeadlineView: View {
         .navigationTitle(item.name!)
         // Change Icon Sheet
         .sheet(isPresented: $showChangeIconSheet) {
-            DeadlineChangeIconView(deadline: item)
+            NewEditDeadlineView(
+                title: "Edit Details",
+                name: item.name ?? "",
+                date: item.date ?? Date.now,
+                color: item.color,
+                iconName: item.iconName ?? "bookmark.fill",
+                cancelHandler: {
+                    // Close the view
+                    showChangeIconSheet = false
+                },
+                confirmHandler: { name, date, color, iconName in
+                    // Make a new deadline
+                    item.name = name
+                    item.date = date
+                    item.color = color
+                    item.iconName = iconName
+                    // Close the view
+                    showChangeIconSheet = false
+                }
+            )
         }
     }
 //            List {

@@ -12,7 +12,7 @@ struct DeadlineChangeIconView: View {
     @Environment(\.dismiss) private var dismiss
     @ObservedObject var deadline: Item
     
-    let dc = DeadlineCustomisations()
+    let dc = DLCustomisation()
     
     let columns = [
         GridItem(.adaptive(minimum: 40))

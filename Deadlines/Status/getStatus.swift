@@ -11,7 +11,7 @@ import SwiftUI
 extension Item {
     
     var colour: Color {
-        return DeadlineCustomisations().colors[Int(color)]
+        return DLCustomisation().colors[Int(color)]
     }
     
     public var tagNames: [String] {

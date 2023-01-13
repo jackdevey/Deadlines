@@ -119,12 +119,12 @@ struct ContentView: View {
                         Settings()
                     }
                     .sheet(isPresented: $showNew) {
-                        EditDeadlineView(
+                        NewEditDeadlineView(
                             cancelHandler: {
                                 // Close the view
                                 showNew = false
                             },
-                            confirmHandler: { name, date, color, iconName, tags in
+                            confirmHandler: { name, date, color, iconName in
                                 // Make a new deadline
                                 let deadline = Item(context: viewContext)
                                 deadline.id = UUID()
@@ -132,7 +132,8 @@ struct ContentView: View {
                                 deadline.date = date
                                 deadline.color = color
                                 deadline.iconName = iconName
-                                tags.forEach(deadline.addToTags)
+                                // Close the view
+                                showNew = false
                             }
                         )
                     }

@@ -16,9 +16,9 @@
         <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="todos" inverseEntity="Item"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="10" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="iconName" optional="YES" attributeType="String"/>
+        <attribute name="iconName" optional="YES" attributeType="String" defaultValueString="bookmark.fill"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="?" spotlightIndexingEnabled="YES"/>
         <attribute name="note" attributeType="String" defaultValueString=""/>

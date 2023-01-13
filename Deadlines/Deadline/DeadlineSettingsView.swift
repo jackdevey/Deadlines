@@ -20,22 +20,6 @@ struct DeadlineSettingsView: View {
     
     var body: some View {
         List {
-            // Edit deadline name
-            HStack {
-                Text("Name")
-                    .font(.headline)
-                Spacer()
-                TextField("", text: $deadline.name.toUnwrapped(defaultValue: ""))
-                    .fixedSize()
-                    .foregroundColor(.secondary)
-            }.padding([.leading, .trailing], 5)
-//            // Edit deadline due date
-//            HStack {
-//                Text("Due Date")
-//                    .font(.headline)
-//                Spacer()
-//                DatePicker("", selection: $deadline.date.toUnwrapped(defaultValue: Date.now), in: Date.now..., displayedComponents: .date)
-//            }.padding([.leading, .trailing], 5)
             // Edit deadline submission status
             HStack {
                 Text("Submitted")
