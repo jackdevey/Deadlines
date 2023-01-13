@@ -44,7 +44,7 @@ struct DeadlineView: View {
                         Image(systemName: item.status.iconName)
                             .imageScale(.small)
                             .foregroundColor(item.status.iconColor)
-                        Text(item.status.iconName)
+                        Text(item.status.name)
                             .foregroundColor(.secondaryLabel)
                     }
                 }
@@ -67,18 +67,18 @@ struct DeadlineView: View {
                             .foregroundColor(.secondaryLabel)
                     }
                 }
-                // Plan
-                NavigationLink {
-                    DeadlineLinkView(item: item)
-                } label: {
-                    NiceIconLabel(text: "Work Plan", color: .systemTeal, iconName: "book.closed.fill")
-                }
-                // Target
-                NavigationLink {
-                    DeadlineLinkView(item: item)
-                } label: {
-                    NiceIconLabel(text: "Target", color: .green, iconName: "target")
-                }
+//                // Plan
+//                NavigationLink {
+//                    DeadlineLinkView(item: item)
+//                } label: {
+//                    NiceIconLabel(text: "Work Plan", color: .systemTeal, iconName: "book.closed.fill")
+//                }
+//                // Target
+//                NavigationLink {
+//                    DeadlineLinkView(item: item)
+//                } label: {
+//                    NiceIconLabel(text: "Target", color: .green, iconName: "target")
+//                }
 //                // Documents
 //                NavigationLink {
 //                    NotesView(item: item)
@@ -125,22 +125,6 @@ struct DeadlineView: View {
         }
         // Allow deadline title to be edited
         .navigationTitle(item.name!)
-
-         // Add toolbar items
-        .toolbar {
-            // Icon and title
-            ToolbarItem(id: "title", placement: .primaryAction) {
-                // Show deadline icon
-                ZStack {
-                    RoundedRectangle(cornerRadius: 5)
-                        .fill(item.getColour().gradient)
-                        .frame(width: 25, height: 25)
-                    Image(systemName: item.getIconName())
-                        .imageScale(.small)
-                        .foregroundColor(.white)
-                }
-            }
-        }
         // Change Icon Sheet
         .sheet(isPresented: $showChangeIconSheet) {
             DeadlineChangeIconView(deadline: item)

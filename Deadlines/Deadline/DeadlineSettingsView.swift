@@ -29,13 +29,13 @@ struct DeadlineSettingsView: View {
                     .fixedSize()
                     .foregroundColor(.secondary)
             }.padding([.leading, .trailing], 5)
-            // Edit deadline due date
-            HStack {
-                Text("Due Date")
-                    .font(.headline)
-                Spacer()
-                DatePicker("", selection: $deadline.date.toUnwrapped(defaultValue: Date.now), in: Date.now..., displayedComponents: .date)
-            }.padding([.leading, .trailing], 5)
+//            // Edit deadline due date
+//            HStack {
+//                Text("Due Date")
+//                    .font(.headline)
+//                Spacer()
+//                DatePicker("", selection: $deadline.date.toUnwrapped(defaultValue: Date.now), in: Date.now..., displayedComponents: .date)
+//            }.padding([.leading, .trailing], 5)
             // Edit deadline submission status
             HStack {
                 Text("Submitted")

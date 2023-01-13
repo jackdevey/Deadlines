@@ -57,6 +57,7 @@
 		04E7EC00296F9EC400AB92B8 /* TagDeadlinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EBFF296F9EC400AB92B8 /* TagDeadlinesView.swift */; };
 		04E7EC042970785400AB92B8 /* DeadlineViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC032970785400AB92B8 /* DeadlineViews.swift */; };
 		04E7EC062970B55800AB92B8 /* DeadlineChangeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */; };
+		04E7EC082970DD7000AB92B8 /* DeadlineCustomisations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC072970DD7000AB92B8 /* DeadlineCustomisations.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,7 @@
 		04E7EBFF296F9EC400AB92B8 /* TagDeadlinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeadlinesView.swift; sourceTree = "<group>"; };
 		04E7EC032970785400AB92B8 /* DeadlineViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViews.swift; sourceTree = "<group>"; };
 		04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineChangeIconView.swift; sourceTree = "<group>"; };
+		04E7EC072970DD7000AB92B8 /* DeadlineCustomisations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineCustomisations.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +266,7 @@
 				0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */,
 				04E7EC032970785400AB92B8 /* DeadlineViews.swift */,
 				04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */,
+				04E7EC072970DD7000AB92B8 /* DeadlineCustomisations.swift */,
 			);
 			path = Deadline;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04E7EC082970DD7000AB92B8 /* DeadlineCustomisations.swift in Sources */,
 				04E7EC062970B55800AB92B8 /* DeadlineChangeIconView.swift in Sources */,
 				0468733229580C3000B12C4C /* DeadlineLinkView.swift in Sources */,
 				0468732D295805B600B12C4C /* NewDeadline.swift in Sources */,

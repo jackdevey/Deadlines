@@ -59,22 +59,22 @@ struct ContentView: View {
                         ForEach(searchItems) { item in
                             NavigationLink(destination: DeadlineView(item: item)) {
                                 item.RowView()
-                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                    Button {
-                                        print("Awesome!")
-                                    } label: {
-                                        Label("Pin", systemImage: "pin")
-                                    }
-                                    .tint(.systemBlue)
-                                }
-                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                    Button {
-                                        print("Awesome!")
-                                    } label: {
-                                        Label("See", systemImage: "square")
-                                    }
-                                    .tint(.systemGreen)
-                                }
+//                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+//                                    Button {
+//                                        print("Awesome!")
+//                                    } label: {
+//                                        Label("Pin", systemImage: "pin")
+//                                    }
+//                                    .tint(.systemBlue)
+//                                }
+//                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+//                                    Button {
+//                                        print("Awesome!")
+//                                    } label: {
+//                                        Label("See", systemImage: "square")
+//                                    }
+//                                    .tint(.systemGreen)
+//                                }
                             }
                         }
                         .onDelete { offsets in

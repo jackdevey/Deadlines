@@ -8,12 +8,10 @@
 import Foundation
 import SwiftUI
 
-let deadlineColors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .indigo, .pink, .purple, .brown, .darkGray]
-
 extension Item {
     
     var colour: Color {
-        return deadlineColors[Int(color)]
+        return DeadlineCustomisations().colours[Int(color)]
     }
     
     public var tagNames: [String] {
