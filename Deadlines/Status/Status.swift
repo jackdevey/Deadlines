@@ -13,7 +13,7 @@ enum Status: CaseIterable {
     
     case submitted, completed, progressing, stale, pastDue
     
-    func getName() -> String {
+    var name: String {
         switch self {
         case .submitted: return "Submitted"
         case .completed: return "Completed"
@@ -23,7 +23,7 @@ enum Status: CaseIterable {
         }
     }
     
-    func getDescription() -> String {
+    var description: String {
         switch self {
         case .submitted: return "Work has been submitted"
         case .completed: return "All required work is completed"
@@ -33,7 +33,7 @@ enum Status: CaseIterable {
         }
     }
     
-    func getIconName() -> String {
+    var iconName: String {
         switch self {
         case .submitted: return "paperplane"
         case .completed: return "checkmark"
@@ -43,7 +43,7 @@ enum Status: CaseIterable {
         }
     }
     
-    func getIconColor() -> Color {
+    var iconColor: Color {
         switch self {
         case .submitted: return .systemBlue
         case .completed: return .systemGreen
@@ -63,13 +63,13 @@ struct StatusView: View {
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Image(systemName: status.getIconName() + ".circle")
+                Image(systemName: status.iconName + ".circle")
                     .imageScale(.large)
-                    .foregroundColor(status.getIconColor())
-                Text(status.getName())
+                    .foregroundColor(status.iconColor)
+                Text(status.name)
             }
             if showDescription {
-                Text(status.getDescription())
+                Text(status.description)
                     .foregroundColor(.secondary)
             }
         }

@@ -24,13 +24,15 @@ struct Settings: View {
                 Toggle(isOn: $useBiometrics) {
                     Label("Biometric Unlock", systemImage: "lock.open")
                 }
-            }
-            
-            NavigationLink("App icons") {
-                IconsListView()
+                // Change app icon
+                NavigationLink(destination: IconsListView()
                     .environmentObject(iconsManager)
                     .navigationBarTitleDisplayMode(.inline)
+                ) {
+                    Label("App icons", systemImage: "app")
+                }
             }
+            
             
             Section {
                 Link(destination: URL(string: "https://github.com/jackdevey/Deadlines")!) {

@@ -111,7 +111,7 @@ struct DeadlineView: View {
                     // Show settings view
                     showChangeIconSheet = true
                 } label: {
-                    NiceIconLabel(text: "Edit Details", color: item.colour, iconName: item.iconName ?? "app")
+                    NiceIconLabel(text: "Change Icon", color: item.colour, iconName: item.iconName ?? "app")
                 }
                 // Settings
                 NavigationLink {
@@ -124,30 +124,11 @@ struct DeadlineView: View {
         
         }
         // Allow deadline title to be edited
-        .navigationTitle(item.name!)
+        .navigationTitle(item.name ?? "Unknown")
+
         // Change Icon Sheet
         .sheet(isPresented: $showChangeIconSheet) {
-            NewEditDeadlineView(
-                new: false,
-                title: "Edit Details",
-                name: item.name ?? "",
-                date: item.date ?? Date.now,
-                color: item.color,
-                iconName: item.iconName ?? "bookmark.fill",
-                cancelHandler: {
-                    // Close the view
-                    showChangeIconSheet = false
-                },
-                confirmHandler: { name, date, color, iconName in
-                    // Make a new deadline
-                    item.name = name
-                    item.date = date
-                    item.color = color
-                    item.iconName = iconName
-                    // Close the view
-                    showChangeIconSheet = false
-                }
-            )
+            DeadlineChangeIconView(deadline: item)
         }
     }
 //            List {
@@ -235,6 +216,7 @@ func NiceIconLabel(text: String, material: Material, iconName: String) -> some V
             .foregroundColor(.white)
     )
 }
+
 
 @ViewBuilder
 func NiceIconLabel(text: some View, background: some View, foreground: some View, padding: CGFloat = 5) -> some View {

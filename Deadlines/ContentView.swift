@@ -18,16 +18,38 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        animation: .default)
+    private var tags: FetchedResults<Tag>
+    
     @State private var showNew = false
     @State private var showSettings = false
+    @State private var selection: Item?
     
     @AppStorage("useBiometrics") private var useBiometrics = false
     @State private var showContent = false
     
-    
-    
     @State private var date = Date()
     @State private var name = ""
+    
+    @State private var search = ""
+    
+    var searchItems: [Item] {
+        if search.isEmpty {
+            return items.filter({ _ in true })
+        } else {
+            return items.filter { $0.name!.contains(search) || $0.tagNames.contains(search) }
+        }
+    }
+    
+    var searchTags: [Tag] {
+        if search.isEmpty {
+            return tags.filter({ _ in true })
+        } else {
+            return tags.filter { search.first == "#" && ("#\($0.text!)").contains(search) }
+        }
+    }
 
     var body: some View {
         
@@ -35,57 +57,26 @@ struct ContentView: View {
             if showContent {
                 NavigationStack {
                     List {
-                        ForEach(items) { item in
+                        ForEach(searchItems) { item in
                             NavigationLink(destination: DeadlineView(item: item)) {
-                                HStack {
-                                    ZStack(alignment: .bottomTrailing) {
-                                        ZStack {
-                                            RoundedRectangle(cornerRadius: 15)
-                                                .fill(item.getColour().gradient)
-                                                .frame(width: 45, height: 45)
-                                            Image(systemName: item.getIconName())
-                                                .foregroundColor(.white)
-                                        }
-                                        .padding(5)
-                                        ZStack {
-                                            Circle()
-                                                .fill(item.getStatus().getIconColor())
-                                                .frame(width: 25, height: 25)
-                                            Image(systemName: item.getStatus().getIconName())
-                                                .foregroundColor(.white)
-                                                .font(.system(size: 12))
-                                        }
-                                    }
-                                    VStack(alignment: .leading) {
-                                        Text(item.name!)
-                                            .bold()
-                                        Text(item.date!, style: .date)
-                                            .foregroundColor(.secondary)
-                                        HStack {
-                                            ForEach(item.tags!.array as! [Tag]) { tag in
-                                                tag.InlineView()
-                                                    .foregroundColor(.secondaryLabel)
-                                            }
-                                        }
-                                    }
-                                    .padding([.leading], 5)
-                                }
-                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
-                                    Button {
-                                        print("Awesome!")
-                                    } label: {
-                                        Label("Pin", systemImage: "pin")
-                                    }
-                                    .tint(.systemBlue)
-                                }
-                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
-                                    Button {
-                                        print("Awesome!")
-                                    } label: {
-                                        Label("See", systemImage: "square")
-                                    }
-                                    .tint(.systemGreen)
-                                }
+                                item.RowView()
+//                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
+//                                    Button {
+//                                        print("Awesome!")
+//                                    } label: {
+//                                        Label("Pin", systemImage: "pin")
+//                                    }
+//                                    .tint(.systemBlue)
+//                                }
+//                                .swipeActions(edge: .trailing, allowsFullSwipe: true) {
+//                                    Button {
+//                                        print("Awesome!")
+//                                    } label: {
+//                                        Label("See", systemImage: "square")
+//                                    }
+//                                    .tint(.systemGreen)
+//                                }
+
                             }
                         }
                         .onDelete { offsets in
@@ -97,8 +88,15 @@ struct ContentView: View {
                                 Store().save(viewContext: viewContext) // Save changes
                             }
                         }
+
                     }
                     .navigationTitle("Deadlines")
+                    .searchable(text: $search) {
+                        ForEach(searchTags) { tag in
+                            tag.LabelView()
+                                .searchCompletion("#\(tag.text ?? "Unknown")")
+                        }
+                    }
                     .toolbar {
                         ToolbarItem(id: "edit", placement: .navigationBarLeading) {
                             EditButton()
@@ -122,7 +120,23 @@ struct ContentView: View {
                         Settings()
                     }
                     .sheet(isPresented: $showNew) {
-                        NewDeadline()
+                        NewEditDeadlineView(
+                            cancelHandler: {
+                                // Close the view
+                                showNew = false
+                            },
+                            confirmHandler: { name, date, color, iconName in
+                                // Make a new deadline
+                                let deadline = Item(context: viewContext)
+                                deadline.id = UUID()
+                                deadline.name = name
+                                deadline.date = date
+                                deadline.color = color
+                                deadline.iconName = iconName
+                                // Close the view
+                                showNew = false
+                            }
+                        )
                     }
                 }
             }

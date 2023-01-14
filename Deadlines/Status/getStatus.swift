@@ -10,6 +10,21 @@ import SwiftUI
 
 extension Item {
     
+    var colour: Color {
+        return DLCustomisation().colors[Int(color)]
+    }
+    
+    public var tagNames: [String] {
+        if let tags = self.tags {
+            var arr: [String] = []
+            for tag in tags.sortedArray(using: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)]) as! [Tag] {
+                arr.append("#\(tag.text ?? "Unknown")")
+            }
+            return arr
+        }
+        return []
+    }
+    
     func getColour() -> Color {
         switch self.color {
         default: return .purple
@@ -21,7 +36,7 @@ extension Item {
     }
 
     
-    func getStatus() -> Status {
+    var status: Status {
         if self.submitted {
             return Status.submitted
         } else if Date.now > self.date! {
