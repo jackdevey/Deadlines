@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "swifttipjar",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dkasaj/SwiftTipJar",
+      "state" : {
+        "revision" : "03a98386da39ebd38a190b3ea5e5909e4bb3a0b7",
+        "version" : "1.1.0"
+      }
+    },
+    {
       "identity" : "swiftuix",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftUIX/SwiftUIX",

@@ -117,7 +117,7 @@ struct ContentView: View {
                         }
                     }
                     .navigationDestination(isPresented: $showSettings) {
-                        Settings()
+                        SettingsView()
                     }
                     .sheet(isPresented: $showNew) {
                         NewEditDeadlineView(
