@@ -82,6 +82,14 @@ struct ContentView: View {
                         ForEach(preFilteredDeadlines) { item in
                             NavigationLink(destination: DeadlineView(item: item)) {
                                 item.ListView()
+                                    .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                        Button {
+                                            item.submitted = true
+                                        } label: {
+                                            Label("Submit", systemImage: "paperplane.fill")
+                                        }
+                                        .tint(.systemBlue)
+                                    }
 //                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
 //                                    Button {
 //                                        print("Awesome!")
@@ -103,7 +111,7 @@ struct ContentView: View {
                         .onDelete { offsets in
                             // Delete a link from the deadline
                             withAnimation {
-                                offsets.map { items[$0] }
+                                offsets.map { preFilteredDeadlines[$0] }
                                     .forEach(viewContext.delete)
                                 //items.remove(atOffsets: offsets)
                                 Store().save(viewContext: viewContext) // Save changes
@@ -128,7 +136,7 @@ struct ContentView: View {
                                 .onDelete { offsets in
                                     // Delete a link from the deadline
                                     withAnimation {
-                                        offsets.map { items[$0] }
+                                        offsets.map { filteredCompletedDeadlines[$0] }
                                             .forEach(viewContext.delete)
                                         //items.remove(atOffsets: offsets)
                                         Store().save(viewContext: viewContext) // Save changes
