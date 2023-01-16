@@ -94,9 +94,9 @@ struct NewEditDeadlineView: View {
                 Image(systemName: self.iconName)
                     .foregroundColor(.white)
             }
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 0) {
                 // Deadline name
-                Text(self.name == "" ? "Unnamed" : self.name)
+                TextField("", text: $name, prompt: Text("Unnamed"))
                     .font(.headline)
                 // Deadline due
                 Text(self.date, style: .date)

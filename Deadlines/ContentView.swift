@@ -36,6 +36,7 @@ struct ContentView: View {
         animation: .default)
     private var tags: FetchedResults<Tag>
     
+    
     @State private var showNew = false
     @State private var showSettings = false
     @State private var selection: Item?
@@ -64,7 +65,7 @@ struct ContentView: View {
         }
     }
     
-    var searchTags: [Tag] {
+    var filteredTags: [Tag] {
         if search.isEmpty {
             return tags.filter({ _ in true })
         } else {
@@ -124,14 +125,24 @@ struct ContentView: View {
                                             }
                                     }
                                 }
+                                .onDelete { offsets in
+                                    // Delete a link from the deadline
+                                    withAnimation {
+                                        offsets.map { items[$0] }
+                                            .forEach(viewContext.delete)
+                                        //items.remove(atOffsets: offsets)
+                                        Store().save(viewContext: viewContext) // Save changes
+                                    }
+                                }
                             }
                             .headerProminence(.increased)
                         }
 
                     }
                     .navigationTitle("Deadlines")
+                    .listStyle(.sidebar)
                     .searchable(text: $search) {
-                        ForEach(searchTags) { tag in
+                        ForEach(filteredTags) { tag in
                             tag.LabelView()
                                 .searchCompletion("#\(tag.text ?? "Unknown")")
                         }
@@ -180,6 +191,7 @@ struct ContentView: View {
                         )
                     }
                 }
+                
             }
         }
         .onAppear(perform: authenticate)
