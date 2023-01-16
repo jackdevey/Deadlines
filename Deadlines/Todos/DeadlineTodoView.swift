@@ -19,7 +19,7 @@ struct DeadlineTodoView: View {
         
     init(deadline: Item) {
         self.deadline = deadline
-        self.todos = deadline.todos!.array as! [DeadlineTodo]
+        self.todos = deadline.todos!.allObjects as! [DeadlineTodo]
     }
     
     var body: some View {
@@ -27,7 +27,7 @@ struct DeadlineTodoView: View {
             ForEach(todos, id: \.id) { todo in
                 TodoView(todo: todo, handler: { todo in
                     // Save the change when an item is toggled
-                    deadline.replaceTodos(at: Int(todo.placement), with: todo)
+                    //deadline.replaceTodos(at: Int(todo.placement), with: todo)
                     try? viewContext.save()
                 })
             }

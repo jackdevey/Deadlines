@@ -5,6 +5,7 @@
 //  Created by Jack Devey on 10/01/2023.
 //
 
+#if os(iOS)
 import SwiftUI
 
 struct IconsListView: View {
@@ -102,3 +103,4 @@ struct IconsListView: View {
         }
     }
 }
+#endif

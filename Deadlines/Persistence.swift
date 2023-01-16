@@ -8,7 +8,7 @@
 import CoreData
 
 
-class PersistentContainer: NSPersistentContainer {
+class PersistentContainer: NSPersistentCloudKitContainer {
 
     func saveContext(backgroundContext: NSManagedObjectContext? = nil) {
         let context = backgroundContext ?? viewContext
@@ -35,31 +35,23 @@ extension NSManagedObjectContext {
 struct PersistenceController {
     static let shared = PersistenceController()
 
-    static var preview: PersistenceController = {
-        let result = PersistenceController(inMemory: true)
-        let viewContext = result.container.viewContext
-        for _ in 0..<10 {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-        }
-        do {
-            try viewContext.save()
-        } catch {
-            // Replace this implementation with code to handle the error appropriately.
-            // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            let nsError = error as NSError
-            fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-        }
-        return result
-    }()
-
-    let container: PersistentContainer
+    var container: PersistentContainer
 
     init(inMemory: Bool = false) {
         container = PersistentContainer(name: "Deadlines")
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
+        // Only initialize the schema when building the app with the
+        // Debug build configuration.
+        #if DEBUG
+        do {
+            // Use the container to initialize the development schema.
+            try container.initializeCloudKitSchema(options: [])
+        } catch {
+            // Handle any errors.
+        }
+        #endif
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -78,4 +70,5 @@ struct PersistenceController {
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
     }
+    
 }

@@ -1,37 +1,36 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="DeadlineLink" representedClassName="DeadlineLink" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="String"/>
-        <attribute name="placement" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
-        <attribute name="url" optional="YES" attributeType="URI"/>
+        <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <attribute name="placement" optional="YES" attributeType="Integer 16" defaultValueString="-1" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" allowsCloudEncryption="YES"/>
         <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="links" inverseEntity="Item"/>
     </entity>
-    <entity name="DeadlineTag" representedClassName="DeadlineTag" syncable="YES" codeGenerationType="class"/>
     <entity name="DeadlineTodo" representedClassName="DeadlineTodo" syncable="YES" codeGenerationType="class">
-        <attribute name="done" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" attributeType="String" defaultValueString=""/>
-        <attribute name="placement" optional="YES" attributeType="Integer 16" defaultValueString="-1" usesScalarValueType="YES"/>
+        <attribute name="done" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <attribute name="name" attributeType="String" defaultValueString="" allowsCloudEncryption="YES"/>
+        <attribute name="placement" optional="YES" attributeType="Integer 16" defaultValueString="-1" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
         <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="todos" inverseEntity="Item"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="10" usesScalarValueType="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="iconName" optional="YES" attributeType="String" defaultValueString="bookmark.fill"/>
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="name" optional="YES" attributeType="String" defaultValueString="?" spotlightIndexingEnabled="YES"/>
-        <attribute name="note" attributeType="String" defaultValueString=""/>
-        <attribute name="submitted" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DeadlineLink" inverseName="deadline" inverseEntity="DeadlineLink"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Tag" inverseName="deadlines" inverseEntity="Tag"/>
-        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="DeadlineTodo" inverseName="deadline" inverseEntity="DeadlineTodo"/>
+        <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="10" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <attribute name="iconName" optional="YES" attributeType="String" defaultValueString="bookmark.fill" allowsCloudEncryption="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <attribute name="name" optional="YES" attributeType="String" defaultValueString="?" allowsCloudEncryption="YES" spotlightIndexingEnabled="YES"/>
+        <attribute name="note" attributeType="String" defaultValueString="" allowsCloudEncryption="YES"/>
+        <attribute name="submitted" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineLink" inverseName="deadline" inverseEntity="DeadlineLink"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="deadlines" inverseEntity="Tag"/>
+        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineTodo" inverseName="deadline" inverseEntity="DeadlineTodo"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
-        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="text" attributeType="String" defaultValueString=""/>
-        <attribute name="timestamp" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <attribute name="text" attributeType="String" defaultValueString="" allowsCloudEncryption="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
         <relationship name="deadlines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Item" inverseName="tags" inverseEntity="Item"/>
     </entity>
 </model>

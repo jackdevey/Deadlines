@@ -135,6 +135,8 @@ struct ContentView: View {
                                 deadline.iconName = iconName
                                 // Close the view
                                 showNew = false
+                                // Save if needed
+                                _ = try? viewContext.saveIfNeeded()
                             }
                         )
                     }

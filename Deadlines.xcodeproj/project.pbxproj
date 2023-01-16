@@ -13,6 +13,7 @@
 		04478C47295560DA00F76701 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04478C46295560DA00F76701 /* Preview Assets.xcassets */; };
 		04478C49295560DA00F76701 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04478C48295560DA00F76701 /* Persistence.swift */; };
 		04478C4C295560DA00F76701 /* Deadlines.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04478C4A295560DA00F76701 /* Deadlines.xcdatamodeld */; };
+		0448FCC829749EDA003DA08F /* PrivacyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0448FCC729749EDA003DA08F /* PrivacyView.swift */; };
 		044A45762963431700AEC0F3 /* CheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A45752963431700AEC0F3 /* CheckboxToggleStyle.swift */; };
 		044A457829634ED100AEC0F3 /* SupportStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457729634ED100AEC0F3 /* SupportStatusView.swift */; };
 		044A457B296362A200AEC0F3 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457A296362A200AEC0F3 /* Status.swift */; };
@@ -50,11 +51,13 @@
 		04807732296DF3FC00D5596D /* IconsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04807731296DF3FC00D5596D /* IconsManager.swift */; };
 		04807734296DF73100D5596D /* IconsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04807733296DF73100D5596D /* IconsListView.swift */; };
 		0484C77E296C84990014DBFB /* DeadlineSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */; };
+		04A04ED32974BDC200AADCDD /* CloudKitGDPR in Frameworks */ = {isa = PBXBuildFile; productRef = 04A04ED22974BDC200AADCDD /* CloudKitGDPR */; };
+		04A04ED62974BF5000AADCDD /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 04A04ED52974BF5000AADCDD /* ZIPFoundation */; };
+		04AFE799297559A900998B92 /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE798297559A900998B92 /* EncodableExtensions.swift */; };
 		04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627BE2962477F00130206 /* DeadlineTodoView.swift */; };
 		04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */; };
 		04D059002964C90E0091E58C /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D058FF2964C90E0091E58C /* SupportView.swift */; };
 		04D8180429712F730020C3FE /* NewEditDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8180329712F730020C3FE /* NewEditDeadlineView.swift */; };
-		04E7EC00296F9EC400AB92B8 /* TagDeadlinesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EBFF296F9EC400AB92B8 /* TagDeadlinesView.swift */; };
 		04E7EC042970785400AB92B8 /* DeadlineViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC032970785400AB92B8 /* DeadlineViews.swift */; };
 		04E7EC062970B55800AB92B8 /* DeadlineChangeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */; };
 		04E7EC082970DD7000AB92B8 /* DLCustomisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC072970DD7000AB92B8 /* DLCustomisation.swift */; };
@@ -69,6 +72,7 @@
 		04478C46295560DA00F76701 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		04478C48295560DA00F76701 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		04478C4B295560DA00F76701 /* Deadlines.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Deadlines.xcdatamodel; sourceTree = "<group>"; };
+		0448FCC729749EDA003DA08F /* PrivacyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyView.swift; sourceTree = "<group>"; };
 		044A45752963431700AEC0F3 /* CheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		044A457729634ED100AEC0F3 /* SupportStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportStatusView.swift; sourceTree = "<group>"; };
 		044A457A296362A200AEC0F3 /* Status.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
@@ -106,11 +110,11 @@
 		04807731296DF3FC00D5596D /* IconsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsManager.swift; sourceTree = "<group>"; };
 		04807733296DF73100D5596D /* IconsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconsListView.swift; sourceTree = "<group>"; };
 		0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineSettingsView.swift; sourceTree = "<group>"; };
+		04AFE798297559A900998B92 /* EncodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtensions.swift; sourceTree = "<group>"; };
 		04C627BE2962477F00130206 /* DeadlineTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTodoView.swift; sourceTree = "<group>"; };
 		04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineTodoSheet.swift; sourceTree = "<group>"; };
 		04D058FF2964C90E0091E58C /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		04D8180329712F730020C3FE /* NewEditDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEditDeadlineView.swift; sourceTree = "<group>"; };
-		04E7EBFF296F9EC400AB92B8 /* TagDeadlinesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagDeadlinesView.swift; sourceTree = "<group>"; };
 		04E7EC032970785400AB92B8 /* DeadlineViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineViews.swift; sourceTree = "<group>"; };
 		04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineChangeIconView.swift; sourceTree = "<group>"; };
 		04E7EC072970DD7000AB92B8 /* DLCustomisation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DLCustomisation.swift; sourceTree = "<group>"; };
@@ -121,7 +125,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04A04ED32974BDC200AADCDD /* CloudKitGDPR in Frameworks */,
 				04561CB2296092520087ABE7 /* SwiftUIX in Frameworks */,
+				04A04ED62974BF5000AADCDD /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +153,7 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				04AFE7972975597900998B92 /* Data */,
 				045D96C7296F394B0058033E /* Tags */,
 				04807730296DF3E900D5596D /* Settings */,
 				0480770B296DE2E800D5596D /* Assets */,
@@ -204,7 +211,6 @@
 			children = (
 				045D96C8296F395D0058033E /* DeadlineTagsView.swift */,
 				045D96CC296F636C0058033E /* TagViews.swift */,
-				04E7EBFF296F9EC400AB92B8 /* TagDeadlinesView.swift */,
 			);
 			path = Tags;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 			children = (
 				04807731296DF3FC00D5596D /* IconsManager.swift */,
 				04807733296DF73100D5596D /* IconsListView.swift */,
+				0448FCC729749EDA003DA08F /* PrivacyView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -269,6 +276,14 @@
 				04E7EC072970DD7000AB92B8 /* DLCustomisation.swift */,
 			);
 			path = Deadline;
+			sourceTree = "<group>";
+		};
+		04AFE7972975597900998B92 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				04AFE798297559A900998B92 /* EncodableExtensions.swift */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		04C627BD296240F100130206 /* Todos */ = {
@@ -309,6 +324,8 @@
 			name = Deadlines;
 			packageProductDependencies = (
 				04561CB1296092520087ABE7 /* SwiftUIX */,
+				04A04ED22974BDC200AADCDD /* CloudKitGDPR */,
+				04A04ED52974BF5000AADCDD /* ZIPFoundation */,
 			);
 			productName = Deadlines;
 			productReference = 04478C3C295560D900F76701 /* Deadlines.app */;
@@ -340,6 +357,8 @@
 			mainGroup = 04478C33295560D900F76701;
 			packageReferences = (
 				04561CB0296092520087ABE7 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				04A04ED12974BDC200AADCDD /* XCRemoteSwiftPackageReference "CloudKitGDPR" */,
+				04A04ED42974BF4F00AADCDD /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = 04478C3D295560D900F76701 /* Products */;
 			projectDirPath = "";
@@ -390,6 +409,7 @@
 				0468733229580C3000B12C4C /* DeadlineLinkView.swift in Sources */,
 				04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */,
 				044A457F29637EF400AEC0F3 /* DeadlineView.swift in Sources */,
+				04AFE799297559A900998B92 /* EncodableExtensions.swift in Sources */,
 				04478C49295560DA00F76701 /* Persistence.swift in Sources */,
 				04807732296DF3FC00D5596D /* IconsManager.swift in Sources */,
 				04E7EC042970785400AB92B8 /* DeadlineViews.swift in Sources */,
@@ -399,7 +419,6 @@
 				045D96CD296F636C0058033E /* TagViews.swift in Sources */,
 				04807734296DF73100D5596D /* IconsListView.swift in Sources */,
 				0480770A296DD5C700D5596D /* RemindersView.swift in Sources */,
-				04E7EC00296F9EC400AB92B8 /* TagDeadlinesView.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
 				045D96C9296F395D0058033E /* DeadlineTagsView.swift in Sources */,
 				04D059002964C90E0091E58C /* SupportView.swift in Sources */,
@@ -415,6 +434,7 @@
 				044A457D29636EE600AEC0F3 /* getStatus.swift in Sources */,
 				04688B592967B6ED00B68EB4 /* NotificationsManager.swift in Sources */,
 				0468732B2958040900B12C4C /* Settings.swift in Sources */,
+				0448FCC829749EDA003DA08F /* PrivacyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,8 +584,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -601,8 +621,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
-				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
+				SUPPORTS_MACCATALYST = YES;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -641,6 +661,22 @@
 				minimumVersion = 0.1.3;
 			};
 		};
+		04A04ED12974BDC200AADCDD /* XCRemoteSwiftPackageReference "CloudKitGDPR" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/arturgrigor/CloudKitGDPR";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+		04A04ED42974BF4F00AADCDD /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -648,6 +684,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04561CB0296092520087ABE7 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
 			productName = SwiftUIX;
+		};
+		04A04ED22974BDC200AADCDD /* CloudKitGDPR */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04A04ED12974BDC200AADCDD /* XCRemoteSwiftPackageReference "CloudKitGDPR" */;
+			productName = CloudKitGDPR;
+		};
+		04A04ED52974BF5000AADCDD /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04A04ED42974BF4F00AADCDD /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
 

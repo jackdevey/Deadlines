@@ -25,7 +25,7 @@ struct DeadlineLinkView: View {
     // list will update)
     init(item: Item) {
         self.item = item
-        self.links = item.links?.array as! [DeadlineLink]
+        self.links = item.links?.allObjects as! [DeadlineLink]
     }
     
     var body: some View {

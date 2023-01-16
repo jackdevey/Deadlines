@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct DeadlinesApp: App {
-    let persistenceController = PersistenceController.shared
     let viewContext = PersistenceController.shared.container.viewContext
     
     var store = Store()
@@ -23,6 +22,6 @@ struct DeadlinesApp: App {
                         try? viewContext.save()
                     }
                 }
-        }
+        } 
     }
 }

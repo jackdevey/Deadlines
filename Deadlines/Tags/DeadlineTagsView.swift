@@ -29,7 +29,9 @@ struct DeadlineTagsView: View {
             Section {
                 TextField("New tag", text: $newTagText)
                     .autocorrectionDisabled(true)
+                #if os(iOS)
                     .textInputAutocapitalization(.never)
+                #endif
                     .onSubmit {
                         withAnimation {
                             newTag()

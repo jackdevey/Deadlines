@@ -16,7 +16,7 @@ import SwiftUI
 struct DLCustomisation {
     
     /// List of colors as used in the `ColorPicker`
-    let colors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .indigo, .pink, .purple, .brown, .darkGray]
+    let colors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .indigo, .pink, .purple, .brown, .systemGray]
     
     /// Gets the associated color from the `colorId` provided
     /// > Might return nil if out of bounds
@@ -89,9 +89,10 @@ struct DLCustomisation {
             ForEach(icons, id: \.self) { icon in
                 ZStack {
                     Circle()
-                        .fill(selection.wrappedValue == icon ? colors[Int(colorId)] : Color.darkGray)
+                        .fill(selection.wrappedValue == icon ? colors[Int(colorId)] : Color.systemGray)
                         .frame(width: 40, height: 40)
                     Image(systemName: icon)
+                        .foregroundColor(.white)
                 }
                 .onPress {
                     selection.wrappedValue = icon

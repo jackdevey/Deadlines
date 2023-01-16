@@ -58,12 +58,12 @@ extension Item {
     }
     
     public var checklistItemsTotal: Int {
-        return todos?.array.count ?? 0
+        return todos?.allObjects.count ?? 0
     }
     
     private var checlistItemsCompleted: Float {
         var count = 0
-        for todo in todos?.array as! [DeadlineTodo] {
+        for todo in todos?.allObjects as! [DeadlineTodo] {
             if todo.done {
                 count += 1
             }

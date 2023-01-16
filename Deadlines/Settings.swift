@@ -9,9 +9,7 @@ import SwiftUI
 import UserNotifications
 
 struct Settings: View {
-    
-    @AppStorage("useBiometrics") private var useBiometrics = false
-    
+        
     @StateObject var iconsManager: IconsManager = IconsManager()
     
     var body: some View {
@@ -20,16 +18,17 @@ struct Settings: View {
             Text("Sorry, much much better features are coming soon! Deadlines will get better.")
             
             Section {
-                // Biometric unlock toggle
-                Toggle(isOn: $useBiometrics) {
-                    Label("Biometric Unlock", systemImage: "lock.open")
-                }
                 // Change app icon
                 NavigationLink(destination: IconsListView()
                     .environmentObject(iconsManager)
-                    .navigationBarTitleDisplayMode(.inline)
                 ) {
                     Label("App icons", systemImage: "app")
+                }
+                // Privacy section
+                NavigationLink(destination: PrivacyView()
+                    .environmentObject(iconsManager)
+                ) {
+                    NiceIconLabel(text: "Privacy & Security", color: .systemIndigo, iconName: "lock")
                 }
             }
             
