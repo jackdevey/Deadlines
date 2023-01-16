@@ -54,6 +54,7 @@ struct DLCustomisation {
                         .frame(width: 40, height: 40)
                     if colors[Int(selection.wrappedValue)] == colors[idx] {
                         Image(systemName: "checkmark")
+                            .foregroundColor(.white)
                     }
                 }
                 .onPress {

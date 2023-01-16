@@ -11,12 +11,25 @@ import CoreData
 import LocalAuthentication
 
 struct ContentView: View {
+    // Get viewContext
     @Environment(\.managedObjectContext) private var viewContext
+    
+    /// Fetch items
 
+    // NOT submitted
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.date, ascending: false)],
+        predicate: NSPredicate(format: "submitted == false"),
         animation: .default)
     private var items: FetchedResults<Item>
+    // Submitted
+    @FetchRequest(
+        sortDescriptors: [NSSortDescriptor(keyPath: \Item.date, ascending: false)],
+        predicate: NSPredicate(format: "submitted == true"),
+        animation: .default)
+    private var submittedItems: FetchedResults<Item>
+    
+    /// Fetch Tags
     
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
@@ -35,11 +48,19 @@ struct ContentView: View {
     
     @State private var search = ""
     
-    var searchItems: [Item] {
+    var preFilteredDeadlines: [Item] {
         if search.isEmpty {
             return items.filter({ _ in true })
         } else {
             return items.filter { $0.name!.contains(search) || $0.tagNames.contains(search) }
+        }
+    }
+    
+    var filteredCompletedDeadlines: [Item] {
+        if search.isEmpty {
+            return submittedItems.filter({ _ in true })
+        } else {
+            return submittedItems.filter { $0.name!.contains(search) || $0.tagNames.contains(search) }
         }
     }
     
@@ -57,9 +78,9 @@ struct ContentView: View {
             if showContent {
                 NavigationStack {
                     List {
-                        ForEach(searchItems) { item in
+                        ForEach(preFilteredDeadlines) { item in
                             NavigationLink(destination: DeadlineView(item: item)) {
-                                item.RowView()
+                                item.ListView()
 //                                .swipeActions(edge: .leading, allowsFullSwipe: true) {
 //                                    Button {
 //                                        print("Awesome!")
@@ -76,7 +97,6 @@ struct ContentView: View {
 //                                    }
 //                                    .tint(.systemGreen)
 //                                }
-
                             }
                         }
                         .onDelete { offsets in
@@ -87,6 +107,25 @@ struct ContentView: View {
                                 //items.remove(atOffsets: offsets)
                                 Store().save(viewContext: viewContext) // Save changes
                             }
+                        }
+                        // Show completed deadlines (if any)
+                        if filteredCompletedDeadlines.count > 0 {
+                            Section(header: Text("Submitted")) {
+                                ForEach(filteredCompletedDeadlines) { item in
+                                    NavigationLink(destination: DeadlineView(item: item)) {
+                                        item.ListView()
+                                            .swipeActions(edge: .leading, allowsFullSwipe: true) {
+                                                Button {
+                                                    item.submitted = false
+                                                } label: {
+                                                    Label("Unsubmit", systemImage: "arrowshape.turn.up.backward")
+                                                }
+                                                .tint(.systemBlue)
+                                            }
+                                    }
+                                }
+                            }
+                            .headerProminence(.increased)
                         }
 
                     }

@@ -11,7 +11,7 @@ import SwiftUI
 extension Item {
     
     @ViewBuilder
-    func RowView() -> some View {
+    func ListView() -> some View {
         HStack(alignment: .top) {
             ZStack {
                 RoundedRectangle(cornerRadius: 7)
@@ -39,6 +39,7 @@ extension Item {
         }
         .padding(5)
     }
+
 }
     
 

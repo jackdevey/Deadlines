@@ -22,7 +22,7 @@ struct DeadlineChangeIconView: View {
         NavigationStack {
             List {
                 Section(header: Text("Preview")) {
-                    deadline.RowView()
+                    deadline.ListView()
                 }
                 Section() {
                     // Show all available colours
