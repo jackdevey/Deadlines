@@ -5,12 +5,7 @@
 //  Created by Jack Devey on 15/01/2023.
 //
 
-import CoreData
 import SwiftUI
-import CloudKitGDPR
-import CloudKit
-import ZIPFoundation
-import UniformTypeIdentifiers
 import SwiftTipJar
 
 struct TipJarView: View {
