@@ -15,6 +15,9 @@ struct NewEditDeadlineView: View {
     // Get title to show
     var title: String = "New Deadline"
     
+    // Show cancel or not?
+    var showCancel: Bool = true
+    
     // The deadline attributes to edit
     @State var name: String = ""
     @State var date: Date = Date.now
@@ -57,9 +60,11 @@ struct NewEditDeadlineView: View {
             }
             .toolbar {
                 // Cancel button that calls cancelHandler
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
-                        cancelHandler()
+                if showCancel {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Cancel") {
+                            cancelHandler()
+                        }
                     }
                 }
                 // Confirm button that calls confirmHandler
@@ -81,6 +86,7 @@ struct NewEditDeadlineView: View {
             }
             // Set navigation title
             .navigationTitle(title)
+            .navigationBarTitleDisplayMode(.large)
         }
     }
     

@@ -10,6 +10,8 @@ import SwiftTipJar
 
 @main
 struct DeadlinesApp: App {
+    @AppStorage("context.newInstall") var isNewInstall = true
+    
     let viewContext = PersistenceController.shared.container.viewContext
         
     let tipJar: SwiftTipJar
@@ -29,14 +31,19 @@ struct DeadlinesApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, viewContext)
-                .environmentObject(tipJar)
-                .onDisappear {
-                    if viewContext.hasChanges {
-                        try? viewContext.save()
+            if isNewInstall {
+                WelcomeView()
+                    .environment(\.managedObjectContext, viewContext)
+            } else {
+                ContentView()
+                    .environment(\.managedObjectContext, viewContext)
+                    .environmentObject(tipJar)
+                    .onDisappear {
+                        if viewContext.hasChanges {
+                            try? viewContext.save()
+                        }
                     }
-                }
+            }
         } 
     }
 }
