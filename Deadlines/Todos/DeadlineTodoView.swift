@@ -27,7 +27,8 @@ struct DeadlineTodoView: View {
             ForEach(todos, id: \.id) { todo in
                 TodoView(todo: todo, handler: { todo in
                     // Save the change when an item is toggled
-                    //deadline.replaceTodos(at: Int(todo.placement), with: todo)
+                    deadline.removeFromTodos(deadline.todos!.allObjects[Int(todo.placement)] as! DeadlineTodo)
+                    deadline.addToTodos(todo)
                     try? viewContext.save()
                 })
             }

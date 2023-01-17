@@ -36,6 +36,10 @@ struct SettingsView: View {
                 NavigationLink(destination: TipJarView()) {
                     NiceIconLabel(text: "Tip Jar", color: .systemBlue, iconName: "hand.thumbsup.fill")
                 }
+                // Licenses section
+                NavigationLink(destination: LicensesView()) {
+                    NiceIconLabel(text: "Licenses", color: .systemBrown, iconName: "doc")
+                }
                 // Support section
                 NavigationLink(destination: SupportView()) {
                     NiceIconLabel(text: "Support", color: .systemPink, iconName: "questionmark.app.fill")

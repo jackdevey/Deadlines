@@ -21,7 +21,6 @@
 		044A457F29637EF400AEC0F3 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457E29637EF400AEC0F3 /* DeadlineView.swift */; };
 		044A45812963876E00AEC0F3 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A45802963876E00AEC0F3 /* TodoView.swift */; };
 		04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04561CA9295F1C060087ABE7 /* NotesView.swift */; };
-		04561CB2296092520087ABE7 /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 04561CB1296092520087ABE7 /* SwiftUIX */; };
 		045D96C9296F395D0058033E /* DeadlineTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96C8296F395D0058033E /* DeadlineTagsView.swift */; };
 		045D96CD296F636C0058033E /* TagViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96CC296F636C0058033E /* TagViews.swift */; };
 		0468732B2958040900B12C4C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732A2958040900B12C4C /* SettingsView.swift */; };
@@ -29,6 +28,7 @@
 		046873362958EC3100B12C4C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873352958EC3100B12C4C /* Store.swift */; };
 		046873382958FFD400B12C4C /* NewDeadlineLinkSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */; };
 		04688B592967B6ED00B68EB4 /* NotificationsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04688B582967B6ED00B68EB4 /* NotificationsManager.swift */; };
+		047513A52977143000A7A066 /* LicensesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047513A42977143000A7A066 /* LicensesView.swift */; };
 		0480770A296DD5C700D5596D /* RemindersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04807709296DD5C700D5596D /* RemindersView.swift */; };
 		04807716296DE2E900D5596D /* IconEmoji@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480770C296DE2E800D5596D /* IconEmoji@2x.png */; };
 		04807717296DE2E900D5596D /* IconFlat@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0480770D296DE2E800D5596D /* IconFlat@3x.png */; };
@@ -51,8 +51,6 @@
 		04807732296DF3FC00D5596D /* IconsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04807731296DF3FC00D5596D /* IconsManager.swift */; };
 		04807734296DF73100D5596D /* IconsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04807733296DF73100D5596D /* IconsListView.swift */; };
 		0484C77E296C84990014DBFB /* DeadlineSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0484C77D296C84990014DBFB /* DeadlineSettingsView.swift */; };
-		04A04ED32974BDC200AADCDD /* CloudKitGDPR in Frameworks */ = {isa = PBXBuildFile; productRef = 04A04ED22974BDC200AADCDD /* CloudKitGDPR */; };
-		04A04ED62974BF5000AADCDD /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 04A04ED52974BF5000AADCDD /* ZIPFoundation */; };
 		04AFE799297559A900998B92 /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE798297559A900998B92 /* EncodableExtensions.swift */; };
 		04AFE79B2975E62200998B92 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE79A2975E62200998B92 /* TipJarView.swift */; };
 		04AFE79E2975EBFA00998B92 /* SwiftTipJar in Frameworks */ = {isa = PBXBuildFile; productRef = 04AFE79D2975EBFA00998B92 /* SwiftTipJar */; };
@@ -60,6 +58,7 @@
 		04C627C12962488400130206 /* NewDeadlineTodoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627C02962488400130206 /* NewDeadlineTodoSheet.swift */; };
 		04D059002964C90E0091E58C /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D058FF2964C90E0091E58C /* SupportView.swift */; };
 		04D57E9D29762DA4001AAA9F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D57E9C29762DA4001AAA9F /* WelcomeView.swift */; };
+		04D57EA2297641E0001AAA9F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 04D57EA1297641E0001AAA9F /* SwiftUIX */; };
 		04D8180429712F730020C3FE /* NewEditDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8180329712F730020C3FE /* NewEditDeadlineView.swift */; };
 		04E7EC042970785400AB92B8 /* DeadlineViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC032970785400AB92B8 /* DeadlineViews.swift */; };
 		04E7EC062970B55800AB92B8 /* DeadlineChangeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */; };
@@ -91,6 +90,7 @@
 		046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewDeadlineLinkSheet.swift; sourceTree = "<group>"; };
 		046873392959CC0200B12C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		04688B582967B6ED00B68EB4 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
+		047513A42977143000A7A066 /* LicensesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensesView.swift; sourceTree = "<group>"; };
 		04807709296DD5C700D5596D /* RemindersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemindersView.swift; sourceTree = "<group>"; };
 		0480770C296DE2E800D5596D /* IconEmoji@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconEmoji@2x.png"; sourceTree = "<group>"; };
 		0480770D296DE2E800D5596D /* IconFlat@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconFlat@3x.png"; sourceTree = "<group>"; };
@@ -130,10 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04A04ED32974BDC200AADCDD /* CloudKitGDPR in Frameworks */,
-				04561CB2296092520087ABE7 /* SwiftUIX in Frameworks */,
 				04AFE79E2975EBFA00998B92 /* SwiftTipJar in Frameworks */,
-				04A04ED62974BF5000AADCDD /* ZIPFoundation in Frameworks */,
+				04D57EA2297641E0001AAA9F /* SwiftUIX in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,6 +269,7 @@
 				04807733296DF73100D5596D /* IconsListView.swift */,
 				0448FCC729749EDA003DA08F /* PrivacyView.swift */,
 				04AFE79A2975E62200998B92 /* TipJarView.swift */,
+				047513A42977143000A7A066 /* LicensesView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -339,10 +338,8 @@
 			);
 			name = Deadlines;
 			packageProductDependencies = (
-				04561CB1296092520087ABE7 /* SwiftUIX */,
-				04A04ED22974BDC200AADCDD /* CloudKitGDPR */,
-				04A04ED52974BF5000AADCDD /* ZIPFoundation */,
 				04AFE79D2975EBFA00998B92 /* SwiftTipJar */,
+				04D57EA1297641E0001AAA9F /* SwiftUIX */,
 			);
 			productName = Deadlines;
 			productReference = 04478C3C295560D900F76701 /* Deadlines.app */;
@@ -373,10 +370,8 @@
 			);
 			mainGroup = 04478C33295560D900F76701;
 			packageReferences = (
-				04561CB0296092520087ABE7 /* XCRemoteSwiftPackageReference "SwiftUIX" */,
-				04A04ED12974BDC200AADCDD /* XCRemoteSwiftPackageReference "CloudKitGDPR" */,
-				04A04ED42974BF4F00AADCDD /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				04AFE79C2975EBFA00998B92 /* XCRemoteSwiftPackageReference "SwiftTipJar" */,
+				04D57EA0297641DF001AAA9F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
 			);
 			productRefGroup = 04478C3D295560D900F76701 /* Products */;
 			projectDirPath = "";
@@ -454,6 +449,7 @@
 				044A457D29636EE600AEC0F3 /* getStatus.swift in Sources */,
 				04688B592967B6ED00B68EB4 /* NotificationsManager.swift in Sources */,
 				0468732B2958040900B12C4C /* SettingsView.swift in Sources */,
+				047513A52977143000A7A066 /* LicensesView.swift in Sources */,
 				0448FCC829749EDA003DA08F /* PrivacyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -582,7 +578,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Deadlines/Deadlines.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Deadlines/Preview Content\"";
 				DEVELOPMENT_TEAM = G2D5W96ZY7;
 				ENABLE_PREVIEWS = YES;
@@ -600,7 +596,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -608,7 +604,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Debug;
 		};
@@ -619,7 +615,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Deadlines/Deadlines.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"Deadlines/Preview Content\"";
 				DEVELOPMENT_TEAM = G2D5W96ZY7;
 				ENABLE_PREVIEWS = YES;
@@ -637,7 +633,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2.0;
+				MARKETING_VERSION = 1.3.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -645,7 +641,7 @@
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = "1,2,6";
 			};
 			name = Release;
 		};
@@ -673,30 +669,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		04561CB0296092520087ABE7 /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.3;
-			};
-		};
-		04A04ED12974BDC200AADCDD /* XCRemoteSwiftPackageReference "CloudKitGDPR" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/arturgrigor/CloudKitGDPR";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-		04A04ED42974BF4F00AADCDD /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.9.9;
-			};
-		};
 		04AFE79C2975EBFA00998B92 /* XCRemoteSwiftPackageReference "SwiftTipJar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dkasaj/SwiftTipJar";
@@ -705,28 +677,26 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		04D57EA0297641DF001AAA9F /* XCRemoteSwiftPackageReference "SwiftUIX" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftUIX/SwiftUIX";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		04561CB1296092520087ABE7 /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04561CB0296092520087ABE7 /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-		04A04ED22974BDC200AADCDD /* CloudKitGDPR */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04A04ED12974BDC200AADCDD /* XCRemoteSwiftPackageReference "CloudKitGDPR" */;
-			productName = CloudKitGDPR;
-		};
-		04A04ED52974BF5000AADCDD /* ZIPFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04A04ED42974BF4F00AADCDD /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
-			productName = ZIPFoundation;
-		};
 		04AFE79D2975EBFA00998B92 /* SwiftTipJar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04AFE79C2975EBFA00998B92 /* XCRemoteSwiftPackageReference "SwiftTipJar" */;
 			productName = SwiftTipJar;
+		};
+		04D57EA1297641E0001AAA9F /* SwiftUIX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04D57EA0297641DF001AAA9F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
+			productName = SwiftUIX;
 		};
 /* End XCSwiftPackageProductDependency section */
 

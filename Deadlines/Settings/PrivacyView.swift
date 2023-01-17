@@ -7,9 +7,6 @@
 
 import CoreData
 import SwiftUI
-import CloudKitGDPR
-import CloudKit
-import ZIPFoundation
 import UniformTypeIdentifiers
 
 
@@ -24,24 +21,6 @@ struct PrivacyView: View {
     
     @State private var showingExporter = false
 
-    
-    var gdpr: GDPR
-
-    
-    init() {
-        let defaultContainer = CKContainer(identifier: "iCloud.Deadlines")
-
-        let metadata: GDPR.RecordTypesByContainer = [
-            defaultContainer: ["CD_DeadlineLink", "CD_DeadlineTodo", "CD_Item", "CD_Tag", "Users"]
-        ]
-
-        let maping: GDPR.ContainerNameMapping = [
-            defaultContainer: "data"
-        ]
-
-        self.gdpr = GDPR(metadata: metadata, containerNameMapping: maping)
-    }
-    
     func getDocumentsDirectory() -> URL {
         // find all possible documents directories for this user
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)

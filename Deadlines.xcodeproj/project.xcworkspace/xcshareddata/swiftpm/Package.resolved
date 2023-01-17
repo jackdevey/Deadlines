@@ -1,15 +1,6 @@
 {
   "pins" : [
     {
-      "identity" : "cloudkitgdpr",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/arturgrigor/CloudKitGDPR",
-      "state" : {
-        "revision" : "003b8903cca063e41a49067ce92751bb9fb78edd",
-        "version" : "2.1.0"
-      }
-    },
-    {
       "identity" : "swifttipjar",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/dkasaj/SwiftTipJar",
@@ -23,17 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SwiftUIX/SwiftUIX",
       "state" : {
-        "revision" : "1c2ba19b91a1541b803f9d1b01b360cae5a752fa",
-        "version" : "0.1.3"
-      }
-    },
-    {
-      "identity" : "zipfoundation",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/weichsel/ZIPFoundation",
-      "state" : {
-        "revision" : "43ec568034b3731101dbf7670765d671c30f54f3",
-        "version" : "0.9.16"
+        "branch" : "master",
+        "revision" : "d9438d399b5b46e817ba040a03b0affe6a148c8f"
       }
     }
   ],
