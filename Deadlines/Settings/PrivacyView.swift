@@ -17,6 +17,9 @@ struct PrivacyView: View {
     
     @AppStorage("useBiometrics") private var useBiometrics = false
     
+    // Get if is new install (to set to true)
+    @AppStorage("context.newInstall") var isNewInstall = true
+    
     @State var confirmDelete = false
     
     @State private var showingExporter = false
@@ -79,6 +82,7 @@ struct PrivacyView: View {
                 deleteAllData()
                 Alert(title: "Data deleted").show()
                 confirmDelete = false
+                isNewInstall = true
             }
             // Cancel button
             Button("Cancel", role: .cancel) {

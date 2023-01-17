@@ -60,8 +60,8 @@ struct TipJarView: View {
             }
         }
         // Thank you message
-        .sheet(isPresented: $showingThankYou) {
-            Text("Cheers")
+        .alert(isPresented: $showingThankYou) {
+            Alert(title: "Thank you for your tip!")
         }
     }
     
