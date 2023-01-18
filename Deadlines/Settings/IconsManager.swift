@@ -5,6 +5,8 @@
 //  Created by Jack Devey on 10/01/2023.
 //
 
+#if os(iOS)
+
 import Foundation
 import SwiftUI
 
@@ -60,3 +62,5 @@ public final class IconsManager: ObservableObject {
     }
     
 }
+
+#endif

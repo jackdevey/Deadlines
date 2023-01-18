@@ -36,7 +36,6 @@ struct DeadlineChangeIconView: View {
             }
             // Set title
             .navigationTitle("Change Icon")
-            .navigationBarTitleDisplayMode(.inline)
             // Show toolbar
             .toolbar {
                 // Cancel

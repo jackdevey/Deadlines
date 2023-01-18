@@ -23,10 +23,12 @@ struct WelcomeView: View {
             VStack(alignment: .leading) {
                 // Show title
                 VStack(alignment: .center) {
+                    #if os(iOS)
                     Image(uiImage: UIImage(named: "IconDefault") ?? UIImage())
                         .resizable()
                         .frame(width: 75, height: 75)
                         .cornerRadius(15)
+                    #endif
                     Text("Deadlines")
                         .font(.largeTitle)
                         .bold()

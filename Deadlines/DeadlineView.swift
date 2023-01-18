@@ -107,9 +107,28 @@ struct DeadlineView: View {
             
             Section {
                 // Change Icon
-                MYNavigationLink {
+                NavigationLink {
                     // Show settings view
-                    showChangeIconSheet = true
+                    NewEditDeadlineView(
+                        new: false,
+                        title: "Edit Details",
+                        showCancel: false,
+                        name: item.name ?? "",
+                        date: item.date ?? Date.now,
+                        color: item.color,
+                        iconName: item.iconName ?? "bookmark.fill",
+                        cancelHandler: {
+                            // Close the view
+                        },
+                        confirmHandler: { name, date, color, iconName in
+                            // Make a new deadline
+                            item.name = name
+                            item.date = date
+                            item.color = color
+                            item.iconName = iconName
+                            // Close the view
+                        }
+                    )
                 } label: {
                     NiceIconLabel(text: "Edit Details", color: item.colour, iconName: item.iconName ?? "app")
                 }
@@ -123,6 +142,8 @@ struct DeadlineView: View {
             }
         
         }
+        .id(item.id)
+        .listStyle(.automatic)
         // Allow deadline title to be edited
         .navigationTitle(item.name!)
         // Change Icon Sheet
@@ -195,7 +216,8 @@ struct DeadlineView: View {
 }
 
 @ViewBuilder
-func NiceIconLabelFlat(text: String, color: Color, iconName: String) -> some View {
+func NiceIconLabel(text: String, color: Color, iconName: String) -> some View {
+    #if os(iOS)
     NiceIconLabel(
         text: Text(text)
             .font(.headline),
@@ -206,21 +228,21 @@ func NiceIconLabelFlat(text: String, color: Color, iconName: String) -> some Vie
             .imageScale(.small)
             .foregroundColor(.white)
     )
+    #else
+    HStack {
+        ZStack {
+            RoundedRectangle(cornerRadius: 5)
+                .fill(color.gradient)
+                .frame(width: 25, height: 25)
+            Image(systemName: iconName)
+                .foregroundColor(.white)
+        }
+        Text(text)
+            .font(.headline)
+    }
+    #endif
 }
 
-@ViewBuilder
-func NiceIconLabel(text: String, color: Color, iconName: String) -> some View {
-    NiceIconLabel(
-        text: Text(text)
-            .font(.headline),
-        background: RoundedRectangle(cornerRadius: 5)
-            .fill(color)
-            .frame(width: 30, height: 30),
-        foreground: Image(systemName: iconName)
-            .imageScale(.small)
-            .foregroundColor(.white)
-    )
-}
 
 @ViewBuilder
 func NiceIconLabel(text: String, material: Material, iconName: String) -> some View {

@@ -80,7 +80,9 @@ struct PrivacyView: View {
             // Confirm button
             Button("Confirm", role: .destructive) {
                 deleteAllData()
+                #if os(iOS)
                 Alert(title: "Data deleted").show()
+                #endif
                 confirmDelete = false
                 isNewInstall = true
             }
@@ -119,8 +121,10 @@ struct PrivacyView: View {
         tags = Tag.fetchRequest()
         urls.append(exportType(data: (try? viewContext.fetch(tags)) ?? [], fileName: "tags.json"))
         // Show sheet
+        #if os(iOS)
         let activityController = UIActivityViewController(activityItems: urls, applicationActivities: nil)
         UIApplication.shared.windows.first?.rootViewController!.present(activityController, animated: true, completion: nil)
+        #endif
     }
     
     func deleteAllData() {

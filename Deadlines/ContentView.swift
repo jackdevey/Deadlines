@@ -156,9 +156,11 @@ struct ContentView: View {
                         }
                     }
                     .toolbar {
+                        #if os(iOS)
                         ToolbarItem(id: "edit", placement: .navigationBarLeading) {
                             EditButton()
                         }
+                        #endif
                         ToolbarItem(id: "new") {
                             Button {
                                 $showNew.wrappedValue.toggle()

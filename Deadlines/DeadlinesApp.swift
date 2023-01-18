@@ -35,7 +35,7 @@ struct DeadlinesApp: App {
                 WelcomeView()
                     .environment(\.managedObjectContext, viewContext)
             } else {
-                ContentView()
+                MacMain()
                     .environment(\.managedObjectContext, viewContext)
                     .environmentObject(tipJar)
                     .onDisappear {

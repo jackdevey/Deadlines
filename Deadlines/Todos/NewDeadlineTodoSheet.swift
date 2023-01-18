@@ -25,7 +25,7 @@ struct NewDeadlineTodoSheet: View {
                 TextField("Name", text: $name)
             }
             .navigationTitle("New item")
-            .navigationBarTitleDisplayMode(.inline)
+            
             .toolbar {
                 ToolbarItem(id: "cancel", placement: .cancellationAction) {
                     Button {

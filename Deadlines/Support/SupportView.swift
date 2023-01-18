@@ -16,6 +16,6 @@ struct SupportView: View {
             }
         }
         .navigationTitle("Support")
-        .navigationBarTitleDisplayMode(.large)
+        
     }
 }

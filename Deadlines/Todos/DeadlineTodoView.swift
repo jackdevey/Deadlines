@@ -59,7 +59,9 @@ struct DeadlineTodoView: View {
             }
             // Edit todos button
             ToolbarItem(placement: .primaryAction) {
+                #if os(iOS)
                 EditButton()
+                #endif
             }
         }
         .sheet(isPresented: $showingNewTodo) {

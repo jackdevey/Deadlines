@@ -63,7 +63,9 @@ struct DeadlineLinkView: View {
         }
         .navigationTitle("Links")
         .toolbar {
+            #if os(iOS)
             EditButton()
+            #endif
             // New button
             Button() {
                 showingNewLink.toggle()

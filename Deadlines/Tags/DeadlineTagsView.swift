@@ -91,7 +91,9 @@ struct DeadlineTagsView: View {
         // If text is already taken
         for tag in tags {
             if tag.text == newTagText {
+                #if os(iOS)
                 Alert(title: "Tag '\(newTagText)' already exists").show()
+                #endif
                 return
             }
         }

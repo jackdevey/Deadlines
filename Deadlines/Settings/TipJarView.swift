@@ -56,7 +56,7 @@ struct TipJarView: View {
         }
         // Thank you message
         .alert(isPresented: $showingThankYou) {
-            Alert(title: "Thank you for your tip!")
+            Alert(title: Text("Thank you for your tip!"))
         }
     }
     

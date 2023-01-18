@@ -25,11 +25,13 @@ struct NewDeadlineLinkSheet: View {
             Form {
                 TextField("Name", text: $name)
                 TextField("URL", text: $url)
+                #if os(iOS)
                     .keyboardType(.URL)
                     .textContentType(.URL)
+                #endif
+                    
             }
             .navigationTitle("New link")
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(id: "cancel", placement: .cancellationAction) {
                     Button {
