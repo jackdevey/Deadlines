@@ -50,7 +50,7 @@ struct DLCustomisation {
             ForEach(colors.indices, id: \.self) { idx in
                 ZStack {
                     Circle()
-                        .fill(colors[idx])
+                        .fill(colors[idx].gradient)
                         .frame(width: 40, height: 40)
                     if colors[Int(selection.wrappedValue)] == colors[idx] {
                         Image(systemName: "checkmark")
@@ -67,8 +67,12 @@ struct DLCustomisation {
     /// List of icons as used in the `IconPicker`
     let icons: [String] = [
         "bookmark.fill", "mappin", "graduationcap.fill", "dice.fill", "figure.dance",
-        "key.horizontal.fill", "mountain.2.fill", "car.rear.fill", "tree.fill", "fish.fill",
-        "mug.fill", "case.fill", "lightbulb.fill", "house.fill", "doc.fill", "person.fill"
+        "key.horizontal.fill", "mountain.2.fill", "car.rear.fill", "tree.fill", "drop.triangle.fill",
+        "mug.fill", "case.fill", "lightbulb.fill", "house.fill", "doc.fill", "person.fill",
+        "camera.fill", "camera.macro.circle.fill", "photo.fill.on.rectangle.fill", "f.cursive.circle.fill",
+        "function", "x.squareroot", "location.circle.fill", "seal.fill", "hourglass.circle.fill",
+        "flame.fill", "hare.fill", "tortoise.fill", "fish.fill", "bird.fill", "lizard.fill", "carrot.fill",
+        "pawprint.fill", "ladybug.fill"
     ]
     
     /// Produces an icon picker UI, saving the selection within the `selection` parameter
@@ -90,10 +94,10 @@ struct DLCustomisation {
             ForEach(icons, id: \.self) { icon in
                 ZStack {
                     Circle()
-                        .fill(selection.wrappedValue == icon ? colors[Int(colorId)] : Color.systemGray)
+                        .fill(selection.wrappedValue == icon ? colors[Int(colorId)].gradient : Color.secondarySystemFill.gradient)
                         .frame(width: 40, height: 40)
                     Image(systemName: icon)
-                        .foregroundColor(.white)
+                        .foregroundColor(selection.wrappedValue == icon ? .white : .secondaryLabel)
                 }
                 .onPress {
                     selection.wrappedValue = icon

@@ -95,7 +95,7 @@ struct NewEditDeadlineView: View {
         HStack(alignment: .top) {
             ZStack {
                 RoundedRectangle(cornerRadius: 7)
-                    .fill(dc.colors[Int(self.color)])
+                    .fill(dc.colors[Int(self.color)].gradient)
                     .frame(width: 40, height: 40)
                 Image(systemName: self.iconName)
                     .foregroundColor(.white)

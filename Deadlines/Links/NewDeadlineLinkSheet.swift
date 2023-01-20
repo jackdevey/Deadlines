@@ -19,15 +19,72 @@ struct NewDeadlineLinkSheet: View {
     @State private var showEmptyName: Bool = false
     var create: (DeadlineLink) -> ()
     
+    func extractDomain(urlString: String) -> String {
+        let url = URL(string: urlString)
+        return url?.host(percentEncoded: true) ?? ""
+    }
+    
+    var image: some View {
+        AsyncImage(url: URL(string: "https://logo.clearbit.com/\(extractDomain(urlString: url))")) { image in
+                image
+                    .resizable()
+                    .scaledToFill()
+            } placeholder: {
+                Image(systemName: "link")
+            }
+            .frame(width: 40, height: 40)
+            .backgroundFill(.secondarySystemFill)
+            .clipShape(RoundedRectangle(cornerRadius: 7))
+    }
+    
+    var preview: some View {
+        HStack(alignment: .top) {
+            // Show the link's image
+            image
+            // Title and URL
+            VStack(alignment: .leading, spacing: 0) {
+                // Deadline name
+                Text(name)
+                    .font(.headline)
+                // Deadline due
+                TextField("", text: $url, prompt: Text("Url"))
+                    .textContentType(.URL)
+                    .keyboardType(.URL)
+                    .foregroundColor(.secondaryLabel)
+            }
+            .padding([.leading], 5)
+        }
+        .padding(5)
+    }
     
     var body: some View {
         NavigationView {
             Form {
-                TextField("Name", text: $name)
-                TextField("URL", text: $url)
-                    .keyboardType(.URL)
-                    .textContentType(.URL)
+                Section("Preview") {
+                    preview
+                }
+                
+                Section {
+                    // Deadline name
+                    TextField("Title", text: $name)
+                    // Deadline date (only allows future days)
+                    HStack {
+                        TextField("URL", text: $url)
+                            .textContentType(.URL)
+                            .keyboardType(.URL)
+                        Spacer()
+                        PasteButton(payloadType: String.self) { strings in
+                            guard let first = strings.first else { return }
+                            url = first
+                        }
+                        .labelStyle(.iconOnly)
+                        .buttonBorderShape(.capsule)
+                        .tint(.tertiarySystemBackground)
+                    }
+                }
+
             }
+            
             .navigationTitle("New link")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

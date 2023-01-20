@@ -83,6 +83,7 @@ struct DeadlineLinkView: View {
                     links.append(link)
                 }
             }
+            .presentationDetents([.medium])
         }
     }
 }

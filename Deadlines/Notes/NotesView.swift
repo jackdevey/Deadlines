@@ -27,12 +27,10 @@ struct NotesView: View {
     }
     
     var body: some View {
-        List {
-            TextEditor(text: $note)
-            Button("Save") {
-                item.note = note
-                try? viewContext.save()
-            }
+        ScrollView {
+            TextField("Note", text: $note)
+                .multilineTextAlignment(.leading)
+                .padding()
         }
         .navigationTitle("Notes")
     }

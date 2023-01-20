@@ -17,6 +17,8 @@ struct WelcomeView: View {
     
     // Get if is new install (to set to false)
     @AppStorage("context.newInstall") var isNewInstall = true
+    
+    @State var policySeen = false
             
     var body: some View {
         NavigationStack {
@@ -108,6 +110,9 @@ struct WelcomeView: View {
                     Link(destination: URL(string: "https://deadlines.jw3.uk/privacy")!) {
                         Label("Read Privacy Policy", systemImage: "doc")
                     }
+                    .onPress {
+                        policySeen = true
+                    }
                     // Agree button
                     NavigationLink {
                         // Make first deadline
@@ -153,8 +158,7 @@ struct WelcomeView: View {
                 .frame(width: .greedy)
             }
             .frame(width: .greedy)
-            .padding([.vertical], 30)
-            .padding([.horizontal], 40)
+            .padding()
         }
     }
 }
