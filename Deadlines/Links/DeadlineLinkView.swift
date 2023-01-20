@@ -34,9 +34,7 @@ struct DeadlineLinkView: View {
             // Show each link for the item
             ForEach(links.sorted(using: SortDescriptor(\DeadlineLink.placement))) { link in
                 // Show each link as a link (with label)
-                Link(destination: link.url!) {
-                    Text(link.name!)
-                }
+                LinkRowView(link: link)
             }
             // When a link is moved (order has changed)
             .onMove { from, to in

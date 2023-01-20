@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0417B7C3297A849000DC8E91 /* DeadlineTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C2297A849000DC8E91 /* DeadlineTargetView.swift */; };
+		0417B7C5297B43E200DC8E91 /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C4297B43E200DC8E91 /* LinkRowView.swift */; };
 		04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04478C3F295560D900F76701 /* DeadlinesApp.swift */; };
 		04478C42295560D900F76701 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04478C41295560D900F76701 /* ContentView.swift */; };
 		04478C44295560DA00F76701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04478C43295560DA00F76701 /* Assets.xcassets */; };
@@ -68,6 +69,7 @@
 
 /* Begin PBXFileReference section */
 		0417B7C2297A849000DC8E91 /* DeadlineTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTargetView.swift; sourceTree = "<group>"; };
+		0417B7C4297B43E200DC8E91 /* LinkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRowView.swift; sourceTree = "<group>"; };
 		0429D9412957A6E900D6F8D2 /* Deadlines.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Deadlines.entitlements; sourceTree = "<group>"; };
 		04478C3C295560D900F76701 /* Deadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04478C3F295560D900F76701 /* DeadlinesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesApp.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				0468733129580C3000B12C4C /* DeadlineLinkView.swift */,
 				046873372958FFD400B12C4C /* NewDeadlineLinkSheet.swift */,
+				0417B7C4297B43E200DC8E91 /* LinkRowView.swift */,
 			);
 			path = Links;
 			sourceTree = "<group>";
@@ -441,6 +444,7 @@
 				044A45812963876E00AEC0F3 /* TodoView.swift in Sources */,
 				046873362958EC3100B12C4C /* Store.swift in Sources */,
 				045D96CD296F636C0058033E /* TagViews.swift in Sources */,
+				0417B7C5297B43E200DC8E91 /* LinkRowView.swift in Sources */,
 				04807734296DF73100D5596D /* IconsListView.swift in Sources */,
 				0480770A296DD5C700D5596D /* RemindersView.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,

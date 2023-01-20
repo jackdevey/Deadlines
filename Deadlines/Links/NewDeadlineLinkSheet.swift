@@ -145,3 +145,15 @@ extension String {
     }
 
 }
+
+extension DeadlineLink {
+    
+    var domain: String {
+        url?.host(percentEncoded: true) ?? ""
+    }
+    
+    var imageURL: URL {
+        URL(string: "https://logo.clearbit.com/\(domain)")!
+    }
+    
+}
