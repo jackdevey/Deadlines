@@ -21,7 +21,7 @@ struct NewDeadlineLinkSheet: View {
     
     func extractDomain(urlString: String) -> String {
         let url = URL(string: urlString)
-        return url?.host(percentEncoded: true) ?? ""
+        return url?.host ?? "404"
     }
     
     var image: some View {
