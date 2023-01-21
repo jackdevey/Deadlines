@@ -9,65 +9,77 @@ import SwiftUI
 
 struct LinkRowView: View {
     
+    @Environment(\.managedObjectContext) var context
+    
     // Params
-    var link: DeadlineLink
+    @StateObject var link: DeadlineLink
     
     // Pasteboard
     private let pasteboard = UIPasteboard.general
     
+    // Is showing editor
+    @State private var showEditSheet = false
+    
     var body: some View {
         // View body
-        HStack(alignment: .top) {
-            image
-            VStack(alignment: .leading, spacing: 0) {
-                name
-                url
-            }
-            .padding([.leading], 5)
-        }
-        .padding(5)
+        LinkView(name: link.name, url: link.url, imageURL: link.imageURL)
         // Menu
         .contextMenu {
-            Section("") {
+            editLinkButton
+            // Link section
+            Section {
+                openLinkButton
                 copyLinkButton
+                shareLinkButton
+            }
+            //
+        }
+        // Edit sheet
+        .sheet(isPresented: $showEditSheet) {
+            LinkManagerSheet(
+                mode: .edit,
+                name: link.name ?? "",
+                url: link.url?.absoluteString ?? ""
+            ) { name, url in
+                // Change name & url
+                link.name = name
+                link.url = url
+                // Save
+                _=try? context.saveIfNeeded()
+                // Close sheet
+                showEditSheet.toggle()
             }
         }
     }
     
-    var image: some View {
-        // Link image
-        AsyncImage(url: link.imageURL) { image in
-            image
-                .resizable()
-                .scaledToFill()
-        } placeholder: {
-            // Placeholder
-            Image(systemName: "link")
+    var editLinkButton: some View {
+        // Edit link
+        Button {
+            showEditSheet.toggle()
+        } label: {
+            Label("Edit link", systemImage: "square.and.pencil")
         }
-        .frame(width: 40, height: 40)
-        .backgroundFill(.secondarySystemFill)
-        .clipShape(RoundedRectangle(cornerRadius: 7))
     }
     
-    var name: some View {
-        // Link name
-        Text(link.name ?? "Unknown")
-            .font(.headline)
-    }
-    
-    var url: some View {
-        // Link url
-        Text(link.url?.absoluteString ?? "Unknown")
-            .lineLimit(1)
-            .foregroundColor(.secondaryLabel)
+    var openLinkButton: some View {
+        // Open in browser
+        Link(destination: link.url ?? URL(string: "https://example.com")!) {
+            Label("Open in browser", systemImage: "safari")
+        }
     }
     
     var copyLinkButton: some View {
+        // Copy link
         Button {
             pasteboard.string = link.url?.absoluteString ?? ""
         } label: {
-            Label("Copy link", systemImage: "doc.on.doc")
+            Label("Copy to clipboard", systemImage: "doc.on.doc")
         }
+    }
+    
+    var shareLinkButton: some View {
+        // Share link
+        ShareLink(item: link.url ?? URL(string: "https://example.com")!)
     }
     
 }

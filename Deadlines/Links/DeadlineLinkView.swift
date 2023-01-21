@@ -13,48 +13,45 @@ struct DeadlineLinkView: View {
     @State private var showingNewLink = false
     
     // Item to show links for
-    @ObservedObject var item: Item
-    // The links themselves
-    // (State so supports changes)
-    @State var links: [DeadlineLink]
+    @StateObject var item: Item
+
     // The store class functions
     var store = Store()
     
     // Constructor hack to allow the use
     // of links as state (this is so the
     // list will update)
-    init(item: Item) {
-        self.item = item
-        self.links = item.links?.allObjects as! [DeadlineLink]
+    
+    var list: [DeadlineLink] {
+        item.links?.sortedArray(using: [NSSortDescriptor(keyPath: \DeadlineLink.placement, ascending: false)]) as? [DeadlineLink] ?? []
     }
     
     var body: some View {
         
         List {
             // Show each link for the item
-            ForEach(links.sorted(using: SortDescriptor(\DeadlineLink.placement))) { link in
+            ForEach(list) { link in
                 // Show each link as a link (with label)
                 LinkRowView(link: link)
             }
-            // When a link is moved (order has changed)
-            .onMove { from, to in
-                // Move the links around as changed
-                from.map { links[$0] }.forEach{ link in
-                    links.move(fromOffsets: from, toOffset: to)
-                }
-                // Loop through links and update placement
-                for idx in links.indices {
-                    links[idx].placement = Int16(idx)
-                }
-                // Save changes
-                store.save(viewContext: viewContext)
-            }
+//            // When a link is moved (order has changed)
+//            .onMove { from, to in
+//                // Move the links around as changed
+//                from.map { links[$0] }.forEach{ link in
+//                    links.move(fromOffsets: from, toOffset: to)
+//                }
+//                // Loop through links and update placement
+//                for idx in links.indices {
+//                    links[idx].placement = Int16(idx)
+//                }
+//                // Save changes
+//                store.save(viewContext: viewContext)
+//            }
             // When a link has been deleted
             .onDelete { offsets in
                 // Delete a link from the deadline
                 withAnimation {
-                    offsets.map { links[$0] }.forEach(viewContext.delete)
-                    links.remove(atOffsets: offsets)
+                    //offsets.map { item.links[$0] }.forEach(viewContext.delete)
                     store.save(viewContext: viewContext) // Save changes
                 }
             }
@@ -70,18 +67,22 @@ struct DeadlineLinkView: View {
             }
         }
         .sheet(isPresented: $showingNewLink) {
-            NewDeadlineLinkSheet { link in
-                // Set placement to end
-                link.placement = Int16(links.endIndex)
-                // Save changes
+            LinkManagerSheet(
+                mode: .new
+            ) { name, url in
+                // New link
+                let link = DeadlineLink(context: viewContext)
+                link.id = UUID()
+                link.name = name
+                link.url = url
+                link.placement = Int16(item.links?.allObjects.count ?? 0)
+                // Add to deadline
                 item.addToLinks(link)
-                store.save(viewContext: viewContext)
-                // Add link to links list
-                withAnimation {
-                    links.append(link)
-                }
+                // Save
+                _=try? viewContext.saveIfNeeded()
+                // Close
+                showingNewLink.toggle()
             }
-            .presentationDetents([.medium])
         }
     }
 }
