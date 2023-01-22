@@ -53,27 +53,7 @@ struct DeadlineView: View {
             // Deadline type
             Section {
                 // Checklist
-                NavigationLink {
-                    DeadlineTodoView(item: item)
-                } label: {
-                    HStack {
-                        // Show status icon
-                        NiceIconLabel(text: "Checklist", color: .blue, iconName: "checklist")
-                        // Space apart
-                        Spacer()
-                        // Show status
-                        (Text(String(item.todos?.count{ ($0 as! DeadlineTodo).done } ?? 0))
-                            .font(.system(.callout, design: .rounded))
-                            .foregroundColor(.green)
-                            .bold()
-                         +
-                         Text(" of \(item.todos?.count ?? 0)")
-                            .font(.system(.callout, design: .rounded))
-                            .foregroundColor(.secondaryLabel)
-                            .bold())
-                            .width(50)
-                    }
-                }
+                DeadlineTodoView(item: item)
 //                // Plan
 //                NavigationLink {
 //                    DeadlineLinkView(item: item)
@@ -99,11 +79,7 @@ struct DeadlineView: View {
                     NiceIconLabel(text: "Tags", color: .indigo, iconName: "number")
                 }
                 // Links
-                NavigationLink {
-                    DeadlineLinkView(item: item)
-                } label: {
-                    NiceIconLabel(text: "Links", color: .purple, iconName: "link")
-                }
+                DeadlineLinkView(item: item)
                 // Notes
                 NavigationLink {
                     NotesView(item: item)

@@ -12,7 +12,7 @@ struct TodoRowView: View {
     @Environment(\.managedObjectContext) var context
     
     // Params
-    @ObservedObject var todo: DeadlineTodo
+    @StateObject var todo: DeadlineTodo
     
     // Is showing editor
     @State private var showEditSheet = false

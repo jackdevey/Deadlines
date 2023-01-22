@@ -52,17 +52,14 @@ struct DeadlineLinkView: View {
     }
     
     func delete(offsets: IndexSet) {
-        // Map to array
-        var linksArray = links.map{$0}
         // Let swift handle this cus is weird like
         // why is there a set of deleted? I thought
         // only one can be deleted
-        offsets.map { linksArray[$0] }.forEach(viewContext.delete)
-        linksArray.remove(atOffsets: offsets)
+        offsets.map { links[$0] }.forEach(viewContext.delete)
         // Reorder, the whole array to update
         // placement info
-        for idx in linksArray.indices {
-            linksArray[idx].placement = Int16(idx)
+        for idx in links.indices {
+            links[idx].placement = Int16(idx)
         }
         // Save changes
         _=try? viewContext.saveIfNeeded()
@@ -82,67 +79,78 @@ struct DeadlineLinkView: View {
     }
     
     var body: some View {
-        
-        List {
-            // Show each link for the item
-            if !links.isEmpty {
-                Section(
-                    footer: Text("Logos provided by [Clearbit](https://clearbit.com/logo)")
-                ) {
-                    ForEach(links) { link in
-                        // Show each link as a link (with label)
-                        LinkRowView(link: link)
+        NavigationLink {
+            List {
+                // Show each link for the item
+                if !links.isEmpty {
+                    Section(
+                        footer: Text("Logos provided by [Clearbit](https://clearbit.com/logo)")
+                    ) {
+                        ForEach(links) { link in
+                            // Show each link as a link (with label)
+                            LinkRowView(link: link)
+                        }
+                        // When a link is moved (order has changed)
+                        .onMove(perform: move)
+                        // When a link has been deleted
+                        .onDelete(perform: delete)
                     }
-                    // When a link is moved (order has changed)
-                    .onMove(perform: move)
-                    // When a link has been deleted
-                    .onDelete { offsets in
-                        withAnimation{delete(offsets: offsets)}
+                } else {
+                    NiceIconLabel(text: "No Links", color: .blue, iconName: "exclamationmark.triangle")
+                    // Show new link button
+                    MYNavigationLink {
+                        showingNewLink.toggle()
+                    } label: {
+                        Label("New Link", systemImage: "plus")
+                            .foregroundColor(.secondaryLabel)
                     }
                 }
-            } else {
-                NiceIconLabel(text: "No Links", color: .blue, iconName: "exclamationmark.triangle")
-                // Show new link button
-                MYNavigationLink {
-                    showingNewLink.toggle()
-                } label: {
-                    Label("New Link", systemImage: "plus")
-                        .foregroundColor(.secondaryLabel)
+            }
+            .navigationTitle("Links")
+            .navigationBarLargeTitleItems(trailing: completedCount)
+            .toolbar {
+                ToolbarItem() {
+                    EditButton()
+                    // New button
+                }
+                ToolbarItem() {
+                    Button() {
+                        showingNewLink.toggle()
+                    } label: {
+                        Label("New", systemImage: "plus")
+                    }
                 }
             }
-        }
-        .navigationTitle("Links")
-        .navigationBarLargeTitleItems(trailing: completedCount)
-        .toolbar {
-            ToolbarItem() {
-                EditButton()
-                // New button
-            }
-            ToolbarItem() {
-                Button() {
+            .sheet(isPresented: $showingNewLink) {
+                LinkManagerSheet(
+                    mode: .new
+                ) { name, url, _ in
+                    // New link
+                    let link = DeadlineLink(context: viewContext)
+                    link.id = UUID()
+                    link.name = name
+                    link.url = url
+                    link.placement = Int16(links.count)  + 1
+                    // Add to deadline
+                    item.addToLinks(link)
+                    // Save
+                    _=try? viewContext.saveIfNeeded()
+                    // Close
                     showingNewLink.toggle()
-                } label: {
-                    Label("New", systemImage: "plus")
                 }
             }
+        } label: {
+            label
         }
-        .sheet(isPresented: $showingNewLink) {
-            LinkManagerSheet(
-                mode: .new
-            ) { name, url, _ in
-                // New link
-                let link = DeadlineLink(context: viewContext)
-                link.id = UUID()
-                link.name = name
-                link.url = url
-                link.placement = Int16(item.links?.allObjects.count ?? 0)
-                // Add to deadline
-                item.addToLinks(link)
-                // Save
-                _=try? viewContext.saveIfNeeded()
-                // Close
-                showingNewLink.toggle()
-            }
+    }
+    
+    var label: some View {
+        HStack {
+            // Actual label
+            NiceIconLabel(text: "Links", color: .purple, iconName: "link")
+            Spacer()
+            // Completed count
+            completedCount
         }
     }
 }

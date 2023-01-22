@@ -318,8 +318,8 @@
 			children = (
 				04C627BE2962477F00130206 /* DeadlineTodoView.swift */,
 				04C627C02962488400130206 /* TodoManagerSheet.swift */,
-				044A45802963876E00AEC0F3 /* TodoView.swift */,
 				04835920297D28F800D65C72 /* TodoRowView.swift */,
+				044A45802963876E00AEC0F3 /* TodoView.swift */,
 			);
 			path = Todos;
 			sourceTree = "<group>";

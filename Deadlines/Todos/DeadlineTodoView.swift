@@ -13,12 +13,12 @@ struct DeadlineTodoView: View {
     @State private var showingNewTodo = false
     
     // Item to show todos for
-    @ObservedObject var item: Item
+    @StateObject var item: Item
     
     @FetchRequest var todos: FetchedResults<DeadlineTodo>
     
     init(item: Item) {
-        self.item = item
+        _item = StateObject(wrappedValue: item)
         _todos = FetchRequest(
             entity: DeadlineTodo.entity(),
             sortDescriptors: [
@@ -29,40 +29,33 @@ struct DeadlineTodoView: View {
     }
     
     func move(from: IndexSet, to: Int) {
-        withAnimation {
-            // Map to array
-            var todosArray = todos.map{$0}
-            // Let swift handle this cus is weird like
-            // why is there a set of moving? I thought
-            // only one moves
-            todosArray.move(fromOffsets: from, toOffset: to)
-            // Reorder, the whole array to update
-            // placement info
-            for idx in todosArray.indices {
-                todosArray[idx].placement = Int16(idx)
-            }
-            // Save changes
-            _=try? viewContext.saveIfNeeded()
+        // Map to array
+        var todosArray = todos.map{$0}
+        // Let swift handle this cus is weird like
+        // why is there a set of moving? I thought
+        // only one moves
+        todosArray.move(fromOffsets: from, toOffset: to)
+        // Reorder, the whole array to update
+        // placement info
+        for idx in todosArray.indices {
+            todosArray[idx].placement = Int16(idx)
         }
+        // Save changes
+        _=try? viewContext.saveIfNeeded()
     }
     
     func delete(offsets: IndexSet) {
-        withAnimation {
-            // Map to array
-            var todosArray = todos.map{$0}
-            // Let swift handle this cus is weird like
-            // why is there a set of deleted? I thought
-            // only one can be deleted
-            offsets.map { todosArray[$0] }.forEach(viewContext.delete)
-            todosArray.remove(atOffsets: offsets)
-            // Reorder, the whole array to update
-            // placement info
-            for idx in todosArray.indices {
-                todosArray[idx].placement = Int16(idx)
-            }
-            // Save changes
-            _=try? viewContext.saveIfNeeded()
+        // Let swift handle this cus is weird like
+        // why is there a set of deleted? I thought
+        // only one can be deleted
+        offsets.map { todos[$0] }.forEach(viewContext.delete)
+        // Reorder, the whole array to update
+        // placement info
+        for idx in todos.indices {
+            todos[idx].placement = Int16(idx)
         }
+        // Save changes
+        _=try? viewContext.saveIfNeeded()
     }
     
     var completedCount: some View {
@@ -79,42 +72,56 @@ struct DeadlineTodoView: View {
     }
     
     var body: some View {
-        List {
-            ForEach(todos) { todo in
-                TodoRowView(todo: todo)
+        NavigationLink {
+            List {
+                ForEach(todos) { todo in
+                    VStack {
+                        TodoRowView(todo: todo)
+                        Text(String(todo.placement))
+                    }
+                }
+                .onMove(perform: move)
+                .onDelete(perform: delete)
             }
-            .onMove(perform: move)
-            .onDelete(perform: delete)
-        }
-        .navigationTitle("Checklist")
-        .navigationBarLargeTitleItems(trailing: completedCount)
-        .toolbar {
-            // Edit todos button
-            ToolbarItem(placement: .primaryAction) {
-                EditButton()
-            }
-            // New todo button
-            ToolbarItem(placement: .primaryAction) {
-                Button() {
-                    showingNewTodo.toggle()
-                } label: {
-                    Label("New", systemImage: "plus")
+            .navigationTitle("Checklist")
+            .navigationBarLargeTitleItems(trailing: completedCount)
+            .toolbar {
+                // Edit todos button
+                ToolbarItem(placement: .primaryAction) {
+                    EditButton()
+                }
+                // New todo button
+                ToolbarItem(placement: .primaryAction) {
+                    Button() {
+                        showingNewTodo.toggle()
+                    } label: {
+                        Label("New", systemImage: "plus")
+                    }
                 }
             }
-        }
-        .sheet(isPresented: $showingNewTodo) {
-            TodoManagerSheet(mode: .new) { name, description, done in
-                let todo = DeadlineTodo(context: viewContext)
-                todo.id = UUID()
-                // Set placement to end
-                todo.name = name
-                //todo.description = description
-                todo.done = done
-                todo.placement = Int16(todos.count)
-                // Save changes
-                item.addToTodos(todo)
-                _=try? viewContext.saveIfNeeded()
-                showingNewTodo.toggle()
+            .sheet(isPresented: $showingNewTodo) {
+                TodoManagerSheet(mode: .new) { name, description, done in
+                    let todo = DeadlineTodo(context: viewContext)
+                    todo.id = UUID()
+                    // Set placement to end
+                    todo.name = name
+                    todo.desc = description
+                    todo.done = done
+                    todo.placement = Int16(todos.count) + 1
+                    // Save changes
+                    item.addToTodos(todo)
+                    _=try? viewContext.saveIfNeeded()
+                    showingNewTodo.toggle()
+                }
+            }
+        } label: {
+            HStack {
+                // Show status icon
+                NiceIconLabel(text: "Checklist", color: .blue, iconName: "checklist")
+                // Space apart
+                Spacer()
+                // Show status
+                completedCount
             }
         }
     }
