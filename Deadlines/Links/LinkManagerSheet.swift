@@ -95,8 +95,8 @@ struct LinkManagerSheet: View {
     
     var title: String {
         switch(mode) {
-        case .new: return "New link"
-        case .edit: return "Edit link"
+        case .new: return "New Link"
+        case .edit: return "Edit Link"
         }
     }
     

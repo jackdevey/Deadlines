@@ -17,13 +17,23 @@ struct LinkView: View {
     var body: some View {
         HStack(alignment: .top) {
             // Link image
-            AsyncImage(url: imageURL) { image in
-                image
-                    .resizable()
-                    .scaledToFill()
-            } placeholder: {
-                // Placeholder
-                Image(systemName: "link")
+            AsyncImage(
+                url: imageURL,
+                transaction: Transaction(animation: .easeInOut)
+            ) { phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .transition(.scale(scale: 0.1, anchor: .center))
+                case .failure:
+                    Image(systemName: "link")
+                @unknown default:
+                    EmptyView()
+                }
             }
             .frame(width: 40, height: 40)
             .backgroundFill(.secondarySystemFill)

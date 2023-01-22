@@ -27,6 +27,11 @@ struct LinkRowView: View {
                 .id(link.placement)
         }
         .tint(.primary)
+        // On swipe right
+        .swipeActions(edge: .leading) {
+            toggleDoneButton
+                .tint(.green)
+        }
         // Menu
         .contextMenu {
             // Edit/done section
@@ -40,7 +45,6 @@ struct LinkRowView: View {
                 copyLinkButton
                 shareLinkButton
             }
-            //
         }
         // Edit sheet
         .sheet(isPresented: $showEditSheet) {

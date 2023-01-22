@@ -35,59 +35,81 @@ struct DeadlineLinkView: View {
             )
     }
     
+    func move(from: IndexSet, to: Int) {
+        // Map to array
+        var linksArray = links.map{$0}
+        // Let swift handle this cus is weird like
+        // why is there a set of moving? I thought
+        // only one moves
+        linksArray.move(fromOffsets: from, toOffset: to)
+        // Reorder, the whole array to update
+        // placement info
+        for idx in linksArray.indices {
+            linksArray[idx].placement = Int16(idx)
+        }
+        // Save changes
+        _=try? viewContext.saveIfNeeded()
+    }
+    
+    func delete(offsets: IndexSet) {
+        // Map to array
+        var linksArray = links.map{$0}
+        // Let swift handle this cus is weird like
+        // why is there a set of deleted? I thought
+        // only one can be deleted
+        offsets.map { linksArray[$0] }.forEach(viewContext.delete)
+        linksArray.remove(atOffsets: offsets)
+        // Reorder, the whole array to update
+        // placement info
+        for idx in linksArray.indices {
+            linksArray[idx].placement = Int16(idx)
+        }
+        // Save changes
+        _=try? viewContext.saveIfNeeded()
+    }
+    
     var body: some View {
         
         List {
             // Show each link for the item
-            ForEach(links) { link in
-                // Show each link as a link (with label)
-                LinkRowView(link: link)
-            }
-            // When a link is moved (order has changed)
-            .onMove { from, to in
-                // Map to array
-                var linksArray = links.map{$0}
-                // Let swift handle this cus is weird like
-                // why is there a set of moving? I thought
-                // only one moves
-                linksArray.move(fromOffsets: from, toOffset: to)
-                // Reorder, the whole array to update
-                // placement info
-                for idx in linksArray.indices {
-                    linksArray[idx].placement = Int16(idx)
-                }
-                // Save changes
-                _=try? viewContext.saveIfNeeded()
-            }
-            // When a link has been deleted
-            .onDelete { offsets in
-                // Delete a link from the deadline
-                withAnimation {
-                    // Map to array
-                    var linksArray = links.map{$0}
-                    // Let swift handle this cus is weird like
-                    // why is there a set of deleted? I thought
-                    // only one can be deleted
-                    offsets.map { linksArray[$0] }.forEach(viewContext.delete)
-                    linksArray.remove(atOffsets: offsets)
-                    // Reorder, the whole array to update
-                    // placement info
-                    for idx in linksArray.indices {
-                        linksArray[idx].placement = Int16(idx)
+            if !links.isEmpty {
+                Section(
+                    footer: Text("Logos provided by [Clearbit](https://clearbit.com/logo)")
+                ) {
+                    ForEach(links) { link in
+                        // Show each link as a link (with label)
+                        LinkRowView(link: link)
                     }
-                    // Save changes
-                    _=try? viewContext.saveIfNeeded()
+                    // When a link is moved (order has changed)
+                    .onMove(perform: move)
+                    // When a link has been deleted
+                    .onDelete { offsets in
+                        withAnimation{delete(offsets: offsets)}
+                    }
+                }
+            } else {
+                NiceIconLabel(text: "No Links", color: .blue, iconName: "exclamationmark.triangle")
+                // Show new link button
+                MYNavigationLink {
+                    showingNewLink.toggle()
+                } label: {
+                    Label("New Link", systemImage: "plus")
+                        .foregroundColor(.secondaryLabel)
                 }
             }
         }
         .navigationTitle("Links")
         .toolbar {
-            EditButton()
-            // New button
-            Button() {
-                showingNewLink.toggle()
-            } label: {
-                Label("New", systemImage: "plus")
+            ToolbarItem() {
+                EditButton()
+                // New button
+            }
+            ToolbarItem() {
+                Button() {
+                    showingNewLink.toggle()
+                } label: {
+                    Label("New", systemImage: "plus")
+                }
             }
         }
         .sheet(isPresented: $showingNewLink) {
