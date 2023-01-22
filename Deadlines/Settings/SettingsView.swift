@@ -37,8 +37,8 @@ struct SettingsView: View {
                     NiceIconLabel(text: "Tip Jar", color: .systemBlue, iconName: "hand.thumbsup.fill")
                 }
                 // Licenses section
-                NavigationLink(destination: LicensesView()) {
-                    NiceIconLabel(text: "Licenses", color: .systemBrown, iconName: "doc")
+                NavigationLink(destination: CreditsView()) {
+                    NiceIconLabel(text: "Acknowledgements", color: .magenta, iconName: "heart.fill")
                 }
                 // Support section
                 NavigationLink(destination: SupportView()) {

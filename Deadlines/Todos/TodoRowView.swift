@@ -16,13 +16,26 @@ struct TodoRowView: View {
     
     // Is showing editor
     @State private var showEditSheet = false
+    // Is showing add link sheet
+    @State private var showAddLinkSheet = false
     
     var body: some View {
         // View body
         Button {
             todo.done.toggle()
         } label: {
-            TodoView(name: todo.name, description: todo.desc, done: todo.done)
+            VStack(alignment: .leading) {
+                TodoView(name: todo.name, description: todo.desc, done: todo.done)
+                VStack {
+                    ForEach(todo.links?.allObjects as? [DeadlineLink] ?? []) { link in
+                        LinkView(name: link.name, url: link.url, imageURL: link.imageURL, done: link.done)
+                    }
+                    .padding(0)
+                    .scaleEffect(0.75)
+                }
+                .background(.tertiarySystemGroupedBackground)
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            }
         }
         .tint(.primary)
         // On swipe right
@@ -36,6 +49,10 @@ struct TodoRowView: View {
             Section {
                 toggleDoneButton
                 editLinkButton
+            }
+            
+            Section {
+                manageLinksButton
             }
         }
         // Edit sheet
@@ -56,6 +73,17 @@ struct TodoRowView: View {
                 showEditSheet.toggle()
             }
         }
+        // Manage links sheet
+        .sheet(isPresented: $showAddLinkSheet) {
+            if let deadline = todo.deadline {
+                AttachLinksSheet(item: deadline, handler:  { selection in
+                    // Set the links
+                    todo.links = selection as NSSet
+                    // Save
+                    _=try? context.saveIfNeeded()
+                }, selection: todo.links as! Set<DeadlineLink>)
+            }
+        }
     }
     
     var toggleDoneButton: some View {
@@ -73,6 +101,15 @@ struct TodoRowView: View {
             showEditSheet.toggle()
         } label: {
             Label("Edit to do", systemImage: "square.and.pencil")
+        }
+    }
+    
+    var manageLinksButton: some View {
+        // Edit link
+        Button {
+            showAddLinkSheet.toggle()
+        } label: {
+            Label("Manage links", systemImage: "link")
         }
     }
     

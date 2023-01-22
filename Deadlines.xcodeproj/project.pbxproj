@@ -58,6 +58,8 @@
 		04928E1E297DB6A900CEECD7 /* IconWhite@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04928E1B297DB6A900CEECD7 /* IconWhite@3x.png */; };
 		04928E1F297DB6A900CEECD7 /* IconWhite.png in Resources */ = {isa = PBXBuildFile; fileRef = 04928E1C297DB6A900CEECD7 /* IconWhite.png */; };
 		04928E20297DB6A900CEECD7 /* IconWhite@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 04928E1D297DB6A900CEECD7 /* IconWhite@2x.png */; };
+		04928E22297DC90800CEECD7 /* CreditsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04928E21297DC90800CEECD7 /* CreditsView.swift */; };
+		04928E26297DD7A800CEECD7 /* AttachLinksSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04928E25297DD7A800CEECD7 /* AttachLinksSheet.swift */; };
 		04AFE799297559A900998B92 /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE798297559A900998B92 /* EncodableExtensions.swift */; };
 		04AFE79B2975E62200998B92 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE79A2975E62200998B92 /* TipJarView.swift */; };
 		04AFE79E2975EBFA00998B92 /* SwiftTipJar in Frameworks */ = {isa = PBXBuildFile; productRef = 04AFE79D2975EBFA00998B92 /* SwiftTipJar */; };
@@ -127,6 +129,8 @@
 		04928E1B297DB6A900CEECD7 /* IconWhite@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconWhite@3x.png"; sourceTree = "<group>"; };
 		04928E1C297DB6A900CEECD7 /* IconWhite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = IconWhite.png; sourceTree = "<group>"; };
 		04928E1D297DB6A900CEECD7 /* IconWhite@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "IconWhite@2x.png"; sourceTree = "<group>"; };
+		04928E21297DC90800CEECD7 /* CreditsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsView.swift; sourceTree = "<group>"; };
+		04928E25297DD7A800CEECD7 /* AttachLinksSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachLinksSheet.swift; sourceTree = "<group>"; };
 		04AFE798297559A900998B92 /* EncodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtensions.swift; sourceTree = "<group>"; };
 		04AFE79A2975E62200998B92 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		04C627BE2962477F00130206 /* DeadlineTodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTodoView.swift; sourceTree = "<group>"; };
@@ -298,6 +302,7 @@
 				0448FCC729749EDA003DA08F /* PrivacyView.swift */,
 				04AFE79A2975E62200998B92 /* TipJarView.swift */,
 				047513A42977143000A7A066 /* LicensesView.swift */,
+				04928E21297DC90800CEECD7 /* CreditsView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				04C627C02962488400130206 /* TodoManagerSheet.swift */,
 				04835920297D28F800D65C72 /* TodoRowView.swift */,
 				044A45802963876E00AEC0F3 /* TodoView.swift */,
+				04928E25297DD7A800CEECD7 /* AttachLinksSheet.swift */,
 			);
 			path = Todos;
 			sourceTree = "<group>";
@@ -470,8 +476,10 @@
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
 				04D57E9D29762DA4001AAA9F /* WelcomeView.swift in Sources */,
 				04AFE79B2975E62200998B92 /* TipJarView.swift in Sources */,
+				04928E22297DC90800CEECD7 /* CreditsView.swift in Sources */,
 				045D96C9296F395D0058033E /* DeadlineTagsView.swift in Sources */,
 				04D059002964C90E0091E58C /* SupportView.swift in Sources */,
+				04928E26297DD7A800CEECD7 /* AttachLinksSheet.swift in Sources */,
 				04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */,
 				0484C77E296C84990014DBFB /* DeadlineSettingsView.swift in Sources */,
 				04D8180429712F730020C3FE /* NewEditDeadlineView.swift in Sources */,
