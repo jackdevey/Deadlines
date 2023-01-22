@@ -22,12 +22,20 @@ struct LinkRowView: View {
     
     var body: some View {
         // View body
-        LinkView(name: link.name, url: link.url, imageURL: link.imageURL)
+        Link(destination: link.url ?? URL(string: "https://example.com")!) {
+            LinkView(name: link.name, url: link.url, imageURL: link.imageURL, done: link.done)
+                .id(link.placement)
+        }
+        .tint(.primary)
         // Menu
         .contextMenu {
-            editLinkButton
-            // Link section
+            // Edit/done section
             Section {
+                toggleDoneButton
+                editLinkButton
+            }
+            // Link section
+            Section("URL") {
                 openLinkButton
                 copyLinkButton
                 shareLinkButton
@@ -39,16 +47,27 @@ struct LinkRowView: View {
             LinkManagerSheet(
                 mode: .edit,
                 name: link.name ?? "",
-                url: link.url?.absoluteString ?? ""
-            ) { name, url in
-                // Change name & url
+                url: link.url?.absoluteString ?? "",
+                done: link.done
+            ) { name, url, done in
+                // Change name & url + done
                 link.name = name
                 link.url = url
+                link.done = done
                 // Save
                 _=try? context.saveIfNeeded()
                 // Close sheet
                 showEditSheet.toggle()
             }
+        }
+    }
+    
+    var toggleDoneButton: some View {
+        // Toggle done
+        Button {
+            link.done.toggle()
+        } label: {
+            Label(link.done ? "Set to do" : "Set done", systemImage: link.done ? "circle.slash" : "checkmark.circle")
         }
     }
     

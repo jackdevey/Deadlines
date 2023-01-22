@@ -27,11 +27,12 @@ struct LinkManagerSheet: View {
     
     @State var name: String = ""
     @State var url: String = ""
+    @State var done: Bool = false
     
     // Handler function for
     // on complete
     
-    var handler: (String, URL) -> Void
+    var handler: (String, URL, Bool) -> Void
     
     // Keep error states
     
@@ -45,7 +46,7 @@ struct LinkManagerSheet: View {
             Form {
                 // Preview at top
                 Section("Preview") {
-                    LinkView(name: name, url: URL(string: url), imageURL: imageURL)
+                    LinkView(name: name, url: URL(string: url.lowercased()), imageURL: imageURL, done: done)
                 }
                 // Editor
                 Section {
@@ -53,6 +54,12 @@ struct LinkManagerSheet: View {
                     TextField("Name", text: $name)
                     // Link URL
                     urlField
+                }
+                // Done if is in edit mode
+                if mode == .edit {
+                    Section {
+                        Toggle("Done", isOn: $done)
+                    }
                 }
             }
             // Set title
@@ -72,7 +79,7 @@ struct LinkManagerSheet: View {
                         guard name != "" else { return errorEmptyName.toggle() }
                         guard url.isValidURL else { return errorBadURL.toggle() }
                         // Run handler
-                        handler(name, URL(string: url)!)
+                        handler(name, URL(string: url.lowercased())!, done)
                     }
                 }
             }
@@ -108,6 +115,8 @@ struct LinkManagerSheet: View {
         HStack {
             // Normal TextField
             TextField("URL", text: $url)
+                .autocorrectionDisabled()
+                .textInputAutocapitalization(.never)
                 .textContentType(.URL)
                 .keyboardType(.URL)
             Spacer()

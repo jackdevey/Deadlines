@@ -13,7 +13,7 @@ struct DeadlineLinkView: View {
     @State private var showingNewLink = false
     
     // Item to show links for
-    @StateObject var item: Item
+    @ObservedObject var item: Item
 
     // The store class functions
     var store = Store()
@@ -22,37 +22,61 @@ struct DeadlineLinkView: View {
     // of links as state (this is so the
     // list will update)
     
-    var list: [DeadlineLink] {
-        item.links?.sortedArray(using: [NSSortDescriptor(keyPath: \DeadlineLink.placement, ascending: false)]) as? [DeadlineLink] ?? []
+    @FetchRequest var links: FetchedResults<DeadlineLink>
+    
+    init(item: Item) {
+        self.item = item
+            _links = FetchRequest(
+                entity: DeadlineLink.entity(),
+                sortDescriptors: [
+                    NSSortDescriptor(keyPath: \DeadlineLink.placement, ascending: true)
+                ],
+                predicate: NSPredicate(format: "deadline == %@", item)
+            )
     }
     
     var body: some View {
         
         List {
             // Show each link for the item
-            ForEach(list) { link in
+            ForEach(links) { link in
                 // Show each link as a link (with label)
                 LinkRowView(link: link)
             }
-//            // When a link is moved (order has changed)
-//            .onMove { from, to in
-//                // Move the links around as changed
-//                from.map { links[$0] }.forEach{ link in
-//                    links.move(fromOffsets: from, toOffset: to)
-//                }
-//                // Loop through links and update placement
-//                for idx in links.indices {
-//                    links[idx].placement = Int16(idx)
-//                }
-//                // Save changes
-//                store.save(viewContext: viewContext)
-//            }
+            // When a link is moved (order has changed)
+            .onMove { from, to in
+                // Map to array
+                var linksArray = links.map{$0}
+                // Let swift handle this cus is weird like
+                // why is there a set of moving? I thought
+                // only one moves
+                linksArray.move(fromOffsets: from, toOffset: to)
+                // Reorder, the whole array to update
+                // placement info
+                for idx in linksArray.indices {
+                    linksArray[idx].placement = Int16(idx)
+                }
+                // Save changes
+                _=try? viewContext.saveIfNeeded()
+            }
             // When a link has been deleted
             .onDelete { offsets in
                 // Delete a link from the deadline
                 withAnimation {
-                    //offsets.map { item.links[$0] }.forEach(viewContext.delete)
-                    store.save(viewContext: viewContext) // Save changes
+                    // Map to array
+                    var linksArray = links.map{$0}
+                    // Let swift handle this cus is weird like
+                    // why is there a set of deleted? I thought
+                    // only one can be deleted
+                    offsets.map { linksArray[$0] }.forEach(viewContext.delete)
+                    linksArray.remove(atOffsets: offsets)
+                    // Reorder, the whole array to update
+                    // placement info
+                    for idx in linksArray.indices {
+                        linksArray[idx].placement = Int16(idx)
+                    }
+                    // Save changes
+                    _=try? viewContext.saveIfNeeded()
                 }
             }
         }
@@ -69,7 +93,7 @@ struct DeadlineLinkView: View {
         .sheet(isPresented: $showingNewLink) {
             LinkManagerSheet(
                 mode: .new
-            ) { name, url in
+            ) { name, url, _ in
                 // New link
                 let link = DeadlineLink(context: viewContext)
                 link.id = UUID()

@@ -12,6 +12,7 @@ struct LinkView: View {
     var name: String?
     var url: URL?
     var imageURL: URL?
+    var done: Bool = false
     
     var body: some View {
         HStack(alignment: .top) {
@@ -30,9 +31,17 @@ struct LinkView: View {
             
             // Name & URL
             VStack(alignment: .leading, spacing: 0) {
-                // Link name
-                Text(niceifyString(name))
-                    .font(.headline)
+                HStack {
+                    // Link name
+                    Text(niceifyString(name))
+                        .font(.headline)
+                    // Seen icon
+                    if done {
+                        Image(systemName: "checkmark.circle")
+                            .foregroundColor(.green)
+                            .imageScale(.small)
+                    }
+                }
                 // Link URL
                 Text(niceifyString(url?.absoluteString, unnamed: "No URL"))
                     .lineLimit(1)
