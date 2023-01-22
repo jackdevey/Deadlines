@@ -54,7 +54,7 @@ struct DeadlineView: View {
             Section {
                 // Checklist
                 NavigationLink {
-                    DeadlineTodoView(deadline: item)
+                    DeadlineTodoView(item: item)
                 } label: {
                     HStack {
                         // Show status icon
@@ -62,9 +62,16 @@ struct DeadlineView: View {
                         // Space apart
                         Spacer()
                         // Show status
-                        Text("\(item.checklistItemsCompletedPercentage)%")
-                            .monospacedDigit()
+                        (Text(String(item.todos?.count{ ($0 as! DeadlineTodo).done } ?? 0))
+                            .font(.system(.callout, design: .rounded))
+                            .foregroundColor(.green)
+                            .bold()
+                         +
+                         Text(" of \(item.todos?.count ?? 0)")
+                            .font(.system(.callout, design: .rounded))
                             .foregroundColor(.secondaryLabel)
+                            .bold())
+                            .width(50)
                     }
                 }
 //                // Plan

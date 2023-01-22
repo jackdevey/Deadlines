@@ -68,6 +68,19 @@ struct DeadlineLinkView: View {
         _=try? viewContext.saveIfNeeded()
     }
     
+    var completedCount: some View {
+        (Text(String(links.count{ $0.done }))
+            .font(.system(.callout, design: .rounded))
+            .foregroundColor(.green)
+            .bold()
+         +
+         Text(" of \(links.count)")
+            .font(.system(.callout, design: .rounded))
+            .foregroundColor(.secondaryLabel)
+            .bold())
+            .width(50)
+    }
+    
     var body: some View {
         
         List {
@@ -99,6 +112,7 @@ struct DeadlineLinkView: View {
             }
         }
         .navigationTitle("Links")
+        .navigationBarLargeTitleItems(trailing: completedCount)
         .toolbar {
             ToolbarItem() {
                 EditButton()
@@ -130,5 +144,17 @@ struct DeadlineLinkView: View {
                 showingNewLink.toggle()
             }
         }
+    }
+}
+
+extension Collection {
+    func count(where test: (Element) throws -> Bool) rethrows -> Int {
+        return try self.filter(test).count
+    }
+}
+
+extension NSSet {
+    func count(where test: (Element) throws -> Bool) rethrows -> Int {
+        return try self.filter(test).count
     }
 }

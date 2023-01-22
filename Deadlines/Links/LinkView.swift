@@ -15,7 +15,7 @@ struct LinkView: View {
     var done: Bool = false
     
     var body: some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             // Link image
             AsyncImage(
                 url: imageURL,

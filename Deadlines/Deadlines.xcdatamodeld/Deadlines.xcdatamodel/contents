@@ -9,6 +9,7 @@
         <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="links" inverseEntity="Item"/>
     </entity>
     <entity name="DeadlineTodo" representedClassName="DeadlineTodo" syncable="YES" codeGenerationType="class">
+        <attribute name="desc" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
         <attribute name="done" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
         <attribute name="name" attributeType="String" defaultValueString="" allowsCloudEncryption="YES"/>

@@ -12,42 +12,86 @@ struct DeadlineTodoView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @State private var showingNewTodo = false
     
-    // Item to show links for
-    @ObservedObject var deadline: Item
+    // Item to show todos for
+    @ObservedObject var item: Item
     
-    @State var todos: [DeadlineTodo]
-        
-    init(deadline: Item) {
-        self.deadline = deadline
-        self.todos = deadline.todos!.allObjects as! [DeadlineTodo]
+    @FetchRequest var todos: FetchedResults<DeadlineTodo>
+    
+    init(item: Item) {
+        self.item = item
+        _todos = FetchRequest(
+            entity: DeadlineTodo.entity(),
+            sortDescriptors: [
+                NSSortDescriptor(keyPath: \DeadlineTodo.placement, ascending: true)
+            ],
+            predicate: NSPredicate(format: "deadline == %@", item)
+        )
+    }
+    
+    func move(from: IndexSet, to: Int) {
+        withAnimation {
+            // Map to array
+            var todosArray = todos.map{$0}
+            // Let swift handle this cus is weird like
+            // why is there a set of moving? I thought
+            // only one moves
+            todosArray.move(fromOffsets: from, toOffset: to)
+            // Reorder, the whole array to update
+            // placement info
+            for idx in todosArray.indices {
+                todosArray[idx].placement = Int16(idx)
+            }
+            // Save changes
+            _=try? viewContext.saveIfNeeded()
+        }
+    }
+    
+    func delete(offsets: IndexSet) {
+        withAnimation {
+            // Map to array
+            var todosArray = todos.map{$0}
+            // Let swift handle this cus is weird like
+            // why is there a set of deleted? I thought
+            // only one can be deleted
+            offsets.map { todosArray[$0] }.forEach(viewContext.delete)
+            todosArray.remove(atOffsets: offsets)
+            // Reorder, the whole array to update
+            // placement info
+            for idx in todosArray.indices {
+                todosArray[idx].placement = Int16(idx)
+            }
+            // Save changes
+            _=try? viewContext.saveIfNeeded()
+        }
+    }
+    
+    var completedCount: some View {
+        (Text(String(todos.count{ $0.done }))
+            .font(.system(.callout, design: .rounded))
+            .foregroundColor(.green)
+            .bold()
+         +
+         Text(" of \(todos.count)")
+            .font(.system(.callout, design: .rounded))
+            .foregroundColor(.secondaryLabel)
+            .bold())
+            .width(50)
     }
     
     var body: some View {
         List {
-            ForEach(todos, id: \.id) { todo in
-                TodoView(todo: todo, handler: { todo in
-                    // Save the change when an item is toggled
-                    deadline.removeFromTodos(deadline.todos!.allObjects[Int(todo.placement)] as! DeadlineTodo)
-                    deadline.addToTodos(todo)
-                    try? viewContext.save()
-                })
+            ForEach(todos) { todo in
+                TodoRowView(todo: todo)
             }
-            .onDelete { offsets in
-                // Delete a link from the deadline
-                withAnimation {
-                    offsets.map { todos[$0] }.forEach(viewContext.delete)
-                    todos.remove(atOffsets: offsets)
-                    //items.remove(atOffsets: offsets)
-                    Store().save(viewContext: viewContext) // Save changes
-                }
-            }
+            .onMove(perform: move)
+            .onDelete(perform: delete)
         }
-        .listStyle(InsetListStyle())
         .navigationTitle("Checklist")
+        .navigationBarLargeTitleItems(trailing: completedCount)
         .toolbar {
-            // Percentage reminder
-            ToolbarItem(placement: .status) {
-                Text(String(deadline.checklistItemsCompletedPercentage) + "% Complete")
+            // Edit todos button
+            ToolbarItem(placement: .primaryAction) {
+                EditButton()
             }
             // New todo button
             ToolbarItem(placement: .primaryAction) {
@@ -57,22 +101,20 @@ struct DeadlineTodoView: View {
                     Label("New", systemImage: "plus")
                 }
             }
-            // Edit todos button
-            ToolbarItem(placement: .primaryAction) {
-                EditButton()
-            }
         }
         .sheet(isPresented: $showingNewTodo) {
-            NewDeadlineTodoSheet { todo in
+            TodoManagerSheet(mode: .new) { name, description, done in
+                let todo = DeadlineTodo(context: viewContext)
+                todo.id = UUID()
                 // Set placement to end
-                todo.placement = Int16(deadline.checklistItemsTotal)
+                todo.name = name
+                //todo.description = description
+                todo.done = done
+                todo.placement = Int16(todos.count)
                 // Save changes
-                deadline.addToTodos(todo)
-                try? viewContext.save()
-                // Add todo to todos todo
-                withAnimation {
-                    todos.append(todo)
-                }
+                item.addToTodos(todo)
+                _=try? viewContext.saveIfNeeded()
+                showingNewTodo.toggle()
             }
         }
     }
