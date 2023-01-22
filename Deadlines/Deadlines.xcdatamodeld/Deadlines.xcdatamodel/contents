@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21513" systemVersion="22C65" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
     <entity name="DeadlineLink" representedClassName="DeadlineLink" syncable="YES" codeGenerationType="class">
-        <attribute name="done" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="done" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
         <attribute name="placement" optional="YES" attributeType="Integer 16" defaultValueString="-1" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
