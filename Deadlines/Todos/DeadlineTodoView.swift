@@ -75,10 +75,7 @@ struct DeadlineTodoView: View {
         NavigationLink {
             List {
                 ForEach(todos) { todo in
-                    VStack {
-                        TodoRowView(todo: todo)
-                        Text(String(todo.placement))
-                    }
+                    TodoRowView(todo: todo)
                 }
                 .onMove(perform: move)
                 .onDelete(perform: delete)

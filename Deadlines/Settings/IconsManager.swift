@@ -21,31 +21,6 @@ public final class IconsManager: ObservableObject {
         UIApplication.shared.alternateIconName
     }
     
-    public init() {
-        // Core icons
-        iconGrid.append(IconGroup(name: nil, icons: [
-            // Add default icon to icons list
-            Icon(name: "Default", iconName: nil, image: UIImage(named: "IconDefault")),
-            // Add flat icon to icons list
-            Icon(name: "Flat", iconName: "Flat", image: UIImage(named: "IconFlat")),
-            // Add emoji icon to icons list
-            Icon(name: "Emoji", iconName: "Emoji", image: UIImage(named: "IconEmoji"))
-        ]))
-        // Other apps section
-        iconGrid.append(IconGroup(name: "Other Apps", icons: [
-            // Add aside icon to icons list
-            Icon(name: "Aside", iconName: "Aside", image: UIImage(named: "IconAside")),
-            // Add macros icon to icons list
-            Icon(name: "Aside", iconName: "Aside", image: UIImage(named: "IconAside"))
-        ]))
-        // Special icons
-        iconGrid.append(IconGroup(name: "Special", icons: [
-            // Add black icon to icons list
-            Icon(name: "Black", iconName: "Black", image: UIImage(named: "IconBlack"))
-        ]))
-        // Set icon index
-    }
-    
     // Each icon group data type
     public struct IconGroup {
         public let name: String?
@@ -57,6 +32,7 @@ public final class IconsManager: ObservableObject {
         public let name: String
         public let iconName: String?
         public let image: UIImage?
+        public let desc: String
     }
     
 }

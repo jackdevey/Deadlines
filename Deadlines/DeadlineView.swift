@@ -54,6 +54,8 @@ struct DeadlineView: View {
             Section {
                 // Checklist
                 DeadlineTodoView(item: item)
+                // Links
+                DeadlineLinkView(item: item)
 //                // Plan
 //                NavigationLink {
 //                    DeadlineLinkView(item: item)
@@ -78,8 +80,6 @@ struct DeadlineView: View {
                 } label: {
                     NiceIconLabel(text: "Tags", color: .indigo, iconName: "number")
                 }
-                // Links
-                DeadlineLinkView(item: item)
                 // Notes
                 NavigationLink {
                     NotesView(item: item)

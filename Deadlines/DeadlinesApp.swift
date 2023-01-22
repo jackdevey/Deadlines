@@ -35,7 +35,7 @@ struct DeadlinesApp: App {
                 WelcomeView()
                     .environment(\.managedObjectContext, viewContext)
             } else {
-                TabView {
+                //TabView {
                     ContentView()
                         .environment(\.managedObjectContext, viewContext)
                         .environmentObject(tipJar)
@@ -51,7 +51,7 @@ struct DeadlinesApp: App {
 //                        .tabItem {
 //                            Label("Calendar", systemImage: "calendar")
 //                        }
-                }
+                //}
             }
         } 
     }
