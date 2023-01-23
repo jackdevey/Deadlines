@@ -42,11 +42,7 @@ struct TodoManagerSheet: View {
     
     var body: some View {
         NavigationView {
-            Form {
-                // Preview at top
-                Section("Preview") {
-                    TodoView(name: name, description: description, done: done)
-                }
+            List {
                 // Editor
                 Section {
                     // Todo name
@@ -60,6 +56,13 @@ struct TodoManagerSheet: View {
                         Toggle("Done", isOn: $done)
                     }
                 }
+            }
+            .listStyle(.grouped)
+            .navigationBarLargeTitle {
+                VStack(alignment: .leading) {
+                    TodoView(name: name, description: description, done: done)
+                }
+                .frame(width: .greedy)
             }
             // Set title
             .navigationTitle(title)
