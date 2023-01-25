@@ -9,130 +9,152 @@ import SwiftUI
 
 struct DeadlineView: View {
     
-    @StateObject var item: Item
+    var item: Item
+    
+    @State var groups: [InnerGroup]
     
     @State var showChangeIconSheet = false
+    
+    init(item: Item) {
+        self.item = item
+        // Extract groups and safely convert to array for iteration
+        self.groups = item.groups?.allObjects as? [InnerGroup] ?? []
+    }
         
     var body: some View {
         
         List {
-            Section {
-                // Due date
-                HStack {
-                    Text("Due Date")
-                        .font(.headline)
-                    Spacer()
-                    Text(item.date!, format: .dateTime)
-                        .foregroundColor(.secondaryLabel)
-                }
-                .padding(5)
-                // Time left
-                HStack {
-                    Text("Days Remaining")
-                        .font(.headline)
-                    Spacer()
-                    Text(item.daysUntil)
-                        .foregroundColor(.secondaryLabel)
-                }
-                .padding(5)
-                // Status
-                HStack {
-                    Text("Status")
-                        .font(.headline)
-                    Spacer()
-                    HStack {
-                        Image(systemName: item.status.iconName)
-                            .imageScale(.small)
-                            .foregroundColor(item.status.iconColor)
-                        Text(item.status.name)
-                            .foregroundColor(.secondaryLabel)
+            ForEach(self.groups) { group in
+                // Show each group as a title
+                Section(group.title ?? "") {
+                    ForEach(group.sItems) { item in
+                        
                     }
                 }
-                .padding(5)
             }
-            // Deadline type
-            Section {
-                // Checklist
-                DeadlineTodoView(item: item)
-                // Links
-                DeadlineLinkView(item: item)
-//                // Plan
-//                NavigationLink {
-//                    DeadlineLinkView(item: item)
-//                } label: {
-//                    NiceIconLabel(text: "Work Plan", color: .systemTeal, iconName: "book.closed.fill")
-//                }
-//                // Target
-//                NavigationLink {
-//                    DeadlineLinkView(item: item)
-//                } label: {
-//                    NiceIconLabel(text: "Target", color: .green, iconName: "target")
-//                }
-//                // Documents
-//                NavigationLink {
-//                    NotesView(item: item)
-//                } label: {
-//                    NiceIconLabel(text: "Documents", color: .indigo, iconName: "folder.fill")
-//                }
-                // Tags
-                NavigationLink {
-                    DeadlineTagsView(deadline: item)
-                } label: {
-                    NiceIconLabel(text: "Tags", color: .indigo, iconName: "number")
+        }
+
+            
+            List {
+                Section {
+                    // Due date
+                    
+                    HStack {
+                        Text("Due Date")
+                            .font(.headline)
+                        Spacer()
+                        Text(item.date!, format: .dateTime)
+                            .foregroundColor(.secondaryLabel)
+                    }
+                    .padding(5)
+                    // Time left
+                    HStack {
+                        Text("Days Remaining")
+                            .font(.headline)
+                        Spacer()
+                        Text(item.daysUntil)
+                            .foregroundColor(.secondaryLabel)
+                    }
+                    .padding(5)
+                    // Status
+                    HStack {
+                        Text("Status")
+                            .font(.headline)
+                        Spacer()
+                        HStack {
+                            Image(systemName: item.status.iconName)
+                                .imageScale(.small)
+                                .foregroundColor(item.status.iconColor)
+                            Text(item.status.name)
+                                .foregroundColor(.secondaryLabel)
+                        }
+                    }
+                    .padding(5)
                 }
-                // Notes
-                NavigationLink {
-                    NotesView(item: item)
-                } label: {
-                    NiceIconLabel(text: "Notes", color: .orange, iconName: "note")
+                // Deadline type
+                Section {
+                    // Checklist
+                    DeadlineTodoView(item: item)
+                    // Links
+                    DeadlineLinkView(item: item)
+                    //                // Plan
+                    //                NavigationLink {
+                    //                    DeadlineLinkView(item: item)
+                    //                } label: {
+                    //                    NiceIconLabel(text: "Work Plan", color: .systemTeal, iconName: "book.closed.fill")
+                    //                }
+                    //                // Target
+                    //                NavigationLink {
+                    //                    DeadlineLinkView(item: item)
+                    //                } label: {
+                    //                    NiceIconLabel(text: "Target", color: .green, iconName: "target")
+                    //                }
+                    //                // Documents
+                    //                NavigationLink {
+                    //                    NotesView(item: item)
+                    //                } label: {
+                    //                    NiceIconLabel(text: "Documents", color: .indigo, iconName: "folder.fill")
+                    //                }
+                    // Tags
+                    NavigationLink {
+                        DeadlineTagsView(deadline: item)
+                    } label: {
+                        NiceIconLabel(text: "Tags", color: .indigo, iconName: "number")
+                    }
+                    // Notes
+                    NavigationLink {
+                        NotesView(item: item)
+                    } label: {
+                        NiceIconLabel(text: "Notes", color: .orange, iconName: "note")
+                    }
                 }
+                
+                Section {
+                    // Change Icon
+                    MYNavigationLink {
+                        // Show settings view
+                        showChangeIconSheet = true
+                    } label: {
+                        NiceIconLabel(text: "Edit Details", color: item.colour, iconName: item.iconName ?? "app")
+                    }
+                    // Settings
+                    NavigationLink {
+                        // Show settings view
+                        DeadlineSettingsView(deadline: item)
+                    } label: {
+                        NiceIconLabel(text: "Settings", color: .gray, iconName: "gearshape.fill")
+                    }
+                }
+                
+            }
+            // Allow deadline title to be edited
+            .navigationTitle(item.name!)
+            // Change Icon Sheet
+            .sheet(isPresented: $showChangeIconSheet) {
+                NewEditDeadlineView(
+                    new: false,
+                    title: "Edit Details",
+                    name: item.name ?? "",
+                    date: item.date ?? Date.now,
+                    color: item.color,
+                    iconName: item.iconName ?? "bookmark.fill",
+                    cancelHandler: {
+                        // Close the view
+                        showChangeIconSheet = false
+                    },
+                    confirmHandler: { name, date, color, iconName in
+                        // Make a new deadline
+                        item.name = name
+                        item.date = date
+                        item.color = color
+                        item.iconName = iconName
+                        // Close the view
+                        showChangeIconSheet = false
+                    }
+                )
             }
             
-            Section {
-                // Change Icon
-                MYNavigationLink {
-                    // Show settings view
-                    showChangeIconSheet = true
-                } label: {
-                    NiceIconLabel(text: "Edit Details", color: item.colour, iconName: item.iconName ?? "app")
-                }
-                // Settings
-                NavigationLink {
-                    // Show settings view
-                    DeadlineSettingsView(deadline: item)
-                } label: {
-                    NiceIconLabel(text: "Settings", color: .gray, iconName: "gearshape.fill")
-                }
-            }
-        
         }
-        // Allow deadline title to be edited
-        .navigationTitle(item.name!)
-        // Change Icon Sheet
-        .sheet(isPresented: $showChangeIconSheet) {
-            NewEditDeadlineView(
-                new: false,
-                title: "Edit Details",
-                name: item.name ?? "",
-                date: item.date ?? Date.now,
-                color: item.color,
-                iconName: item.iconName ?? "bookmark.fill",
-                cancelHandler: {
-                    // Close the view
-                    showChangeIconSheet = false
-                },
-                confirmHandler: { name, date, color, iconName in
-                    // Make a new deadline
-                    item.name = name
-                    item.date = date
-                    item.color = color
-                    item.iconName = iconName
-                    // Close the view
-                    showChangeIconSheet = false
-                }
-            )
-        }
-    }
 //            List {
 //                HStack {
 //                    Text("Due date")

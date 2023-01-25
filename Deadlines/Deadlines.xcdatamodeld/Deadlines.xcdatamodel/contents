@@ -7,16 +7,31 @@
         <attribute name="placement" optional="YES" attributeType="Integer 16" defaultValueString="-1" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
         <attribute name="url" optional="YES" attributeType="URI" allowsCloudEncryption="YES"/>
         <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="links" inverseEntity="Item"/>
-        <relationship name="todos" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DeadlineTodo" inverseName="links" inverseEntity="DeadlineTodo"/>
     </entity>
-    <entity name="DeadlineTodo" representedClassName="DeadlineTodo" syncable="YES" codeGenerationType="class">
-        <attribute name="desc" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
-        <attribute name="done" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+    <entity name="InnerGroup" representedClassName="InnerGroup" parentEntity="InnerItem" syncable="YES" codeGenerationType="class">
+        <attribute name="title" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="groups" inverseEntity="Item"/>
+        <relationship name="items" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="InnerItem" inverseName="group" inverseEntity="InnerItem"/>
+    </entity>
+    <entity name="InnerItem" representedClassName="InnerItem" isAbstract="YES" syncable="YES" codeGenerationType="class">
+        <attribute name="born" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <attribute name="edited" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
-        <attribute name="name" attributeType="String" defaultValueString="" allowsCloudEncryption="YES"/>
-        <attribute name="placement" optional="YES" attributeType="Integer 16" defaultValueString="-1" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
-        <relationship name="deadline" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Item" inverseName="todos" inverseEntity="Item"/>
-        <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineLink" inverseName="todos" inverseEntity="DeadlineLink"/>
+        <attribute name="placement" attributeType="Integer 16" defaultValueString="0" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <relationship name="group" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InnerGroup" inverseName="items" inverseEntity="InnerGroup"/>
+    </entity>
+    <entity name="InnerLink" representedClassName="InnerLink" parentEntity="InnerItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" optional="YES" attributeType="Boolean" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <attribute name="url" optional="YES" attributeType="URI" allowsCloudEncryption="YES"/>
+    </entity>
+    <entity name="InnerNote" representedClassName="InnerNote" parentEntity="InnerItem" syncable="YES" codeGenerationType="class">
+        <attribute name="value" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="InnerTodo" representedClassName="InnerTodo" parentEntity="InnerItem" syncable="YES" codeGenerationType="class">
+        <attribute name="completed" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
+        <attribute name="desc" optional="YES" attributeType="String" allowsCloudEncryption="YES"/>
+        <attribute name="title" attributeType="String" defaultValueString="" allowsCloudEncryption="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
         <attribute name="color" optional="YES" attributeType="Integer 16" defaultValueString="10" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
@@ -27,9 +42,9 @@
         <attribute name="note" attributeType="String" defaultValueString="" allowsCloudEncryption="YES"/>
         <attribute name="submitted" attributeType="Boolean" defaultValueString="NO" allowsCloudEncryption="YES" usesScalarValueType="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" allowsCloudEncryption="YES" usesScalarValueType="NO"/>
+        <relationship name="groups" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="InnerGroup" inverseName="deadline" inverseEntity="InnerGroup"/>
         <relationship name="links" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineLink" inverseName="deadline" inverseEntity="DeadlineLink"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Tag" inverseName="deadlines" inverseEntity="Tag"/>
-        <relationship name="todos" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeadlineTodo" inverseName="deadline" inverseEntity="DeadlineTodo"/>
     </entity>
     <entity name="Tag" representedClassName="Tag" syncable="YES" codeGenerationType="class">
         <attribute name="id" optional="YES" attributeType="UUID" allowsCloudEncryption="YES" usesScalarValueType="NO"/>

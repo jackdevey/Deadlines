@@ -72,7 +72,7 @@ struct DLCustomisation {
         "camera.fill", "camera.macro.circle.fill", "photo.fill.on.rectangle.fill", "f.cursive.circle.fill",
         "function", "x.squareroot", "location.circle.fill", "seal.fill", "hourglass.circle.fill",
         "flame.fill", "hare.fill", "tortoise.fill", "fish.fill", "bird.fill", "lizard.fill", "carrot.fill",
-        "pawprint.fill", "ladybug.fill"
+        "pawprint.fill", "ladybug.fill", "network"
     ]
     
     /// Produces an icon picker UI, saving the selection within the `selection` parameter
