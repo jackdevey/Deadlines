@@ -28,10 +28,16 @@ struct DeadlineView: View {
                 .padding(5)
                 // Time left
                 HStack {
-                    Text("Days Remaining")
-                        .font(.headline)
+                    if item.daysDiff >= 0 {
+                        Text("Days Remaining")
+                            .font(.headline)
+                    } else {
+                        Text("Days Past")
+                            .font(.headline)
+                    }
                     Spacer()
-                    Text(item.daysUntil)
+                    // dont like this is really dirty
+                    Text(String(Int(sqrt(Double(item.daysDiff*item.daysDiff)))))
                         .foregroundColor(.secondaryLabel)
                 }
                 .padding(5)

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0409E1222982B2200064D9E1 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 0409E1212982B2200064D9E1 /* SwiftUIFlowLayout */; };
 		0417B7C3297A849000DC8E91 /* DeadlineTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C2297A849000DC8E91 /* DeadlineTargetView.swift */; };
 		0417B7C5297B43E200DC8E91 /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C4297B43E200DC8E91 /* LinkRowView.swift */; };
 		0417B7C7297B83AB00DC8E91 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C6297B83AB00DC8E91 /* LinkView.swift */; };
@@ -150,6 +151,7 @@
 			files = (
 				04AFE79E2975EBFA00998B92 /* SwiftTipJar in Frameworks */,
 				04D57EA2297641E0001AAA9F /* SwiftUIX in Frameworks */,
+				0409E1222982B2200064D9E1 /* SwiftUIFlowLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -375,6 +377,7 @@
 			packageProductDependencies = (
 				04AFE79D2975EBFA00998B92 /* SwiftTipJar */,
 				04D57EA1297641E0001AAA9F /* SwiftUIX */,
+				0409E1212982B2200064D9E1 /* SwiftUIFlowLayout */,
 			);
 			productName = Deadlines;
 			productReference = 04478C3C295560D900F76701 /* Deadlines.app */;
@@ -407,6 +410,7 @@
 			packageReferences = (
 				04AFE79C2975EBFA00998B92 /* XCRemoteSwiftPackageReference "SwiftTipJar" */,
 				04D57EA0297641DF001AAA9F /* XCRemoteSwiftPackageReference "SwiftUIX" */,
+				0409E1202982B2200064D9E1 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */,
 			);
 			productRefGroup = 04478C3D295560D900F76701 /* Products */;
 			projectDirPath = "";
@@ -713,6 +717,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		0409E1202982B2200064D9E1 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/globulus/swiftui-flow-layout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		04AFE79C2975EBFA00998B92 /* XCRemoteSwiftPackageReference "SwiftTipJar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/dkasaj/SwiftTipJar";
@@ -732,6 +744,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0409E1212982B2200064D9E1 /* SwiftUIFlowLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0409E1202982B2200064D9E1 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */;
+			productName = SwiftUIFlowLayout;
+		};
 		04AFE79D2975EBFA00998B92 /* SwiftTipJar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 04AFE79C2975EBFA00998B92 /* XCRemoteSwiftPackageReference "SwiftTipJar" */;
