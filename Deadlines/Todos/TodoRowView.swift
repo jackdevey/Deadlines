@@ -26,15 +26,15 @@ struct TodoRowView: View {
         } label: {
             VStack(alignment: .leading) {
                 TodoView(name: todo.name, description: todo.desc, done: todo.done)
-                VStack {
-                    ForEach(todo.links?.allObjects as? [DeadlineLink] ?? []) { link in
-                        LinkView(name: link.name, url: link.url, imageURL: link.imageURL, done: link.done)
-                    }
-                    .padding(0)
-                    .scaleEffect(0.75)
-                }
-                .background(.tertiarySystemGroupedBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+//                VStack {
+//                    ForEach(todo.links?.allObjects as? [DeadlineLink] ?? []) { link in
+//                        LinkView(name: link.name, url: link.url, imageURL: link.imageURL, done: link.done)
+//                    }
+//                    .padding(0)
+//                    .scaleEffect(0.75)
+//                }
+//                .background(.tertiarySystemGroupedBackground)
+//                .clipShape(RoundedRectangle(cornerRadius: 10))
             }
         }
         .tint(.primary)
