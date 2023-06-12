@@ -8,14 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0409E1222982B2200064D9E1 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 0409E1212982B2200064D9E1 /* SwiftUIFlowLayout */; };
-		041358E82A2FF5E6007F119A /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041358E72A2FF5E6007F119A /* WidgetKit.framework */; };
-		041358EA2A2FF5E6007F119A /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 041358E92A2FF5E6007F119A /* SwiftUI.framework */; };
-		041358ED2A2FF5E6007F119A /* DeadlineWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041358EC2A2FF5E6007F119A /* DeadlineWidgetBundle.swift */; };
-		041358EF2A2FF5E6007F119A /* DeadlineWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041358EE2A2FF5E6007F119A /* DeadlineWidget.swift */; };
-		041358F22A2FF5E8007F119A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 041358F12A2FF5E8007F119A /* Assets.xcassets */; };
-		041358F42A2FF5E8007F119A /* DeadlineWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 041358F02A2FF5E7007F119A /* DeadlineWidget.intentdefinition */; };
-		041358F52A2FF5E8007F119A /* DeadlineWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 041358F02A2FF5E7007F119A /* DeadlineWidget.intentdefinition */; };
-		041358F82A2FF5E8007F119A /* DeadlineWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 041358E52A2FF5E6007F119A /* DeadlineWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0417B7C3297A849000DC8E91 /* DeadlineTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C2297A849000DC8E91 /* DeadlineTargetView.swift */; };
 		0417B7C5297B43E200DC8E91 /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C4297B43E200DC8E91 /* LinkRowView.swift */; };
 		0417B7C7297B83AB00DC8E91 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C6297B83AB00DC8E91 /* LinkView.swift */; };
@@ -83,39 +75,7 @@
 		04E7EC082970DD7000AB92B8 /* DLCustomisation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC072970DD7000AB92B8 /* DLCustomisation.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		041358F62A2FF5E8007F119A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 04478C34295560D900F76701 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 041358E42A2FF5E6007F119A;
-			remoteInfo = DeadlineWidgetExtension;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		041358FC2A2FF5E8007F119A /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				041358F82A2FF5E8007F119A /* DeadlineWidgetExtension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
-		041358E52A2FF5E6007F119A /* DeadlineWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = DeadlineWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		041358E72A2FF5E6007F119A /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
-		041358E92A2FF5E6007F119A /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		041358EC2A2FF5E6007F119A /* DeadlineWidgetBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineWidgetBundle.swift; sourceTree = "<group>"; };
-		041358EE2A2FF5E6007F119A /* DeadlineWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineWidget.swift; sourceTree = "<group>"; };
-		041358F02A2FF5E7007F119A /* DeadlineWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = DeadlineWidget.intentdefinition; sourceTree = "<group>"; };
-		041358F12A2FF5E8007F119A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		041358F32A2FF5E8007F119A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0417B7C2297A849000DC8E91 /* DeadlineTargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTargetView.swift; sourceTree = "<group>"; };
 		0417B7C4297B43E200DC8E91 /* LinkRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkRowView.swift; sourceTree = "<group>"; };
 		0417B7C6297B83AB00DC8E91 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
@@ -185,15 +145,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		041358E22A2FF5E6007F119A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				041358EA2A2FF5E6007F119A /* SwiftUI.framework in Frameworks */,
-				041358E82A2FF5E6007F119A /* WidgetKit.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04478C39295560D900F76701 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -207,27 +158,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		041358E62A2FF5E6007F119A /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				041358E72A2FF5E6007F119A /* WidgetKit.framework */,
-				041358E92A2FF5E6007F119A /* SwiftUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		041358EB2A2FF5E6007F119A /* DeadlineWidget */ = {
-			isa = PBXGroup;
-			children = (
-				041358EC2A2FF5E6007F119A /* DeadlineWidgetBundle.swift */,
-				041358EE2A2FF5E6007F119A /* DeadlineWidget.swift */,
-				041358F02A2FF5E7007F119A /* DeadlineWidget.intentdefinition */,
-				041358F12A2FF5E8007F119A /* Assets.xcassets */,
-				041358F32A2FF5E8007F119A /* Info.plist */,
-			);
-			path = DeadlineWidget;
-			sourceTree = "<group>";
-		};
 		0417B7C1297A848100DC8E91 /* Target */ = {
 			isa = PBXGroup;
 			children = (
@@ -240,8 +170,6 @@
 			isa = PBXGroup;
 			children = (
 				04478C3E295560D900F76701 /* Deadlines */,
-				041358EB2A2FF5E6007F119A /* DeadlineWidget */,
-				041358E62A2FF5E6007F119A /* Frameworks */,
 				04478C3D295560D900F76701 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -250,7 +178,6 @@
 			isa = PBXGroup;
 			children = (
 				04478C3C295560D900F76701 /* Deadlines.app */,
-				041358E52A2FF5E6007F119A /* DeadlineWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -434,23 +361,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		041358E42A2FF5E6007F119A /* DeadlineWidgetExtension */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 041358F92A2FF5E8007F119A /* Build configuration list for PBXNativeTarget "DeadlineWidgetExtension" */;
-			buildPhases = (
-				041358E12A2FF5E6007F119A /* Sources */,
-				041358E22A2FF5E6007F119A /* Frameworks */,
-				041358E32A2FF5E6007F119A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = DeadlineWidgetExtension;
-			productName = DeadlineWidgetExtension;
-			productReference = 041358E52A2FF5E6007F119A /* DeadlineWidgetExtension.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		04478C3B295560D900F76701 /* Deadlines */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 04478C4F295560DA00F76701 /* Build configuration list for PBXNativeTarget "Deadlines" */;
@@ -458,12 +368,10 @@
 				04478C38295560D900F76701 /* Sources */,
 				04478C39295560D900F76701 /* Frameworks */,
 				04478C3A295560D900F76701 /* Resources */,
-				041358FC2A2FF5E8007F119A /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				041358F72A2FF5E8007F119A /* PBXTargetDependency */,
 			);
 			name = Deadlines;
 			packageProductDependencies = (
@@ -482,12 +390,9 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1430;
+				LastSwiftUpdateCheck = 1420;
 				LastUpgradeCheck = 1420;
 				TargetAttributes = {
-					041358E42A2FF5E6007F119A = {
-						CreatedOnToolsVersion = 14.3.1;
-					};
 					04478C3B295560D900F76701 = {
 						CreatedOnToolsVersion = 14.2;
 					};
@@ -512,20 +417,11 @@
 			projectRoot = "";
 			targets = (
 				04478C3B295560D900F76701 /* Deadlines */,
-				041358E42A2FF5E6007F119A /* DeadlineWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		041358E32A2FF5E6007F119A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				041358F22A2FF5E8007F119A /* Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04478C3A295560D900F76701 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -559,16 +455,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		041358E12A2FF5E6007F119A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				041358F42A2FF5E8007F119A /* DeadlineWidget.intentdefinition in Sources */,
-				041358ED2A2FF5E6007F119A /* DeadlineWidgetBundle.swift in Sources */,
-				041358EF2A2FF5E6007F119A /* DeadlineWidget.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		04478C38295560D900F76701 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -589,7 +475,6 @@
 				0483591E297D181A00D65C72 /* CalendarView.swift in Sources */,
 				045D96CD296F636C0058033E /* TagViews.swift in Sources */,
 				0417B7C5297B43E200DC8E91 /* LinkRowView.swift in Sources */,
-				041358F52A2FF5E8007F119A /* DeadlineWidget.intentdefinition in Sources */,
 				04807734296DF73100D5596D /* IconsListView.swift in Sources */,
 				0480770A296DD5C700D5596D /* RemindersView.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
@@ -619,71 +504,7 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		041358F72A2FF5E8007F119A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 041358E42A2FF5E6007F119A /* DeadlineWidgetExtension */;
-			targetProxy = 041358F62A2FF5E8007F119A /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin XCBuildConfiguration section */
-		041358FA2A2FF5E8007F119A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G2D5W96ZY7;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DeadlineWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DeadlineWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines.DeadlineWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		041358FB2A2FF5E8007F119A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = G2D5W96ZY7;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = DeadlineWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = DeadlineWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines.DeadlineWidget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		04478C4D295560DA00F76701 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -801,7 +622,6 @@
 		04478C50295560DA00F76701 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Deadlines/Deadlines.entitlements;
@@ -827,9 +647,9 @@
 				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -839,7 +659,6 @@
 		04478C51295560DA00F76701 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = Deadlines/Deadlines.entitlements;
@@ -865,9 +684,9 @@
 				MARKETING_VERSION = 1.4.0;
 				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2,6";
@@ -877,15 +696,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		041358F92A2FF5E8007F119A /* Build configuration list for PBXNativeTarget "DeadlineWidgetExtension" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				041358FA2A2FF5E8007F119A /* Debug */,
-				041358FB2A2FF5E8007F119A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		04478C37295560D900F76701 /* Build configuration list for PBXProject "Deadlines" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
