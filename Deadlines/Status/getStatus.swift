@@ -48,13 +48,10 @@ extension Item {
         }
     }
     
-    public var daysUntil: String {
+    public var daysDiff: Int {
         // Create diff
         let diff = Calendar.current.dateComponents([.day, .hour], from: Date.now, to: date!)
-        if let days = diff.day {
-            return "\(days) \(days == 1 ? "day" : "days")"
-        }
-        return "\(diff.day ?? 0) days"
+        return diff.day ?? 0
     }
     
     public var checklistItemsTotal: Int {

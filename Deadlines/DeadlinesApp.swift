@@ -35,14 +35,23 @@ struct DeadlinesApp: App {
                 WelcomeView()
                     .environment(\.managedObjectContext, viewContext)
             } else {
-                ContentView()
-                    .environment(\.managedObjectContext, viewContext)
-                    .environmentObject(tipJar)
-                    .onDisappear {
-                        if viewContext.hasChanges {
-                            try? viewContext.save()
+                //TabView {
+                    ContentView()
+                        .environment(\.managedObjectContext, viewContext)
+                        .environmentObject(tipJar)
+                        .onDisappear {
+                            if viewContext.hasChanges {
+                                try? viewContext.save()
+                            }
                         }
-                    }
+//                        .tabItem {
+//                            Label("Deadlines", systemImage: "list.bullet.rectangle")
+//                        }
+//                    CalendarView()
+//                        .tabItem {
+//                            Label("Calendar", systemImage: "calendar")
+//                        }
+                //}
             }
         } 
     }

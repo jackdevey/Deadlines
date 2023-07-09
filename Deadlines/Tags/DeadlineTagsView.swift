@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SwiftUIFlowLayout
 
 struct DeadlineTagsView: View {
     
@@ -38,52 +39,37 @@ struct DeadlineTagsView: View {
                         }
                     }
                     .padding(5)
-            }
-            // List of tags
-            Section(header: Text("Preview")) {
-                Text(deadline.tagNames.joined(separator: " "))
-                    .font(.system(.callout, design: .rounded))
-                    .foregroundColor(.systemIndigo)
-                    .bold()
-            }
-            // Display each tag
-            ForEach(tags) { tag in
-                TagItem(tag: tag)
-            }
-            // When tag deleted
-            .onDelete { offsets in
-                withAnimation {
-                    offsets.map({ tags[$0] })
-                        .forEach(deleteTag)
+                FlowLayout(mode: .scrollable,
+                           items: tags.map({$0}),
+                           itemSpacing: 4) { tag in
+                    
+                    Text("#\(tag.text ?? "unknown")")
+                        .font(.system(.headline, design: .rounded))
+                        .foregroundColor(.white)
+                        .padding(8)
+                        .bold()
+                        .onPress {
+                            if deadline.tags!.contains(tag) {
+                                deadline.removeFromTags(tag)
+                            } else {
+                                deadline.addToTags(tag)
+                            }
+                        }
+                        .background(
+                            RoundedRectangle(cornerRadius: 7)
+                                .foregroundColor(
+                                    deadline.tags!.contains(tag) ? Color.indigo : Color.secondarySystemFill
+                                )
+                        )
                 }
             }
+            
         }
         // Navigation title
         .navigationTitle("Tags")
         // On disappear, save
         .onDisappear {
             _ =  try? viewContext.saveIfNeeded()
-        }
-    }
-    
-    @ViewBuilder
-    func TagItem(tag: Tag) -> some View {
-        Button {
-            if deadline.tags!.contains(tag) {
-                deadline.removeFromTags(tag)
-            } else {
-                deadline.addToTags(tag)
-            }
-        } label: {
-            HStack {
-                tag.LabelView()
-                Spacer()
-                if deadline.tags!.contains(tag) {
-                    Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.accentColor)
-                }
-            }
-            .tint(.primary)
         }
     }
     

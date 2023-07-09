@@ -234,6 +234,7 @@ terms of section 4, provided that you also meet all of these conditions:
     a) The work must carry prominent notices stating that you modified
     it, and giving a relevant date.
 """)}
+                    .navigationTitle("Deadlines")
                 } label: {
                     Label("See license", systemImage: "doc")
                         .foregroundColor(.secondary)
@@ -246,6 +247,7 @@ terms of section 4, provided that you also meet all of these conditions:
                     Text("""
 No license
 """)
+                    .navigationTitle("SwiftTipJar")
                 } label: {
                     Label("SwiftTipJar", systemImage: "doc")
                 }
@@ -261,6 +263,7 @@ The above copyright notice and this permission notice shall be included in all c
 
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 """)}
+                    .navigationTitle("SwiftUIX")
                 } label: {
                     Label("SwiftUIX", systemImage: "doc")
                 }

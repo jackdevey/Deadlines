@@ -1,18 +1,46 @@
 //
-//  LinkView.swift
+//  CreditsView.swift
 //  Deadlines
 //
-//  Created by Jack Devey on 21/01/2023.
+//  Created by Jack Devey on 22/01/2023.
 //
 
 import SwiftUI
+import CoreMotion
 
-struct LinkView: View {
+
+struct CreditsView: View {
+        
+    var body: some View {
+        List {
+            Section {
+                // Licenses section
+                NavigationLink(destination: LicensesView()) {
+                    NiceIconLabel(text: "Licenses", color: .systemBrown, iconName: "doc")
+                }
+            }
+            Section {
+                NavigationLink {
+                    Image("bert")
+                        .resizable()
+                        .scaledToFill()
+                } label: {
+                    NiceIconLabel(text: "Bert", color: .blue, iconName: "pawprint.fill")
+                }
+            }
+        }
+        // Title
+        .navigationBarTitle("Acknowledgements")
+    }
     
-    var name: String?
-    var url: URL?
-    var imageURL: URL?
-    var done: Bool = false
+    
+}
+
+struct AttributionRowView: View {
+    
+    var imageURL: URL
+    var name: String
+    var url: URL
     
     var body: some View {
         HStack(alignment: .center) {
@@ -30,7 +58,7 @@ struct LinkView: View {
                             .scaledToFill()
                             .transition(.scale(scale: 0.1, anchor: .center))
                 case .failure:
-                    Image(systemName: "link")
+                    Image(systemName: "person")
                 @unknown default:
                     EmptyView()
                 }
@@ -43,17 +71,15 @@ struct LinkView: View {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
                     // Link name
-                    Text(niceifyString(name))
+                    Text(name)
                         .font(.headline)
                     // Seen icon
-                    if done {
-                        Image(systemName: "checkmark.circle")
-                            .foregroundColor(.green)
-                            .imageScale(.small)
-                    }
+                         Image(systemName: "checkmark.seal")
+                             .foregroundColor(.green)
+                             .imageScale(.small)
                 }
                 // Link URL
-                Text(niceifyString(url?.absoluteString, unnamed: "No URL"))
+                Text(url.absoluteString)
                     .lineLimit(1)
                     .foregroundColor(.secondaryLabel)
             }
@@ -62,7 +88,4 @@ struct LinkView: View {
         .padding(5)
     }
     
-    func niceifyString(_ value: String?, unnamed: String = "Unnamed") -> String {
-        return (value ?? "") == "" ? unnamed : value!
-    }
 }

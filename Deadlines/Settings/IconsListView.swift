@@ -15,24 +15,26 @@ struct IconsListView: View {
     var body: some View {
         List {
             // Default icon
-            IconRow(IconsManager.Icon(name: "Default", iconName: nil, image: UIImage(named: "IconDefault")))
+            IconRow(IconsManager.Icon(name: "Default", iconName: nil, image: UIImage(named: "IconDefault"), desc: "Just the normal icon"))
             // Flat icon
-            IconRow(IconsManager.Icon(name: "Flat", iconName: "Flat", image: UIImage(named: "IconFlat")))
+            IconRow(IconsManager.Icon(name: "Flat", iconName: "Flat", image: UIImage(named: "IconFlat"), desc: "Like normal but flat"))
             
             // Other apps
             Section(header: "Other Apps") {
                 // Flat icon
-                IconRow(IconsManager.Icon(name: "Aside", iconName: "Aside", image: UIImage(named: "IconAside")))
+                IconRow(IconsManager.Icon(name: "Aside", iconName: "Aside", image: UIImage(named: "IconAside"), desc: "Your favourite money manager"))
                 // Emoji icon
-                IconRow(IconsManager.Icon(name: "Macros", iconName: "Macros", image: UIImage(named: "IconMacros")))
+                IconRow(IconsManager.Icon(name: "Macros", iconName: "Macros", image: UIImage(named: "IconMacros"), desc: "Its not even out yet"))
             }
             
             // Other apps
             Section(header: "Special") {
                 // Flat icon
-                IconRow(IconsManager.Icon(name: "Black", iconName: "Black", image: UIImage(named: "IconBlack")))
+                IconRow(IconsManager.Icon(name: "Black", iconName: "Black", image: UIImage(named: "IconBlack"), desc: "You're a professional"))
+                // Flat icon
+                IconRow(IconsManager.Icon(name: "White", iconName: "White", image: UIImage(named: "IconWhite"), desc: "For fans of light mode"))
                 // Emoji icon
-                IconRow(IconsManager.Icon(name: "Emoji", iconName: "Emoji", image: UIImage(named: "IconEmoji")))
+                IconRow(IconsManager.Icon(name: "Emoji", iconName: "Emoji", image: UIImage(named: "IconEmoji"), desc: "Idk why you like this"))
             }
         }
         // Set title
@@ -86,20 +88,31 @@ struct IconsListView: View {
                 }
             }
         } label: {
-            HStack(alignment: .center) {
-                Image(uiImage: icon.image ?? UIImage())
-                    .resizable()
-                    .frame(width: 60, height: 60)
-                    .cornerRadius(15)
-                    .padding(.trailing)
-                Text(icon.name)
-                    .foregroundColor(.primary)
+            // Show each link as a link (with label)
+            HStack {
+                HStack(alignment: .center) {
+                    // Link image
+                    Image(uiImage: icon.image ?? UIImage())
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .cornerRadius(7)
+                    // Name & URL
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text(icon.name)
+                            .bold()
+                        Text(icon.desc)
+                            .foregroundColor(.secondaryLabel)
+                    }
+                    .padding([.leading], 5)
+                }
+                .padding(5)
                 Spacer()
                 if iconName == icon.iconName {
                     Image(systemName: "checkmark.circle.fill")
-                        .foregroundColor(.accentColor)
+                        .foregroundColor(.green)
                 }
             }
+            .tint(.primary)
         }
     }
 }
