@@ -26,6 +26,7 @@ import UIKit
     var lastEditedBy: String = UIDevice.current.name
     
     public init(name: String, due: Date, icon: String, colorId: Int) {
+        self.id = UUID()
         self.name = name
         self.due = due
         self.icon = icon

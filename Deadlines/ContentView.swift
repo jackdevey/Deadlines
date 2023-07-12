@@ -72,19 +72,59 @@ struct ContentView: View {
 //    }
     
     @Query(sort: \.due, order: .reverse) var deadlines: [Deadline]
+    
+    @State private var showingDeleteAlert: Bool = false
 
     var body: some View {
-        List(deadlines) { deadline in
-            Text(deadline.name)
-        }
-        .toolbar {
-            Button {
-                let item = Deadline(name: "Hello", due: Date(), icon: "app", colorId: 0)
-                context.insert(item)
-            } label: {
-                Text("New")
+        NavigationStack {
+            List {
+                ForEach(deadlines) { deadline in
+                    Text("\(deadline.id)")
+                        .swipeActions {
+                            Button("Delete") {
+                                showingDeleteAlert = true
+                            }
+                            .tint(.red)
+                        }
+                        .confirmationDialog(
+                            Text("..."),
+                            isPresented: $showingDeleteAlert,
+                            titleVisibility: .visible
+                        ) {
+                            Button("Delete", role: .destructive) {
+                                context.delete(deadline)
+                                try? context.save()
+                            }
+                        }
+                }
+//                .onMove { deadlines.move(fromOffsets: $0, toOffset: $1) }
+            }
+            .navigationTitle("Deadlines")
+            .toolbar {
+                // Edit deadlines
+//                ToolbarItem(placement: .topBarLeading) {
+//                    EditButton()
+//                }
+                // New deadline
+                ToolbarItem {
+                    Button {
+                        let deadline = Deadline(name: "", due: Date(), icon: "", colorId: 0)
+                        context.insert(deadline)
+                    } label: {
+                        Label("New", systemImage: "plus.app")
+                    }
+                }
+                // Settings
+                ToolbarItem {
+                    Button {
+                        
+                    } label: {
+                        Label("Settings", systemImage: "gearshape")
+                    }
+                }
             }
         }
+        
 //        VStack {
 //            if showContent {
 //                NavigationStack {

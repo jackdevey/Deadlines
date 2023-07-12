@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0409E1222982B2200064D9E1 /* SwiftUIFlowLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 0409E1212982B2200064D9E1 /* SwiftUIFlowLayout */; };
 		0417B7C3297A849000DC8E91 /* DeadlineTargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C2297A849000DC8E91 /* DeadlineTargetView.swift */; };
 		0417B7C5297B43E200DC8E91 /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C4297B43E200DC8E91 /* LinkRowView.swift */; };
 		0417B7C7297B83AB00DC8E91 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C6297B83AB00DC8E91 /* LinkView.swift */; };
@@ -22,6 +21,8 @@
 		044A457F29637EF400AEC0F3 /* DeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457E29637EF400AEC0F3 /* DeadlineView.swift */; };
 		044A45812963876E00AEC0F3 /* TodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A45802963876E00AEC0F3 /* TodoView.swift */; };
 		04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04561CA9295F1C060087ABE7 /* NotesView.swift */; };
+		045B55892A5F251B00FB5FC9 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 045B55882A5F251B00FB5FC9 /* Settings.bundle */; };
+		045B558C2A5F295C00FB5FC9 /* SystemSettingsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B558B2A5F295C00FB5FC9 /* SystemSettingsHelper.swift */; };
 		045D96C9296F395D0058033E /* DeadlineTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96C8296F395D0058033E /* DeadlineTagsView.swift */; };
 		045D96CD296F636C0058033E /* TagViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96CC296F636C0058033E /* TagViews.swift */; };
 		0468732B2958040900B12C4C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732A2958040900B12C4C /* SettingsView.swift */; };
@@ -68,12 +69,10 @@
 		049DE7CC2A5E1A4000FBD24A /* DeadlineLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DE7CB2A5E1A4000FBD24A /* DeadlineLink.swift */; };
 		04AFE799297559A900998B92 /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE798297559A900998B92 /* EncodableExtensions.swift */; };
 		04AFE79B2975E62200998B92 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE79A2975E62200998B92 /* TipJarView.swift */; };
-		04AFE79E2975EBFA00998B92 /* SwiftTipJar in Frameworks */ = {isa = PBXBuildFile; productRef = 04AFE79D2975EBFA00998B92 /* SwiftTipJar */; };
 		04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627BE2962477F00130206 /* DeadlineTodoView.swift */; };
 		04C627C12962488400130206 /* TodoManagerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627C02962488400130206 /* TodoManagerSheet.swift */; };
 		04D059002964C90E0091E58C /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D058FF2964C90E0091E58C /* SupportView.swift */; };
 		04D57E9D29762DA4001AAA9F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D57E9C29762DA4001AAA9F /* WelcomeView.swift */; };
-		04D57EA2297641E0001AAA9F /* SwiftUIX in Frameworks */ = {isa = PBXBuildFile; productRef = 04D57EA1297641E0001AAA9F /* SwiftUIX */; };
 		04D8180429712F730020C3FE /* NewEditDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8180329712F730020C3FE /* NewEditDeadlineView.swift */; };
 		04E7EC042970785400AB92B8 /* DeadlineViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC032970785400AB92B8 /* DeadlineViews.swift */; };
 		04E7EC062970B55800AB92B8 /* DeadlineChangeIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04E7EC052970B55800AB92B8 /* DeadlineChangeIconView.swift */; };
@@ -109,6 +108,8 @@
 		044A457E29637EF400AEC0F3 /* DeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineView.swift; sourceTree = "<group>"; };
 		044A45802963876E00AEC0F3 /* TodoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoView.swift; sourceTree = "<group>"; };
 		04561CA9295F1C060087ABE7 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
+		045B55882A5F251B00FB5FC9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		045B558B2A5F295C00FB5FC9 /* SystemSettingsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsHelper.swift; sourceTree = "<group>"; };
 		045D96C8296F395D0058033E /* DeadlineTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTagsView.swift; sourceTree = "<group>"; };
 		045D96CC296F636C0058033E /* TagViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViews.swift; sourceTree = "<group>"; };
 		0468732A2958040900B12C4C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -174,9 +175,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				04AFE79E2975EBFA00998B92 /* SwiftTipJar in Frameworks */,
-				04D57EA2297641E0001AAA9F /* SwiftUIX in Frameworks */,
-				0409E1222982B2200064D9E1 /* SwiftUIFlowLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +263,15 @@
 			path = Notes;
 			sourceTree = "<group>";
 		};
+		045B558A2A5F294300FB5FC9 /* System */ = {
+			isa = PBXGroup;
+			children = (
+				045B55882A5F251B00FB5FC9 /* Settings.bundle */,
+				045B558B2A5F295C00FB5FC9 /* SystemSettingsHelper.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
 		045D96C7296F394B0058033E /* Tags */ = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +331,7 @@
 		04807730296DF3E900D5596D /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				045B558A2A5F294300FB5FC9 /* System */,
 				0468732A2958040900B12C4C /* SettingsView.swift */,
 				04807731296DF3FC00D5596D /* IconsManager.swift */,
 				04807733296DF73100D5596D /* IconsListView.swift */,
@@ -456,9 +464,6 @@
 			);
 			name = Deadlines;
 			packageProductDependencies = (
-				04AFE79D2975EBFA00998B92 /* SwiftTipJar */,
-				04D57EA1297641E0001AAA9F /* SwiftUIX */,
-				0409E1212982B2200064D9E1 /* SwiftUIFlowLayout */,
 			);
 			productName = Deadlines;
 			productReference = 04478C3C295560D900F76701 /* Deadlines.app */;
@@ -523,6 +528,7 @@
 				0480771B296DE2E900D5596D /* IconAside@3x.png in Resources */,
 				0480771A296DE2E900D5596D /* IconAside@2x.png in Resources */,
 				0480772B296DEE7900D5596D /* IconAside.png in Resources */,
+				045B55892A5F251B00FB5FC9 /* Settings.bundle in Resources */,
 				04807723296DE48B00D5596D /* IconDefault@2x.png in Resources */,
 				0480772F296DEE7900D5596D /* IconMacros.png in Resources */,
 				0480772A296DEE7900D5596D /* IconEmoji.png in Resources */,
@@ -575,6 +581,7 @@
 				0417B7C7297B83AB00DC8E91 /* LinkView.swift in Sources */,
 				04C627C12962488400130206 /* TodoManagerSheet.swift in Sources */,
 				044A457829634ED100AEC0F3 /* SupportStatusView.swift in Sources */,
+				045B558C2A5F295C00FB5FC9 /* SystemSettingsHelper.swift in Sources */,
 				044A457B296362A200AEC0F3 /* Status.swift in Sources */,
 				0417B7C3297A849000DC8E91 /* DeadlineTargetView.swift in Sources */,
 				0495E09D2A5C654A00C954DC /* OpenDeadlineIntent.swift in Sources */,
@@ -830,24 +837,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		0409E1212982B2200064D9E1 /* SwiftUIFlowLayout */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 0409E1202982B2200064D9E1 /* XCRemoteSwiftPackageReference "swiftui-flow-layout" */;
-			productName = SwiftUIFlowLayout;
-		};
-		04AFE79D2975EBFA00998B92 /* SwiftTipJar */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04AFE79C2975EBFA00998B92 /* XCRemoteSwiftPackageReference "SwiftTipJar" */;
-			productName = SwiftTipJar;
-		};
-		04D57EA1297641E0001AAA9F /* SwiftUIX */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 04D57EA0297641DF001AAA9F /* XCRemoteSwiftPackageReference "SwiftUIX" */;
-			productName = SwiftUIX;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04478C34295560D900F76701 /* Project object */;
 }

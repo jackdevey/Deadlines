@@ -23,4 +23,6 @@ import UIKit
     public var id: UUID = UUID()
     var lastEdited: Date = Date()
     var lastEditedBy: String = UIDevice.current.name
+    
+    init() {}
 }

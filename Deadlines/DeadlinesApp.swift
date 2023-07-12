@@ -30,6 +30,9 @@ struct DeadlinesApp: App {
         WindowGroup {
             ContentView()
                 .useDataContainer()
+                .onAppear {
+                    SystemSettingsHelper.setAppInfo()
+                }
             
             
 //            if isNewInstall {
