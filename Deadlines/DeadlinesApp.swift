@@ -6,53 +6,59 @@
 //
 
 import SwiftUI
-import SwiftTipJar
 
 @main
 struct DeadlinesApp: App {
-    @AppStorage("context.newInstall") var isNewInstall = true
+//    @AppStorage("context.newInstall") var isNewInstall = true
+//            
+//    let tipJar: SwiftTipJar
+//
+//        init() {
+//            // Load tips
+//            tipJar = SwiftTipJar(tipsIdentifiers: Set([
+//                "uk.jw3.Deadlines.smallTip",
+//                "uk.jw3.Deadlines.mediumTip",
+//                "uk.jw3.Deadlines.largeTip"
+//            ]))
+//            tipJar.startObservingPaymentQueue()
+//            tipJar.productsRequest?.start()
+//        }
     
-    let viewContext = PersistenceController.shared.container.viewContext
-        
-    let tipJar: SwiftTipJar
-
-        init() {
-            // Load tips
-            tipJar = SwiftTipJar(tipsIdentifiers: Set([
-                "uk.jw3.Deadlines.smallTip",
-                "uk.jw3.Deadlines.mediumTip",
-                "uk.jw3.Deadlines.largeTip"
-            ]))
-            tipJar.startObservingPaymentQueue()
-            tipJar.productsRequest?.start()
-        }
-    
-    var store = Store()
+//    var store = Store()
 
     var body: some Scene {
         WindowGroup {
-            if isNewInstall {
-                WelcomeView()
-                    .environment(\.managedObjectContext, viewContext)
-            } else {
-                //TabView {
-                    ContentView()
-                        .environment(\.managedObjectContext, viewContext)
-                        .environmentObject(tipJar)
-                        .onDisappear {
-                            if viewContext.hasChanges {
-                                try? viewContext.save()
-                            }
-                        }
-//                        .tabItem {
-//                            Label("Deadlines", systemImage: "list.bullet.rectangle")
+            ContentView()
+                .useDataContainer()
+            
+            
+//            if isNewInstall {
+//                WelcomeView()
+//                    .useDataContainer()
+//            } else {
+//                //TabView {
+//                    ContentView()
+//                        .useDataContainer()
+//                        .environmentObject(tipJar)
+//                        .onDisappear {
+//                            if viewContext.hasChanges {
+//                                try? viewContext.save()
+//                            }
 //                        }
-//                    CalendarView()
-//                        .tabItem {
-//                            Label("Calendar", systemImage: "calendar")
+//                        .onOpenURL { incomingURL in
+//                            print("App was opened via URL: \(incomingURL)")
+//                            handleIncomingURL(incomingURL)
 //                        }
-                //}
-            }
-        } 
+////                        .tabItem {
+////                            Label("Deadlines", systemImage: "list.bullet.rectangle")
+////                        }
+////                    CalendarView()
+////                        .tabItem {
+////                            Label("Calendar", systemImage: "calendar")
+////                        }
+//                //}
+//            }
+        }
     }
+
 }

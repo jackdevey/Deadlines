@@ -73,6 +73,21 @@
 			<false/>
 		</dict>
 	</dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLIconFile</key>
+			<string>IconDefault@3x</string>
+			<key>CFBundleURLName</key>
+			<string>uk.jw3.Deadlines</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>deadlines</string>
+			</array>
+		</dict>
+	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

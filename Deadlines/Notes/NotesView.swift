@@ -1,37 +1,37 @@
+////
+////  NotesView.swift
+////  Deadlines
+////
+////  Created by Jack Devey on 30/12/2022.
+////
 //
-//  NotesView.swift
-//  Deadlines
+//import SwiftUI
 //
-//  Created by Jack Devey on 30/12/2022.
-//
-
-import SwiftUI
-
-struct NotesView: View {
-    
-    @Environment(\.managedObjectContext) private var viewContext
-    
-    // Item to show links for
-    @ObservedObject var item: Item
-    
-    @State var note: String
-    
-    
-    
-    // Constructor hack to allow the use
-    // of links as state (this is so the
-    // list will update)
-    init(item: Item) {
-        self.item = item
-        self.note = item.note ?? ""
-    }
-    
-    var body: some View {
-        ScrollView {
-            TextField("Note", text: $note)
-                .multilineTextAlignment(.leading)
-                .padding()
-        }
-        .navigationTitle("Notes")
-    }
-}
+//struct NotesView: View {
+//    
+//    @Environment(\.managedObjectContext) private var viewContext
+//    
+//    // Item to show links for
+//    @ObservedObject var item: Item
+//    
+//    @State var note: String
+//    
+//    
+//    
+//    // Constructor hack to allow the use
+//    // of links as state (this is so the
+//    // list will update)
+//    init(item: Item) {
+//        self.item = item
+//        self.note = item.note ?? ""
+//    }
+//    
+//    var body: some View {
+//        ScrollView {
+//            TextField("Note", text: $note)
+//                .multilineTextAlignment(.leading)
+//                .padding()
+//        }
+//        .navigationTitle("Notes")
+//    }
+//}

@@ -1,79 +1,79 @@
+////
+////  getStatus.swift
+////  Deadlines
+////
+////  Created by Jack Devey on 02/01/2023.
+////
 //
-//  getStatus.swift
-//  Deadlines
+//import Foundation
+//import SwiftUI
 //
-//  Created by Jack Devey on 02/01/2023.
+//extension Item {
+//    
+//    var colour: Color {
+//        return DLCustomisation().colors[Int(color)]
+//    }
+//    
+//    public var tagNames: [String] {
+//        if let tags = self.tags {
+//            var arr: [String] = []
+//            for tag in tags.sortedArray(using: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)]) as! [Tag] {
+//                arr.append("#\(tag.text ?? "Unknown")")
+//            }
+//            return arr
+//        }
+//        return []
+//    }
+//    
+//    func getColour() -> Color {
+//        switch self.color {
+//        default: return .purple
+//        }
+//    }
+//    
+//    func getIconName() -> String {
+//        return self.iconName ?? "figure.dance"
+//    }
 //
-
-import Foundation
-import SwiftUI
-
-extension Item {
-    
-    var colour: Color {
-        return DLCustomisation().colors[Int(color)]
-    }
-    
-    public var tagNames: [String] {
-        if let tags = self.tags {
-            var arr: [String] = []
-            for tag in tags.sortedArray(using: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: false)]) as! [Tag] {
-                arr.append("#\(tag.text ?? "Unknown")")
-            }
-            return arr
-        }
-        return []
-    }
-    
-    func getColour() -> Color {
-        switch self.color {
-        default: return .purple
-        }
-    }
-    
-    func getIconName() -> String {
-        return self.iconName ?? "figure.dance"
-    }
-
-    
-    var status: Status {
-        if self.submitted {
-            return Status.submitted
-        } else if Date.now > self.date! {
-            return Status.pastDue
-        } else if checklistItemsCompletedPercentage == 100 {
-            return Status.completed
-        } else {
-            return Status.progressing
-        }
-    }
-    
-    public var daysDiff: Int {
-        // Create diff
-        let diff = Calendar.current.dateComponents([.day, .hour], from: Date.now, to: date!)
-        return diff.day ?? 0
-    }
-    
-    public var checklistItemsTotal: Int {
-        return todos?.allObjects.count ?? 0
-    }
-    
-    private var checlistItemsCompleted: Float {
-        var count = 0
-        for todo in todos?.allObjects as! [DeadlineTodo] {
-            if todo.done {
-                count += 1
-            }
-        }
-        return Float(count)
-    }
-    
-    public var checklistItemsCompletedPercentage: Int {
-        // Return 0 if there is no total items
-        // (avoids division by 0 error)
-        if checklistItemsTotal == 0 { return 0 }
-        // Return percentage rounded to int
-        return Int(checlistItemsCompleted / Float(checklistItemsTotal) * 100)
-    }
-
-}
+//    
+//    var status: Status {
+//        if self.submitted {
+//            return Status.submitted
+//        } else if Date.now > self.date! {
+//            return Status.pastDue
+//        } else if checklistItemsCompletedPercentage == 100 {
+//            return Status.completed
+//        } else {
+//            return Status.progressing
+//        }
+//    }
+//    
+//    public var daysDiff: Int {
+//        // Create diff
+//        let diff = Calendar.current.dateComponents([.day, .hour], from: Date.now, to: date!)
+//        return diff.day ?? 0
+//    }
+//    
+//    public var checklistItemsTotal: Int {
+//        return todos?.allObjects.count ?? 0
+//    }
+//    
+//    private var checlistItemsCompleted: Float {
+//        var count = 0
+//        for todo in todos?.allObjects as! [DeadlineTodo] {
+//            if todo.done {
+//                count += 1
+//            }
+//        }
+//        return Float(count)
+//    }
+//    
+//    public var checklistItemsCompletedPercentage: Int {
+//        // Return 0 if there is no total items
+//        // (avoids division by 0 error)
+//        if checklistItemsTotal == 0 { return 0 }
+//        // Return percentage rounded to int
+//        return Int(checlistItemsCompleted / Float(checklistItemsTotal) * 100)
+//    }
+//
+//}
