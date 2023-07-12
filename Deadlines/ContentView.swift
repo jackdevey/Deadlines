@@ -74,28 +74,13 @@ struct ContentView: View {
     @Query(sort: \.due, order: .reverse) var deadlines: [Deadline]
     
     @State private var showingDeleteAlert: Bool = false
+    @State private var settings: Bool = false
 
     var body: some View {
         NavigationStack {
             List {
                 ForEach(deadlines) { deadline in
-                    Text("\(deadline.id)")
-                        .swipeActions {
-                            Button("Delete") {
-                                showingDeleteAlert = true
-                            }
-                            .tint(.red)
-                        }
-                        .confirmationDialog(
-                            Text("..."),
-                            isPresented: $showingDeleteAlert,
-                            titleVisibility: .visible
-                        ) {
-                            Button("Delete", role: .destructive) {
-                                context.delete(deadline)
-                                try? context.save()
-                            }
-                        }
+                    deadline.ListView()
                 }
 //                .onMove { deadlines.move(fromOffsets: $0, toOffset: $1) }
             }
@@ -117,12 +102,15 @@ struct ContentView: View {
                 // Settings
                 ToolbarItem {
                     Button {
-                        
+                        settings = true
                     } label: {
                         Label("Settings", systemImage: "gearshape")
                     }
                 }
             }
+        }
+        .sheet(isPresented: $settings) {
+            SettingsSheet(isShowing: $settings)
         }
         
 //        VStack {

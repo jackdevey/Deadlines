@@ -21,7 +21,7 @@ import UIKit
     @Relationship(.cascade, inverse: \DeadlineLink.deadline) var links: [DeadlineLink]?
     
     // Generic
-    public var id: UUID = UUID()
+    public var id: UUID? = UUID()
     var lastEdited: Date = Date()
     var lastEditedBy: String = UIDevice.current.name
     
