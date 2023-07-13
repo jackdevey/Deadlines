@@ -22,6 +22,8 @@
 		04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04561CA9295F1C060087ABE7 /* NotesView.swift */; };
 		045B55892A5F251B00FB5FC9 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 045B55882A5F251B00FB5FC9 /* Settings.bundle */; };
 		045B558C2A5F295C00FB5FC9 /* SystemSettingsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B558B2A5F295C00FB5FC9 /* SystemSettingsHelper.swift */; };
+		045D7B5A2A6025F100B3FF8C /* NavigateArrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D7B592A6025F100B3FF8C /* NavigateArrow.swift */; };
+		045D7B5C2A602C0100B3FF8C /* DeadlineFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D7B5B2A602C0100B3FF8C /* DeadlineFilterer.swift */; };
 		045D96C9296F395D0058033E /* DeadlineTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96C8296F395D0058033E /* DeadlineTagsView.swift */; };
 		045D96CD296F636C0058033E /* TagViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D96CC296F636C0058033E /* TagViews.swift */; };
 		0468732B2958040900B12C4C /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0468732A2958040900B12C4C /* SettingsView.swift */; };
@@ -113,6 +115,8 @@
 		04561CA9295F1C060087ABE7 /* NotesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesView.swift; sourceTree = "<group>"; };
 		045B55882A5F251B00FB5FC9 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		045B558B2A5F295C00FB5FC9 /* SystemSettingsHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemSettingsHelper.swift; sourceTree = "<group>"; };
+		045D7B592A6025F100B3FF8C /* NavigateArrow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigateArrow.swift; sourceTree = "<group>"; };
+		045D7B5B2A602C0100B3FF8C /* DeadlineFilterer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineFilterer.swift; sourceTree = "<group>"; };
 		045D96C8296F395D0058033E /* DeadlineTagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTagsView.swift; sourceTree = "<group>"; };
 		045D96CC296F636C0058033E /* TagViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagViews.swift; sourceTree = "<group>"; };
 		0468732A2958040900B12C4C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -405,6 +409,7 @@
 			children = (
 				049DE7C62A5E170A00FBD24A /* Models */,
 				049DE7C42A5E16D900FBD24A /* Core.swift */,
+				045D7B5B2A602C0100B3FF8C /* DeadlineFilterer.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -445,6 +450,7 @@
 				04CC39B42A5F644400EC70A3 /* DeadlineLabel.swift */,
 				04CC39B62A5F6A0300EC70A3 /* KeyValueRow.swift */,
 				04CC39C12A60068700EC70A3 /* ViewConditional.swift */,
+				045D7B592A6025F100B3FF8C /* NavigateArrow.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -596,6 +602,8 @@
 				0480770A296DD5C700D5596D /* RemindersView.swift in Sources */,
 				049DE7CC2A5E1A4000FBD24A /* DeadlineLink.swift in Sources */,
 				04CC39B52A5F644400EC70A3 /* DeadlineLabel.swift in Sources */,
+				045D7B5A2A6025F100B3FF8C /* NavigateArrow.swift in Sources */,
+				045D7B5C2A602C0100B3FF8C /* DeadlineFilterer.swift in Sources */,
 				04478C42295560D900F76701 /* ContentView.swift in Sources */,
 				04D57E9D29762DA4001AAA9F /* WelcomeView.swift in Sources */,
 				04CC39B72A5F6A0300EC70A3 /* KeyValueRow.swift in Sources */,

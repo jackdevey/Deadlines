@@ -38,7 +38,7 @@ extension Deadline {
 //                        .bold()
 //                }
             }
-            .padding([.leading], 5)
+            .padding([.leading], 5)            
         }
 //        .contextMenu {
 //            Button {

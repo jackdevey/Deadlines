@@ -9,12 +9,14 @@ import Foundation
 import SwiftData
 import UIKit
 
-@Model public class Deadline: ObservableObject {
+@Model public class Deadline: ObservableObject, Hashable {
     // Attributes
     var name: String = ""
     var due: Date = Date()
     var icon: String = "app"
     var colorId: Int = 0
+    var isSubmitted: Bool = false
+    var isUrgent: Bool = false
     
     // Relationships
     @Relationship(.cascade, inverse: \DeadlineTodo.deadline) var todos: [DeadlineTodo]?

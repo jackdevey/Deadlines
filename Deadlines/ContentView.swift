@@ -46,7 +46,7 @@ struct ContentView: View {
 //    @State private var name = ""
 //    
 //    @State private var search = ""
-//    
+//
 //    var preFilteredDeadlines: [Item] {
 //        if search.isEmpty {
 //            return items.filter({ _ in true })
@@ -77,14 +77,22 @@ struct ContentView: View {
     @State private var settings: Bool = false
     @State private var newDeadline: Bool = false
     
+    @StateObject private var filterer = DeadlineFilterer()
+    
     @State private var path = NavigationPath()
 
     var body: some View {
         NavigationStack(path: $path) {
-            List {
-                ForEach(deadlines) { deadline in
-                    NavigationLink(value: deadline) {
-                        deadline.ListView()
+            List(filterer.filter(unfiltered: deadlines)) { deadline in
+                NavigationLink(value: deadline) {
+                    deadline.ListView()
+                }
+                .swipeActions(edge: .trailing) {
+                    Button(role: .destructive) {
+                        deadline.context?.delete(deadline)
+                        try? context.save()
+                    } label: {
+                        Label("Delete", systemImage: "bin.xmark")
                     }
                 }
 //                .onMove { deadlines.move(fromOffsets: $0, toOffset: $1) }
@@ -92,10 +100,25 @@ struct ContentView: View {
             .listStyle(.grouped)
             .navigationTitle("Deadlines")
             .toolbar {
-                // Edit deadlines
-//                ToolbarItem(placement: .topBarLeading) {
-//                    EditButton()
-//                }
+                // Filter
+                ToolbarItem(placement: .topBarLeading) {
+                    Menu {
+                        // Submitted
+                        Toggle(isOn: $filterer.isUrgent) {
+                            Label("Urgent", systemImage: "exclamationmark")
+                        }
+                        // Expired
+                        Toggle(isOn: $filterer.hasExpired) {
+                            Label("Expired", systemImage: "clock.badge.exclamationmark")
+                        }
+                        // Submitted
+                        Toggle(isOn: $filterer.isSubmitted) {
+                            Label("Submitted", systemImage: "paperplane")
+                        }
+                    } label: {
+                        Label("Filter", systemImage: filterer.hasFilterApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+                    }
+                }
                 // New deadline
                 ToolbarItem {
                     Button {
