@@ -21,16 +21,13 @@ struct NewEditDeadlineView: View {
     // The deadline attributes to edit
     @State var name: String = ""
     @State var date: Date = Date.now
-    @State var color: Int16 = 10
+    @State var colorId: Int = 10
     @State var iconName: String = "bookmark.fill"
     
     // Convey cancel and continue events
     // to parent
     var cancelHandler: () -> Void
-    var confirmHandler: (String, Date, Int16, String) -> Void
-    
-    // Deadline customisations arrays
-    let dc = DLCustomisation()
+    var confirmHandler: (String, Date, Int, String) -> Void
     
 //    // Global tags list
 //    @FetchRequest(
@@ -52,10 +49,10 @@ struct NewEditDeadlineView: View {
                     DatePicker("Date", selection: $date)
                 }
                 Section {
-                    dc.ColorPicker(selection: $color)
+                    DLCustomisation.ColorPicker(selection: $colorId)
                 }
                 Section {
-                    dc.IconPicker(selection: $iconName, colorId: color)
+                    DLCustomisation.IconPicker(selection: $iconName, colorId: colorId)
                 }
             }
             .toolbar {
@@ -80,7 +77,7 @@ struct NewEditDeadlineView: View {
                             Alert(title: Text("Deadline must be due in the future"))
                             return
                         }
-                        confirmHandler(name, date, color, iconName)
+                        confirmHandler(name, date, colorId, iconName)
                     }
                 }
             }
@@ -95,7 +92,7 @@ struct NewEditDeadlineView: View {
         HStack(alignment: .top) {
             ZStack {
                 RoundedRectangle(cornerRadius: 7)
-                    .fill(dc.colors[Int(self.color)].gradient)
+                    .fill(DLCustomisation.colors[Int(self.colorId)].gradient)
                     .frame(width: 40, height: 40)
                 Image(systemName: self.iconName)
                     .foregroundColor(.white)

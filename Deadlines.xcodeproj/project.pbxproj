@@ -74,6 +74,7 @@
 		04CC39B52A5F644400EC70A3 /* DeadlineLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC39B42A5F644400EC70A3 /* DeadlineLabel.swift */; };
 		04CC39B72A5F6A0300EC70A3 /* KeyValueRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC39B62A5F6A0300EC70A3 /* KeyValueRow.swift */; };
 		04CC39B92A5F6E5000EC70A3 /* PrivacySecurityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC39B82A5F6E5000EC70A3 /* PrivacySecurityView.swift */; };
+		04CC39C22A60068700EC70A3 /* ViewConditional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CC39C12A60068700EC70A3 /* ViewConditional.swift */; };
 		04D059002964C90E0091E58C /* SupportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D058FF2964C90E0091E58C /* SupportView.swift */; };
 		04D57E9D29762DA4001AAA9F /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D57E9C29762DA4001AAA9F /* WelcomeView.swift */; };
 		04D8180429712F730020C3FE /* NewEditDeadlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D8180329712F730020C3FE /* NewEditDeadlineView.swift */; };
@@ -168,6 +169,7 @@
 		04CC39B42A5F644400EC70A3 /* DeadlineLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineLabel.swift; sourceTree = "<group>"; };
 		04CC39B62A5F6A0300EC70A3 /* KeyValueRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyValueRow.swift; sourceTree = "<group>"; };
 		04CC39B82A5F6E5000EC70A3 /* PrivacySecurityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacySecurityView.swift; sourceTree = "<group>"; };
+		04CC39C12A60068700EC70A3 /* ViewConditional.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewConditional.swift; sourceTree = "<group>"; };
 		04D058FF2964C90E0091E58C /* SupportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportView.swift; sourceTree = "<group>"; };
 		04D57E9C29762DA4001AAA9F /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 		04D8180329712F730020C3FE /* NewEditDeadlineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewEditDeadlineView.swift; sourceTree = "<group>"; };
@@ -442,6 +444,7 @@
 			children = (
 				04CC39B42A5F644400EC70A3 /* DeadlineLabel.swift */,
 				04CC39B62A5F6A0300EC70A3 /* KeyValueRow.swift */,
+				04CC39C12A60068700EC70A3 /* ViewConditional.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -582,6 +585,7 @@
 				04807732296DF3FC00D5596D /* IconsManager.swift in Sources */,
 				04E7EC042970785400AB92B8 /* DeadlineViews.swift in Sources */,
 				04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */,
+				04CC39C22A60068700EC70A3 /* ViewConditional.swift in Sources */,
 				044A45812963876E00AEC0F3 /* TodoView.swift in Sources */,
 				046873362958EC3100B12C4C /* Store.swift in Sources */,
 				0483591E297D181A00D65C72 /* CalendarView.swift in Sources */,

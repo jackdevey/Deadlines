@@ -5,7 +5,23 @@
 ////  Created by Jack Devey on 02/01/2023.
 ////
 //
-//import SwiftUI
+import SwiftUI
+
+
+struct DeadlineView: View {
+    
+    @StateObject var deadline: Deadline
+    
+    var body: some View {
+        List {
+            Text(deadline.icon)
+        }
+        .listStyle(.grouped)
+        .navigationTitle(deadline.name)
+    }
+    
+}
+
 //
 //struct DeadlineView: View {
 //    

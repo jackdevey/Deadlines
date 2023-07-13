@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import UIKit
 
-@Model public class Deadline {
+@Model public class Deadline: ObservableObject {
     // Attributes
     var name: String = ""
     var due: Date = Date()

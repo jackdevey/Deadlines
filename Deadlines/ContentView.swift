@@ -76,15 +76,20 @@ struct ContentView: View {
     
     @State private var settings: Bool = false
     @State private var newDeadline: Bool = false
+    
+    @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack {
+        NavigationStack(path: $path) {
             List {
                 ForEach(deadlines) { deadline in
-                    deadline.ListView()
+                    NavigationLink(value: deadline) {
+                        deadline.ListView()
+                    }
                 }
 //                .onMove { deadlines.move(fromOffsets: $0, toOffset: $1) }
             }
+            .listStyle(.grouped)
             .navigationTitle("Deadlines")
             .toolbar {
                 // Edit deadlines
@@ -108,6 +113,9 @@ struct ContentView: View {
                     }
                 }
             }
+            .navigationDestination(for: Deadline.self) { deadline in
+                DeadlineView(deadline: deadline)
+            }
         }
         .sheet(isPresented: $settings) {
             SettingsSheet(isShowing: $settings)
@@ -120,11 +128,13 @@ struct ContentView: View {
                 },
                 confirmHandler: { name, date, color, iconName in
                     // Make a new deadline
-                    let deadline = Deadline(name: name, due: date, icon: iconName, colorId: 0)
+                    let deadline = Deadline(name: name, due: date, icon: iconName, colorId: color)
                     // Close the view
                     newDeadline = false
                     // Save if needed
                     context.insert(deadline)
+                    // Navigate to the new deadline
+                    path.append(deadline)
                 }
             )
         }

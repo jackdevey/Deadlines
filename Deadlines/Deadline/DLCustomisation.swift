@@ -16,18 +16,18 @@ import SwiftUI
 struct DLCustomisation {
     
     /// List of colors as used in the `ColorPicker`
-    let colors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .indigo, .pink, .purple, .brown, .gray]
+    static let colors: [Color] = [.red, .orange, .yellow, .green, .cyan, .blue, .indigo, .pink, .purple, .brown, .gray]
     
     /// Gets the associated color from the `colorId` provided
     /// > Might return nil if out of bounds
     /// - Parameters:
-    ///     - colorId: `Int16` The colorId for the color
+    ///     - colorId: `Int` The colorId for the color
     /// - Returns: `Color?` The associated color or nil
-    func getColor(colorId: Int16) -> Color? {
+    static func getColor(colorId: Int) -> Color {
         if Int(colorId) < colors.count - 1 {
             return colors[Int(colorId)]
         } else {
-            return nil
+            return .gray
         }
     }
 
@@ -37,13 +37,13 @@ struct DLCustomisation {
     /// ColorPicker(selection: $colorId)
     /// ```
     /// > The `selection` parameter holds the colorId in Int16 value, not the `Color` value
-    /// > itself. Use `getColor(colorId: Int16)` to convert this to a `Color` type.
+    /// > itself. Use `getColor(colorId: Int)` to convert this to a `Color` type.
     /// - Parameters:
-    ///     - selection: `Binding<Int16>` The binding to store the selection to
+    ///     - selection: `Binding<Int>` The binding to store the selection to
     ///     - columns: `[GridItem]` The columns to use for the `GridView`
     @ViewBuilder
-    func ColorPicker(
-        selection: Binding<Int16>,
+    static func ColorPicker(
+        selection: Binding<Int>,
         columns: [GridItem] = [GridItem(.adaptive(minimum: 40))]
     ) -> some View {
         LazyVGrid(columns: columns, spacing: 20) {
@@ -58,14 +58,14 @@ struct DLCustomisation {
                     }
                 }
                 .onTapGesture {
-                    selection.wrappedValue = Int16(idx)
+                    selection.wrappedValue = idx
                 }
             }
         }
     }
     
     /// List of icons as used in the `IconPicker`
-    let icons: [String] = [
+    static let icons: [String] = [
         "bookmark.fill", "mappin", "graduationcap.fill", "dice.fill", "figure.dance",
         "key.horizontal.fill", "mountain.2.fill", "car.rear.fill", "tree.fill", "drop.triangle.fill",
         "mug.fill", "case.fill", "lightbulb.fill", "house.fill", "doc.fill", "person.fill",
@@ -82,12 +82,12 @@ struct DLCustomisation {
     /// ```
     /// - Parameters:
     ///     - selection: `Binding<String>` The binding to store the selection to
-    ///     - colorId: `Int16` The colorId for the selected icon background color
+    ///     - colorId: `Int` The colorId for the selected icon background color
     ///     - columns: `[GridItem]` The columns to use for the `GridView`
     @ViewBuilder
-    func IconPicker(
+    static func IconPicker(
         selection: Binding<String>,
-        colorId: Int16,
+        colorId: Int,
         columns: [GridItem] = [GridItem(.adaptive(minimum: 40))]
     ) -> some View {
         LazyVGrid(columns: columns, spacing: 20) {

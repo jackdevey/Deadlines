@@ -45,8 +45,8 @@ struct SettingsSheet: View {
                     Text("About")
                 }
             }
-            .listStyle(.grouped)
             .navigationTitle("Settings")
+            .listStyle(.grouped)
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 // Close button

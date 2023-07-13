@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct DeadlinesApp: App {
+    
 //    @AppStorage("context.newInstall") var isNewInstall = true
 //            
 //    let tipJar: SwiftTipJar

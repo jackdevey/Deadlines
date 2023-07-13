@@ -15,11 +15,11 @@ extension Deadline {
     
     @ViewBuilder
     func ListView() -> some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             ZStack {
-                RoundedRectangle(cornerRadius: 7)
-                    .fill(.gray.gradient)
-                    .frame(width: 40, height: 40)
+                RoundedRectangle(cornerRadius: 5)
+                    .fill(DLCustomisation.getColor(colorId: self.colorId))
+                    .frame(width: 35, height: 35)
                 Image(systemName: self.icon)
                     .foregroundColor(.white)
             }
@@ -40,7 +40,6 @@ extension Deadline {
             }
             .padding([.leading], 5)
         }
-        .padding(5)
 //        .contextMenu {
 //            Button {
 //                self.submitted = true
