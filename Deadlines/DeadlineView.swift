@@ -14,7 +14,77 @@ struct DeadlineView: View {
     
     var body: some View {
         List {
-            Text(deadline.icon)
+            Section {
+                VStack(alignment: .leading, spacing: 10) {
+                    ProgressView(deadline.progress, value: deadline.percentCompleted, total: 1)
+                    Text(deadline.progressDescription)
+                        .font(.footnote)
+                }
+                NavigationLink {
+                    Text("todo")
+                } label: {
+                    Label("Edit Details", systemImage: "slider.horizontal.2.square")
+                        .foregroundStyle(.primary)
+                }
+            }
+            
+            Section {
+                
+                // Checklist
+                NavigationLink {
+                    Text("todo")
+                } label: {
+                    Label {
+                        Text("Checklist")
+                    } icon: {
+                        Image(systemName: "checklist")
+                            .imageScale(.medium)
+                    }
+                    .foregroundStyle(.primary)
+                }
+                
+                // Links
+                NavigationLink {
+                    Text("todo")
+                } label: {
+                    Label {
+                        Text("Links")
+                    } icon: {
+                        Image(systemName: "link")
+                            .imageScale(.medium)
+                    }
+                    .foregroundStyle(.primary)
+                }
+            }
+            
+            Section {
+                // isSubmitted
+                Toggle(isOn: $deadline.isSubmitted) {
+                    Label {
+                        Text("Submitted")
+                    } icon: {
+                        Image(systemName: "paperplane")
+                            .imageScale(.medium)
+                    }
+                    .foregroundStyle(.blue)
+                }
+                // isUrgent
+                Toggle(isOn: $deadline.isUrgent) {
+                    Label {
+                        Text("Urgent")
+                    } icon: {
+                        Image(systemName: "exclamationmark")
+                            .imageScale(.medium)
+                    }
+                    .foregroundStyle(.red)
+                }.onChange(of: deadline.isUrgent) {
+                    try? deadline.context?.save()
+                }
+            } header: {
+                Text("Flags")
+            } footer: {
+                Text("Flags can be used to help categorise the state of Deadlines as they progress, they are often automatically assigned by the App however can be manually overidden here.")
+            }
         }
         .listStyle(.grouped)
         .navigationTitle(deadline.name)

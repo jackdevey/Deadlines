@@ -18,7 +18,7 @@ extension Deadline {
         HStack(alignment: .center) {
             ZStack {
                 RoundedRectangle(cornerRadius: 5)
-                    .fill(DLCustomisation.getColor(colorId: self.colorId))
+                    .fill(DLCustomisation.getColor(colorId: self.colorId).gradient)
                     .frame(width: 35, height: 35)
                 Image(systemName: self.icon)
                     .foregroundColor(.white)
@@ -38,7 +38,7 @@ extension Deadline {
 //                        .bold()
 //                }
             }
-            .padding([.leading], 5)            
+            .padding([.leading], 5)
         }
 //        .contextMenu {
 //            Button {

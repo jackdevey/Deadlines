@@ -73,6 +73,8 @@ struct ContentView: View {
     
     @Query(sort: \.due, order: .reverse) var deadlines: [Deadline]
     
+    @Environment(\.scenePhase) private var scenePhase
+    
     
     @State private var settings: Bool = false
     @State private var newDeadline: Bool = false
@@ -86,6 +88,20 @@ struct ContentView: View {
             List(filterer.filter(unfiltered: deadlines)) { deadline in
                 NavigationLink(value: deadline) {
                     deadline.ListView()
+                    // Show submitted icon
+                        .if(deadline.isSubmitted) {
+                            $0.badge(
+                                Text(" \(Image(systemName: "paperplane")) ")
+                                    .foregroundStyle(.blue)
+                            )
+                        }
+                    // Show urgent icon
+                        .if(deadline.isUrgent) {
+                            $0.badge(
+                                Text(" \(Image(systemName: "exclamationmark")) ")
+                                    .foregroundStyle(.red)
+                            )
+                        }
                 }
                 .swipeActions(edge: .trailing) {
                     Button(role: .destructive) {
@@ -103,17 +119,22 @@ struct ContentView: View {
                 // Filter
                 ToolbarItem(placement: .topBarLeading) {
                     Menu {
-                        // Submitted
-                        Toggle(isOn: $filterer.isUrgent) {
-                            Label("Urgent", systemImage: "exclamationmark")
+                        // Filter by flags
+                        Section {
+                            // Submitted
+                            Toggle(isOn: $filterer.isSubmitted) {
+                                Label("Submitted", systemImage: "paperplane")
+                            }
+                            // Urgent
+                            Toggle(isOn: $filterer.isUrgent) {
+                                Label("Urgent", systemImage: "exclamationmark")
+                            }
+                        } header: {
+                            Text("Flags")
                         }
                         // Expired
                         Toggle(isOn: $filterer.hasExpired) {
                             Label("Expired", systemImage: "clock.badge.exclamationmark")
-                        }
-                        // Submitted
-                        Toggle(isOn: $filterer.isSubmitted) {
-                            Label("Submitted", systemImage: "paperplane")
                         }
                     } label: {
                         Label("Filter", systemImage: filterer.hasFilterApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
