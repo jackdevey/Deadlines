@@ -73,8 +73,9 @@ struct ContentView: View {
     
     @Query(sort: \.due, order: .reverse) var deadlines: [Deadline]
     
-    @State private var showingDeleteAlert: Bool = false
+    
     @State private var settings: Bool = false
+    @State private var newDeadline: Bool = false
 
     var body: some View {
         NavigationStack {
@@ -93,8 +94,7 @@ struct ContentView: View {
                 // New deadline
                 ToolbarItem {
                     Button {
-                        let deadline = Deadline(name: "", due: Date(), icon: "", colorId: 0)
-                        context.insert(deadline)
+                        newDeadline = true
                     } label: {
                         Label("New", systemImage: "plus.app")
                     }
@@ -111,6 +111,22 @@ struct ContentView: View {
         }
         .sheet(isPresented: $settings) {
             SettingsSheet(isShowing: $settings)
+        }
+        .sheet(isPresented: $newDeadline) {
+            NewEditDeadlineView(
+                cancelHandler: {
+                    // Close the view
+                    newDeadline = false
+                },
+                confirmHandler: { name, date, color, iconName in
+                    // Make a new deadline
+                    let deadline = Deadline(name: name, due: date, icon: iconName, colorId: 0)
+                    // Close the view
+                    newDeadline = false
+                    // Save if needed
+                    context.insert(deadline)
+                }
+            )
         }
         
 //        VStack {

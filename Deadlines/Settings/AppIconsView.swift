@@ -75,15 +75,14 @@ struct AppIconsView: View {
                         .resizable()
                         .frame(width: 40, height: 40)
                         .cornerRadius(7)
+                        .padding(.trailing, 5)
                     // Name & URL
                     VStack(alignment: .leading, spacing: 0) {
                         Text(icon.name)
                         Text(icon.desc)
                             .foregroundColor(.secondary)
                     }
-                    .padding([.leading], 5)
                 }
-                .padding(5)
                 Spacer()
                 if iconName == icon.iconName {
                     Image(systemName: "checkmark.circle.fill")
