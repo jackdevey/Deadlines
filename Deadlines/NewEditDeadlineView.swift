@@ -55,6 +55,7 @@ struct NewEditDeadlineView: View {
                     DLCustomisation.IconPicker(selection: $iconName, colorId: colorId)
                 }
             }
+            .listStyle(.grouped)
             .toolbar {
                 // Cancel button that calls cancelHandler
                 if showCancel {
@@ -89,11 +90,11 @@ struct NewEditDeadlineView: View {
     
     @ViewBuilder
     func Preview() -> some View {
-        HStack(alignment: .top) {
+        HStack(alignment: .center) {
             ZStack {
-                RoundedRectangle(cornerRadius: 7)
+                RoundedRectangle(cornerRadius: 5)
                     .fill(DLCustomisation.colors[Int(self.colorId)].gradient)
-                    .frame(width: 40, height: 40)
+                    .frame(width: 35, height: 35)
                 Image(systemName: self.iconName)
                     .foregroundColor(.white)
             }
@@ -107,7 +108,6 @@ struct NewEditDeadlineView: View {
             }
             .padding([.leading], 5)
         }
-        .padding(5)
     }
 
 }

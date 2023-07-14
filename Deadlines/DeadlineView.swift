@@ -12,6 +12,8 @@ struct DeadlineView: View {
     
     @StateObject var deadline: Deadline
     
+    @State private var isShowingEditDeadlineSheet: Bool = false
+    
     var body: some View {
         List {
             Section {
@@ -20,12 +22,18 @@ struct DeadlineView: View {
                     Text(deadline.progressDescription)
                         .font(.footnote)
                 }
-                NavigationLink {
-                    Text("todo")
+                Button {
+                    isShowingEditDeadlineSheet = true
                 } label: {
-                    Label("Edit Details", systemImage: "slider.horizontal.2.square")
-                        .foregroundStyle(.primary)
+                    HStack {
+                        Label("Edit Details", systemImage: "slider.horizontal.2.square")
+                        Spacer()
+                        Image(systemName: "chevron.up.square")
+                            .imageScale(.medium)
+                            .foregroundStyle(.secondary)
+                    }
                 }
+                .foregroundStyle(.primary)
             }
             
             Section {
@@ -88,6 +96,29 @@ struct DeadlineView: View {
         }
         .listStyle(.grouped)
         .navigationTitle(deadline.name)
+        .sheet(isPresented: $isShowingEditDeadlineSheet) {
+            NewEditDeadlineView(
+                new: false,
+                title: "Edit Details",
+                name: deadline.name,
+                date: deadline.due,
+                colorId: deadline.colorId,
+                iconName: deadline.icon,
+                cancelHandler: {
+                    // Close the view
+                    isShowingEditDeadlineSheet = false
+                },
+                confirmHandler: { name, date, colorId, iconName in
+                    // Make a new deadline
+                    deadline.name = name
+                    deadline.due = date
+                    deadline.colorId = colorId
+                    deadline.icon = iconName
+                    // Close the view
+                    isShowingEditDeadlineSheet = false
+                }
+            )
+        }
     }
     
 }
