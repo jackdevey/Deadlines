@@ -22,7 +22,7 @@ import UIKit
     // Generic
     public var id: UUID = UUID()
     var lastEdited: Date = Date()
-    var lastEditedBy: String = UIDevice.current.name
+    var lastEditedBy: String = "U.current.name"
     
     init() {}
 }

@@ -25,7 +25,7 @@ import UIKit
     // Generic
     public var id: UUID? = UUID()
     var lastEdited: Date = Date()
-    var lastEditedBy: String = UIDevice.current.name
+    var lastEditedBy: String = "UIDevice.current.name"
     
     public init(name: String, due: Date, icon: String, colorId: Int) {
         self.id = UUID()
