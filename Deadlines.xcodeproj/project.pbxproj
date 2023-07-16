@@ -35,7 +35,7 @@
 		047346E52A63F0AD00BA09C3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047346E42A63F0AD00BA09C3 /* ContentView.swift */; };
 		047346E72A63F0B000BA09C3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047346E62A63F0B000BA09C3 /* Assets.xcassets */; };
 		047346EA2A63F0B000BA09C3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 047346E92A63F0B000BA09C3 /* Preview Assets.xcassets */; };
-		047346ED2A63F0B000BA09C3 /* DeadlinesWatch Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 047346E02A63F0AD00BA09C3 /* DeadlinesWatch Watch App.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		047346ED2A63F0B000BA09C3 /* Deadlines (Watch).app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 047346E02A63F0AD00BA09C3 /* Deadlines (Watch).app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		047346F32A63F9F900BA09C3 /* DeadlineFilterer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D7B5B2A602C0100B3FF8C /* DeadlineFilterer.swift */; };
 		047346F42A63FA0400BA09C3 /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DE7C42A5E16D900FBD24A /* Core.swift */; };
 		047346F52A63FA0D00BA09C3 /* Deadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DE7BB2A5E0B7500FBD24A /* Deadline.swift */; };
@@ -118,7 +118,7 @@
 			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
 			dstSubfolderSpec = 16;
 			files = (
-				047346ED2A63F0B000BA09C3 /* DeadlinesWatch Watch App.app in Embed Watch Content */,
+				047346ED2A63F0B000BA09C3 /* Deadlines (Watch).app in Embed Watch Content */,
 			);
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,7 +162,7 @@
 		046873372958FFD400B12C4C /* LinkManagerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkManagerSheet.swift; sourceTree = "<group>"; };
 		046873392959CC0200B12C4C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		04688B582967B6ED00B68EB4 /* NotificationsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsManager.swift; sourceTree = "<group>"; };
-		047346E02A63F0AD00BA09C3 /* DeadlinesWatch Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "DeadlinesWatch Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		047346E02A63F0AD00BA09C3 /* Deadlines (Watch).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Deadlines (Watch).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		047346E22A63F0AD00BA09C3 /* DeadlinesWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesWatchApp.swift; sourceTree = "<group>"; };
 		047346E42A63F0AD00BA09C3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		047346E62A63F0B000BA09C3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -257,7 +257,7 @@
 			children = (
 				049DE7BA2A5E0B6C00FBD24A /* Shared */,
 				04478C3E295560D900F76701 /* Deadlines */,
-				047346E12A63F0AD00BA09C3 /* DeadlinesWatch Watch App */,
+				047346E12A63F0AD00BA09C3 /* watchOS */,
 				0495E0832A5B37CF00C954DC /* Frameworks */,
 				04478C3D295560D900F76701 /* Products */,
 			);
@@ -267,7 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				04478C3C295560D900F76701 /* Deadlines.app */,
-				047346E02A63F0AD00BA09C3 /* DeadlinesWatch Watch App.app */,
+				047346E02A63F0AD00BA09C3 /* Deadlines (Watch).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -357,7 +357,7 @@
 			path = Links;
 			sourceTree = "<group>";
 		};
-		047346E12A63F0AD00BA09C3 /* DeadlinesWatch Watch App */ = {
+		047346E12A63F0AD00BA09C3 /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
 				047346F22A63F92C00BA09C3 /* DeadlinesWatch Watch App.entitlements */,
@@ -367,7 +367,7 @@
 				047346E82A63F0B000BA09C3 /* Preview Content */,
 				047346FC2A64231C00BA09C3 /* DeadlineView.swift */,
 			);
-			path = "DeadlinesWatch Watch App";
+			path = watchOS;
 			sourceTree = "<group>";
 		};
 		047346E82A63F0B000BA09C3 /* Preview Content */ = {
@@ -579,9 +579,9 @@
 			productReference = 04478C3C295560D900F76701 /* Deadlines.app */;
 			productType = "com.apple.product-type.application";
 		};
-		047346DF2A63F0AD00BA09C3 /* DeadlinesWatch Watch App */ = {
+		047346DF2A63F0AD00BA09C3 /* Deadlines (Watch) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 047346F12A63F0B000BA09C3 /* Build configuration list for PBXNativeTarget "DeadlinesWatch Watch App" */;
+			buildConfigurationList = 047346F12A63F0B000BA09C3 /* Build configuration list for PBXNativeTarget "Deadlines (Watch)" */;
 			buildPhases = (
 				047346DC2A63F0AD00BA09C3 /* Sources */,
 				047346DD2A63F0AD00BA09C3 /* Frameworks */,
@@ -591,9 +591,9 @@
 			);
 			dependencies = (
 			);
-			name = "DeadlinesWatch Watch App";
+			name = "Deadlines (Watch)";
 			productName = "DeadlinesWatch Watch App";
-			productReference = 047346E02A63F0AD00BA09C3 /* DeadlinesWatch Watch App.app */;
+			productReference = 047346E02A63F0AD00BA09C3 /* Deadlines (Watch).app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -633,7 +633,7 @@
 			projectRoot = "";
 			targets = (
 				04478C3B295560D900F76701 /* Deadlines */,
-				047346DF2A63F0AD00BA09C3 /* DeadlinesWatch Watch App */,
+				047346DF2A63F0AD00BA09C3 /* Deadlines (Watch) */,
 			);
 		};
 /* End PBXProject section */
@@ -766,7 +766,7 @@
 /* Begin PBXTargetDependency section */
 		047346EC2A63F0B000BA09C3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 047346DF2A63F0AD00BA09C3 /* DeadlinesWatch Watch App */;
+			target = 047346DF2A63F0AD00BA09C3 /* Deadlines (Watch) */;
 			targetProxy = 047346EB2A63F0B000BA09C3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -970,10 +970,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "DeadlinesWatch Watch App/DeadlinesWatch Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "watchOS/DeadlinesWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DeadlinesWatch Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"watchOS/Preview Content\"";
 				DEVELOPMENT_TEAM = G2D5W96ZY7;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -988,7 +988,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1006,10 +1006,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "DeadlinesWatch Watch App/DeadlinesWatch Watch App.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "watchOS/DeadlinesWatch Watch App.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"DeadlinesWatch Watch App/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"watchOS/Preview Content\"";
 				DEVELOPMENT_TEAM = G2D5W96ZY7;
 				ENABLE_PREVIEWS = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -1024,7 +1024,7 @@
 				);
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines.watchkitapp;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.jw3.Deadlines.watch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
@@ -1056,7 +1056,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		047346F12A63F0B000BA09C3 /* Build configuration list for PBXNativeTarget "DeadlinesWatch Watch App" */ = {
+		047346F12A63F0B000BA09C3 /* Build configuration list for PBXNativeTarget "Deadlines (Watch)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				047346EF2A63F0B000BA09C3 /* Debug */,
