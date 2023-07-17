@@ -179,6 +179,7 @@ struct ContentView: View {
                     context.insert(deadline)
                     // Navigate to the new deadline
                     path.append(deadline)
+                    try? context.save()
                 }
             )
         }

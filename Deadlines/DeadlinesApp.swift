@@ -34,6 +34,14 @@ struct DeadlinesApp: App {
                 .onAppear {
                     SystemSettingsHelper.setAppInfo()
                 }
+                .userActivity("uk.jw3.Deadlines.handoff.app", isActive: true) { activity in
+                    activity.isEligibleForSearch = true
+                    activity.isEligibleForHandoff = true
+                    activity.becomeCurrent()
+                }
+                .onContinueUserActivity("uk.jw3.Deadlines.handoff.app") { _ in
+                    
+                }
             
             
 //            if isNewInstall {

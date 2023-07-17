@@ -27,8 +27,8 @@ struct ContentView: View {
                     List {
                         ForEach(deadlines) { deadline in
                             NavigationLink(value: deadline) {
-                                Label(deadline.name, systemImage: "icon")
-                                    .tint(DLCustomisation.getColor(colorId: deadline.colorId))
+                                Label(deadline.name, systemImage: deadline.icon)
+                                    .foregroundStyle(DLCustomisation.getColor(colorId: deadline.colorId))
                             }
                         }
                     }
