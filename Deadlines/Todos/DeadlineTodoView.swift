@@ -1,3 +1,54 @@
+import SwiftUI
+import SwiftData
+
+struct DeadlineTodoView: View {
+    
+    /// Get SwiftData context
+    @Environment(\.modelContext) private var context
+    
+    /// Is showing new checklist item sheet
+    @State private var isShowingNewChecklistItemSheet: Bool = false
+    
+    /// Deadline as passed in from caller
+    @StateObject var deadline: Deadline
+        
+    var body: some View {
+        List {
+            if deadline.todos?.count ?? 0 > 0 {
+                ForEach(deadline.todos!) { todo in
+                    TodoRowView(todo: todo)
+                }
+            } else {
+                Text("No checklist items")
+            }
+        }
+        .listStyle(.grouped)
+        .navigationTitle("Checklist")
+        .toolbar {
+            ToolbarItem {
+                Button {
+                    isShowingNewChecklistItemSheet = true
+                } label: {
+                    Label("New Item", systemImage: "plus")
+                }
+            }
+        }
+        .sheet(isPresented: $isShowingNewChecklistItemSheet) {
+            TodoManagerSheet(mode: .new) { name, desc, done in
+                // Create new todo
+                let todo = DeadlineTodo(name: name, desc: desc, done: done)
+                context.insert(todo)
+                // Assign todo to deadline
+                deadline.addTodo(todo: todo)
+                // Save to data store
+                try? context.save()
+                // Close sheet
+                isShowingNewChecklistItemSheet = false
+            }
+        }
+    }
+}
+
 ////
 ////  DeadlineLinkView.swift
 ////  Deadlines

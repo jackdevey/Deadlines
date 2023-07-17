@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import UIKit
 
-@Model public class DeadlineTodo {
+@Model public class DeadlineTodo: ObservableObject, Hashable {
     // Attributes
     var name: String = ""
     var desc: String = ""
@@ -24,6 +24,10 @@ import UIKit
     var lastEdited: Date = Date()
     var lastEditedBy: String = "d"
     
-    init() {}
+    init(name: String, desc: String, done: Bool) {
+        self.name = name
+        self.desc = desc
+        self.done = done
+    }
 
 }

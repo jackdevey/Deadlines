@@ -8,68 +8,9 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct DeadlinesListView: View {
     // Get viewContext
     @Environment(\.modelContext) private var context
-    
-//    /// Fetch items
-//
-//    // NOT submitted
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.date, ascending: false)],
-//        predicate: NSPredicate(format: "submitted == false"),
-//        animation: .default)
-//    private var items: FetchedResults<Item>
-//    // Submitted
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.date, ascending: false)],
-//        predicate: NSPredicate(format: "submitted == true"),
-//        animation: .default)
-//    private var submittedItems: FetchedResults<Item>
-//    
-//    /// Fetch Tags
-//    
-//    @FetchRequest(
-//        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
-//        animation: .default)
-//    private var tags: FetchedResults<Tag>
-//    
-//    
-//    @State private var showNew = false
-//    @State private var showSettings = false
-//    @State private var selection: Item?
-//    
-//    @AppStorage("useBiometrics") private var useBiometrics = false
-//    @State private var showContent = false
-//    
-//    @State private var date = Date()
-//    @State private var name = ""
-//    
-//    @State private var search = ""
-//
-//    var preFilteredDeadlines: [Item] {
-//        if search.isEmpty {
-//            return items.filter({ _ in true })
-//        } else {
-//            return items.filter { $0.name!.contains(search) || $0.tagNames.contains(search) }
-//        }
-//    }
-//    
-//    var filteredCompletedDeadlines: [Item] {
-//        if search.isEmpty {
-//            return submittedItems.filter({ _ in true })
-//        } else {
-//            return submittedItems.filter { $0.name!.contains(search) || $0.tagNames.contains(search) }
-//        }
-//    }
-//    
-//    var filteredTags: [Tag] {
-//        if search.isEmpty {
-//            return tags.filter({ _ in true })
-//        } else {
-//            return tags.filter { search.first == "#" && ("#\($0.text!)").contains(search) }
-//        }
-//    }
     
     @Query(sort: \.due, order: .reverse) var deadlines: [Deadline]
     
@@ -84,81 +25,75 @@ struct ContentView: View {
     @State private var path = NavigationPath()
 
     var body: some View {
-        NavigationStack(path: $path) {
-            List(filterer.filter(unfiltered: deadlines)) { deadline in
-                NavigationLink(value: deadline) {
-                    deadline.ListView()
-                    // Show submitted icon
-                        .if(deadline.isSubmitted) {
-                            $0.badge(
-                                Text(" \(Image(systemName: "paperplane")) ")
-                                    .foregroundStyle(.blue)
-                            )
-                        }
-                    // Show urgent icon
-                        .if(deadline.isUrgent) {
-                            $0.badge(
-                                Text(" \(Image(systemName: "exclamationmark")) ")
-                                    .foregroundStyle(.red)
-                            )
-                        }
-                }
-                .swipeActions(edge: .trailing) {
-                    Button(role: .destructive) {
-                        deadline.context?.delete(deadline)
-                        try? context.save()
-                    } label: {
-                        Label("Delete", systemImage: "bin.xmark")
+        List(filterer.filter(unfiltered: deadlines)) { deadline in
+            NavigationLink(value: AppRouter.details(deadline)) {
+                deadline.ListView()
+                // Show submitted icon
+                    .if(deadline.isSubmitted) {
+                        $0.badge(
+                            Text(" \(Image(systemName: "paperplane")) ")
+                                .foregroundStyle(.blue)
+                        )
                     }
+                // Show urgent icon
+                    .if(deadline.isUrgent) {
+                        $0.badge(
+                            Text(" \(Image(systemName: "exclamationmark")) ")
+                                .foregroundStyle(.red)
+                        )
+                    }
+            }
+            .swipeActions(edge: .trailing) {
+                Button(role: .destructive) {
+                    deadline.context?.delete(deadline)
+                    try? context.save()
+                } label: {
+                    Label("Delete", systemImage: "bin.xmark")
                 }
+            }
 //                .onMove { deadlines.move(fromOffsets: $0, toOffset: $1) }
-            }
-            .listStyle(.grouped)
-            .navigationTitle("Deadlines")
-            .toolbar {
-                // Filter
-                ToolbarItem(placement: .topBarLeading) {
-                    Menu {
-                        // Filter by flags
-                        Section {
-                            // Submitted
-                            Toggle(isOn: $filterer.isSubmitted) {
-                                Label("Submitted", systemImage: "paperplane")
-                            }
-                            // Urgent
-                            Toggle(isOn: $filterer.isUrgent) {
-                                Label("Urgent", systemImage: "exclamationmark")
-                            }
-                        } header: {
-                            Text("Flags")
+        }
+        .navigationTitle("Deadlines")
+        .toolbar {
+            // Filter
+            ToolbarItem(placement: .topBarLeading) {
+                Menu {
+                    // Filter by flags
+                    Section {
+                        // Submitted
+                        Toggle(isOn: $filterer.isSubmitted) {
+                            Label("Submitted", systemImage: "paperplane")
                         }
-                        // Expired
-                        Toggle(isOn: $filterer.hasExpired) {
-                            Label("Expired", systemImage: "clock.badge.exclamationmark")
+                        // Urgent
+                        Toggle(isOn: $filterer.isUrgent) {
+                            Label("Urgent", systemImage: "exclamationmark")
                         }
-                    } label: {
-                        Label("Filter", systemImage: filterer.hasFilterApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
+                    } header: {
+                        Text("Flags")
                     }
-                }
-                // New deadline
-                ToolbarItem {
-                    Button {
-                        newDeadline = true
-                    } label: {
-                        Label("New", systemImage: "plus.app")
+                    // Expired
+                    Toggle(isOn: $filterer.hasExpired) {
+                        Label("Expired", systemImage: "clock.badge.exclamationmark")
                     }
-                }
-                // Settings
-                ToolbarItem {
-                    Button {
-                        settings = true
-                    } label: {
-                        Label("Settings", systemImage: "gearshape")
-                    }
+                } label: {
+                    Label("Filter", systemImage: filterer.hasFilterApplied ? "line.3.horizontal.decrease.circle.fill" : "line.3.horizontal.decrease.circle")
                 }
             }
-            .navigationDestination(for: Deadline.self) { deadline in
-                DeadlineView(deadline: deadline)
+            // New deadline
+            ToolbarItem {
+                Button {
+                    newDeadline = true
+                } label: {
+                    Label("New", systemImage: "plus.app")
+                }
+            }
+            // Settings
+            ToolbarItem {
+                Button {
+                    settings = true
+                } label: {
+                    Label("Settings", systemImage: "gearshape")
+                }
             }
         }
         .sheet(isPresented: $settings) {

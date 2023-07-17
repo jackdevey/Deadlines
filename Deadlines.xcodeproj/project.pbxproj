@@ -11,7 +11,7 @@
 		0417B7C5297B43E200DC8E91 /* LinkRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C4297B43E200DC8E91 /* LinkRowView.swift */; };
 		0417B7C7297B83AB00DC8E91 /* LinkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0417B7C6297B83AB00DC8E91 /* LinkView.swift */; };
 		04478C40295560D900F76701 /* DeadlinesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04478C3F295560D900F76701 /* DeadlinesApp.swift */; };
-		04478C42295560D900F76701 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04478C41295560D900F76701 /* ContentView.swift */; };
+		04478C42295560D900F76701 /* DeadlinesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04478C41295560D900F76701 /* DeadlinesListView.swift */; };
 		04478C44295560DA00F76701 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04478C43295560DA00F76701 /* Assets.xcassets */; };
 		04478C47295560DA00F76701 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04478C46295560DA00F76701 /* Preview Assets.xcassets */; };
 		044A457829634ED100AEC0F3 /* SupportStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044A457729634ED100AEC0F3 /* SupportStatusView.swift */; };
@@ -84,6 +84,11 @@
 		049DE7C52A5E16D900FBD24A /* Core.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DE7C42A5E16D900FBD24A /* Core.swift */; };
 		049DE7CA2A5E19CD00FBD24A /* DeadlineTodo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DE7C92A5E19CD00FBD24A /* DeadlineTodo.swift */; };
 		049DE7CC2A5E1A4000FBD24A /* DeadlineLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 049DE7CB2A5E1A4000FBD24A /* DeadlineLink.swift */; };
+		04ABC8962A6575B500A1A6F6 /* ImpactManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC8952A6575B500A1A6F6 /* ImpactManager.swift */; };
+		04ABC89A2A6577AD00A1A6F6 /* ChecklistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC8982A65779A00A1A6F6 /* ChecklistView.swift */; };
+		04ABC89D2A657E5C00A1A6F6 /* DeadlineHandoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC89C2A657E5C00A1A6F6 /* DeadlineHandoff.swift */; };
+		04ABC89E2A657E8000A1A6F6 /* DeadlineHandoff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC89C2A657E5C00A1A6F6 /* DeadlineHandoff.swift */; };
+		04ABC8A02A65A42D00A1A6F6 /* RouterIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ABC89F2A65A42D00A1A6F6 /* RouterIndexView.swift */; };
 		04AFE799297559A900998B92 /* EncodableExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE798297559A900998B92 /* EncodableExtensions.swift */; };
 		04AFE79B2975E62200998B92 /* TipJarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AFE79A2975E62200998B92 /* TipJarView.swift */; };
 		04C627BF2962477F00130206 /* DeadlineTodoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C627BE2962477F00130206 /* DeadlineTodoView.swift */; };
@@ -141,7 +146,7 @@
 		0417B7C6297B83AB00DC8E91 /* LinkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkView.swift; sourceTree = "<group>"; };
 		04478C3C295560D900F76701 /* Deadlines.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Deadlines.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04478C3F295560D900F76701 /* DeadlinesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesApp.swift; sourceTree = "<group>"; };
-		04478C41295560D900F76701 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		04478C41295560D900F76701 /* DeadlinesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlinesListView.swift; sourceTree = "<group>"; };
 		04478C43295560DA00F76701 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		04478C46295560DA00F76701 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		044A457729634ED100AEC0F3 /* SupportStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportStatusView.swift; sourceTree = "<group>"; };
@@ -207,6 +212,10 @@
 		049DE7C42A5E16D900FBD24A /* Core.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Core.swift; sourceTree = "<group>"; };
 		049DE7C92A5E19CD00FBD24A /* DeadlineTodo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineTodo.swift; sourceTree = "<group>"; };
 		049DE7CB2A5E1A4000FBD24A /* DeadlineLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineLink.swift; sourceTree = "<group>"; };
+		04ABC8952A6575B500A1A6F6 /* ImpactManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImpactManager.swift; sourceTree = "<group>"; };
+		04ABC8982A65779A00A1A6F6 /* ChecklistView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChecklistView.swift; sourceTree = "<group>"; };
+		04ABC89C2A657E5C00A1A6F6 /* DeadlineHandoff.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeadlineHandoff.swift; sourceTree = "<group>"; };
+		04ABC89F2A65A42D00A1A6F6 /* RouterIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouterIndexView.swift; sourceTree = "<group>"; };
 		04AFE798297559A900998B92 /* EncodableExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EncodableExtensions.swift; sourceTree = "<group>"; };
 		04AFE79A2975E62200998B92 /* TipJarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipJarView.swift; sourceTree = "<group>"; };
 		04B8226B2A5CEC3F00DF6AFE /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
@@ -275,6 +284,7 @@
 		04478C3E295560D900F76701 /* Deadlines */ = {
 			isa = PBXGroup;
 			children = (
+				04ABC8952A6575B500A1A6F6 /* ImpactManager.swift */,
 				0495E0982A5C5C9700C954DC /* Queries */,
 				0495E0952A5B43F000C954DC /* Intents */,
 				04D57E9B29762D93001AAA9F /* Onboarding */,
@@ -291,7 +301,8 @@
 				04C627BD296240F100130206 /* Todos */,
 				0468732E29580BBC00B12C4C /* Links */,
 				04478C3F295560D900F76701 /* DeadlinesApp.swift */,
-				04478C41295560D900F76701 /* ContentView.swift */,
+				04ABC89F2A65A42D00A1A6F6 /* RouterIndexView.swift */,
+				04478C41295560D900F76701 /* DeadlinesListView.swift */,
 				04478C43295560DA00F76701 /* Assets.xcassets */,
 				04478C45295560DA00F76701 /* Preview Content */,
 				046873352958EC3100B12C4C /* Store.swift */,
@@ -363,9 +374,10 @@
 				047346F22A63F92C00BA09C3 /* DeadlinesWatch Watch App.entitlements */,
 				047346E22A63F0AD00BA09C3 /* DeadlinesWatchApp.swift */,
 				047346E42A63F0AD00BA09C3 /* ContentView.swift */,
+				047346FC2A64231C00BA09C3 /* DeadlineView.swift */,
+				04ABC8982A65779A00A1A6F6 /* ChecklistView.swift */,
 				047346E62A63F0B000BA09C3 /* Assets.xcassets */,
 				047346E82A63F0B000BA09C3 /* Preview Content */,
-				047346FC2A64231C00BA09C3 /* DeadlineView.swift */,
 			);
 			path = watchOS;
 			sourceTree = "<group>";
@@ -471,6 +483,7 @@
 		049DE7BA2A5E0B6C00FBD24A /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				04ABC89B2A657E4B00A1A6F6 /* Handoff */,
 				04CC39B32A5F641B00EC70A3 /* Views */,
 				049DE7C02A5E0CCD00FBD24A /* Data */,
 			);
@@ -495,6 +508,14 @@
 				049DE7CB2A5E1A4000FBD24A /* DeadlineLink.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		04ABC89B2A657E4B00A1A6F6 /* Handoff */ = {
+			isa = PBXGroup;
+			children = (
+				04ABC89C2A657E5C00A1A6F6 /* DeadlineHandoff.swift */,
+			);
+			path = Handoff;
 			sourceTree = "<group>";
 		};
 		04AFE7972975597900998B92 /* Data */ = {
@@ -686,11 +707,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04ABC8962A6575B500A1A6F6 /* ImpactManager.swift in Sources */,
 				04E7EC082970DD7000AB92B8 /* DLCustomisation.swift in Sources */,
 				04E7EC062970B55800AB92B8 /* DeadlineChangeIconView.swift in Sources */,
 				0468733229580C3000B12C4C /* DeadlineLinkView.swift in Sources */,
 				04561CAA295F1C060087ABE7 /* NotesView.swift in Sources */,
 				044A457F29637EF400AEC0F3 /* DeadlineView.swift in Sources */,
+				04ABC8A02A65A42D00A1A6F6 /* RouterIndexView.swift in Sources */,
 				04AFE799297559A900998B92 /* EncodableExtensions.swift in Sources */,
 				0495E09B2A5C5CA800C954DC /* DeadlineQuery.swift in Sources */,
 				04835921297D28F800D65C72 /* TodoRowView.swift in Sources */,
@@ -710,7 +733,8 @@
 				04CC39B52A5F644400EC70A3 /* DeadlineLabel.swift in Sources */,
 				045D7B5A2A6025F100B3FF8C /* NavigateArrow.swift in Sources */,
 				045D7B5C2A602C0100B3FF8C /* DeadlineFilterer.swift in Sources */,
-				04478C42295560D900F76701 /* ContentView.swift in Sources */,
+				04478C42295560D900F76701 /* DeadlinesListView.swift in Sources */,
+				04ABC89D2A657E5C00A1A6F6 /* DeadlineHandoff.swift in Sources */,
 				04D57E9D29762DA4001AAA9F /* WelcomeView.swift in Sources */,
 				04CC39B72A5F6A0300EC70A3 /* KeyValueRow.swift in Sources */,
 				04AFE79B2975E62200998B92 /* TipJarView.swift in Sources */,
@@ -750,6 +774,7 @@
 				047346FA2A63FAD700BA09C3 /* ViewConditional.swift in Sources */,
 				047346F62A63FA1100BA09C3 /* DeadlineTodo.swift in Sources */,
 				047346E52A63F0AD00BA09C3 /* ContentView.swift in Sources */,
+				04ABC89E2A657E8000A1A6F6 /* DeadlineHandoff.swift in Sources */,
 				047346FB2A63FAD700BA09C3 /* NavigateArrow.swift in Sources */,
 				047346F42A63FA0400BA09C3 /* Core.swift in Sources */,
 				047346FD2A64231C00BA09C3 /* DeadlineView.swift in Sources */,
@@ -758,6 +783,7 @@
 				047346F92A63FAD700BA09C3 /* KeyValueRow.swift in Sources */,
 				047346F52A63FA0D00BA09C3 /* Deadline.swift in Sources */,
 				047346E32A63F0AD00BA09C3 /* DeadlinesWatchApp.swift in Sources */,
+				04ABC89A2A6577AD00A1A6F6 /* ChecklistView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 import UIKit
 
-@Model public class DeadlineLink {
+@Model public class DeadlineLink: ObservableObject, Hashable {
     // Attributes
     var name: String = ""
     var url: String = ""

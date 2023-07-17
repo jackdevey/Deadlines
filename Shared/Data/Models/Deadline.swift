@@ -96,4 +96,16 @@ import UIKit
         
         return message
     }
+    
+    /// Add new todo to the deadline
+    
+    func addTodo(todo: DeadlineTodo) {
+        if self.todos != nil {
+            // Deadline has todos already, add at index 0
+            self.todos!.insert(todo, at: 0)
+        } else {
+            // Deadline has no todos, start an array with this todo
+            self.todos = [todo]
+        }
+    }
 }

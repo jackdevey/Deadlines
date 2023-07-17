@@ -26,21 +26,14 @@ struct DeadlinesApp: App {
 //        }
     
 //    var store = Store()
+    
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RouterIndexView()
                 .useDataContainer()
                 .onAppear {
                     SystemSettingsHelper.setAppInfo()
-                }
-                .userActivity("uk.jw3.Deadlines.handoff.app", isActive: true) { activity in
-                    activity.isEligibleForSearch = true
-                    activity.isEligibleForHandoff = true
-                    activity.becomeCurrent()
-                }
-                .onContinueUserActivity("uk.jw3.Deadlines.handoff.app") { _ in
-                    
                 }
             
             
@@ -73,4 +66,13 @@ struct DeadlinesApp: App {
         }
     }
 
+}
+
+enum AppRouter: Hashable, Identifiable {
+    
+    case home, details(Deadline), checklist(Deadline)
+    
+    var id: Self {
+        return self
+    }
 }

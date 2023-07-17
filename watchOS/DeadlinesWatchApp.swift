@@ -13,11 +13,11 @@ struct DeadlinesWatch_Watch_AppApp: App {
         WindowGroup {
             ContentView()
                 .useDataContainer()
-                .userActivity("uk.jw3.Deadlines.handoff.app", isActive: true) { activity in
-                    activity.isEligibleForSearch = true
-                    activity.isEligibleForHandoff = true
-                    activity.becomeCurrent()
-                }
+//                .userActivity("uk.jw3.Deadlines.handoff.app", isActive: true) { activity in
+//                    activity.isEligibleForSearch = true
+//                    activity.isEligibleForHandoff = true
+//                    activity.becomeCurrent()
+//                }
         }
     }
 }

@@ -5,6 +5,7 @@
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>uk.jw3.Deadlines.handoff.app</string>
+		<string>uk.jw3.Deadlines.handoff.checklist</string>
 	</array>
 	<key>CFBundleIcons</key>
 	<dict>

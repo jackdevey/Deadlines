@@ -22,7 +22,11 @@ struct DeadlineView: View {
                 }
                 
                 Section {
-                    Label("Checklist", systemImage: "checklist")
+                    NavigationLink {
+                        ChecklistView(deadline: deadline)
+                    } label: {
+                        Label("Checklist", systemImage: "checklist")
+                    }
                     Label("Links", systemImage: "link")
                 }
             }

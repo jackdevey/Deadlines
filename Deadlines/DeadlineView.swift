@@ -40,7 +40,7 @@ struct DeadlineView: View {
                 
                 // Checklist
                 NavigationLink {
-                    Text("todo")
+                    DeadlineTodoView(deadline: deadline)
                 } label: {
                     Label {
                         Text("Checklist")
@@ -94,7 +94,6 @@ struct DeadlineView: View {
                 Text("Flags can be used to help categorise the state of Deadlines as they progress, they are often automatically assigned by the App however can be manually overidden here.")
             }
         }
-        .listStyle(.grouped)
         .navigationTitle(deadline.name)
         .sheet(isPresented: $isShowingEditDeadlineSheet) {
             NewEditDeadlineView(
