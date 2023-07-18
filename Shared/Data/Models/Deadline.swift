@@ -35,6 +35,8 @@ import UIKit
         self.colorId = colorId
     }
     
+    public init() {}
+    
     var percentCompleted: Float {
         let completed = self.completedLinksCount + self.completedTodosCount
         let total = (self.todos?.count ?? 0) + (self.links?.count ?? 0)

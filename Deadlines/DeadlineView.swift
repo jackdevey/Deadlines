@@ -10,9 +10,13 @@ import SwiftUI
 
 struct DeadlineView: View {
     
+    @Environment(\.modelContext) private var context
+    
     @StateObject var deadline: Deadline
     
     @State private var isShowingEditDeadlineSheet: Bool = false
+    
+    @State private var showingNewTaskView: Bool = false
     
     var body: some View {
         List {
@@ -37,62 +41,26 @@ struct DeadlineView: View {
             }
             
             Section {
-                
-                // Checklist
-                NavigationLink {
-                    DeadlineTodoView(deadline: deadline)
-                } label: {
-                    Label {
-                        Text("Checklist")
-                    } icon: {
-                        Image(systemName: "checklist")
-                            .imageScale(.medium)
+                if deadline.todos?.count ?? 0 > 0 {
+                    ForEach(deadline.todos!) { todo in
+                        TodoRowView(todo: todo)
                     }
-                    .foregroundStyle(.primary)
-                }
-                
-                // Links
-                NavigationLink {
-                    Text("todo")
-                } label: {
-                    Label {
-                        Text("Links")
-                    } icon: {
-                        Image(systemName: "link")
-                            .imageScale(.medium)
-                    }
-                    .foregroundStyle(.primary)
-                }
-            }
-            
-            Section {
-                // isSubmitted
-                Toggle(isOn: $deadline.isSubmitted) {
-                    Label {
-                        Text("Submitted")
-                    } icon: {
-                        Image(systemName: "paperplane")
-                            .imageScale(.medium)
-                    }
-                    .foregroundStyle(.blue)
-                }
-                // isUrgent
-                Toggle(isOn: $deadline.isUrgent) {
-                    Label {
-                        Text("Urgent")
-                    } icon: {
-                        Image(systemName: "exclamationmark")
-                            .imageScale(.medium)
-                    }
-                    .foregroundStyle(.red)
-                }.onChange(of: deadline.isUrgent) {
-                    try? deadline.context?.save()
+                } else {
+                    Text("No checklist items")
                 }
             } header: {
-                Text("Flags")
-            } footer: {
-                Text("Flags can be used to help categorise the state of Deadlines as they progress, they are often automatically assigned by the App however can be manually overidden here.")
+                HStack {
+                    Text("Tasks")
+                    Spacer()
+                    Button {
+                        showingNewTaskView = true
+                    } label: {
+                        Text("New")
+                    }
+                }
             }
+            .headerProminence(.increased)
+            
         }
         .navigationTitle(deadline.name)
         .sheet(isPresented: $isShowingEditDeadlineSheet) {
@@ -103,20 +71,36 @@ struct DeadlineView: View {
                 date: deadline.due,
                 colorId: deadline.colorId,
                 iconName: deadline.icon,
+                isSubmitted: deadline.isSubmitted,
+                isUrgent: deadline.isUrgent,
                 cancelHandler: {
                     // Close the view
                     isShowingEditDeadlineSheet = false
                 },
-                confirmHandler: { name, date, colorId, iconName in
-                    // Make a new deadline
+                confirmHandler: { name, due, colorId, icon, isSubmitted, isUrgent in
                     deadline.name = name
-                    deadline.due = date
+                    deadline.due = due
                     deadline.colorId = colorId
-                    deadline.icon = iconName
+                    deadline.icon = icon
+                    deadline.isSubmitted = isSubmitted
+                    deadline.isUrgent = isUrgent
                     // Close the view
                     isShowingEditDeadlineSheet = false
                 }
             )
+        }
+        .sheet(isPresented: $showingNewTaskView) {
+            TodoManagerSheet(mode: .new) { name, desc, done in
+                // Create new todo
+                let todo = DeadlineTodo(name: name, desc: desc, done: done)
+                context.insert(todo)
+                // Assign todo to deadline
+                deadline.addTodo(todo: todo)
+                // Save to data store
+                try? context.save()
+                // Close sheet
+                showingNewTaskView = false
+            }
         }
     }
     

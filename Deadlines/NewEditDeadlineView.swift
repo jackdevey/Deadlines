@@ -23,11 +23,13 @@ struct NewEditDeadlineView: View {
     @State var date: Date = Date.now
     @State var colorId: Int = 10
     @State var iconName: String = "bookmark.fill"
+    @State var isSubmitted: Bool = false
+    @State var isUrgent: Bool = false
     
     // Convey cancel and continue events
     // to parent
     var cancelHandler: () -> Void
-    var confirmHandler: (String, Date, Int, String) -> Void
+    var confirmHandler: (String, Date, Int, String, Bool, Bool) -> Void
     
 //    // Global tags list
 //    @FetchRequest(
@@ -54,8 +56,33 @@ struct NewEditDeadlineView: View {
                 Section {
                     DLCustomisation.IconPicker(selection: $iconName, colorId: colorId)
                 }
+                Section {
+                    // isSubmitted
+                    Toggle(isOn: $isSubmitted) {
+                        Label {
+                            Text("Submitted")
+                        } icon: {
+                            Image(systemName: "paperplane")
+                                .imageScale(.medium)
+                        }
+                        .foregroundStyle(.blue)
+                    }
+                    // isUrgent
+                    Toggle(isOn: $isUrgent) {
+                        Label {
+                            Text("Urgent")
+                        } icon: {
+                            Image(systemName: "exclamationmark")
+                                .imageScale(.medium)
+                        }
+                        .foregroundStyle(.red)
+                    }
+                } header: {
+                    Text("Flags")
+                } footer: {
+                    Text("Flags can be used to help categorise the state of Deadlines as they progress, they are often automatically assigned by the App however can be manually overidden here.")
+                }
             }
-            .listStyle(.grouped)
             .toolbar {
                 // Cancel button that calls cancelHandler
                 if showCancel {
@@ -78,7 +105,7 @@ struct NewEditDeadlineView: View {
                             Alert(title: Text("Deadline must be due in the future"))
                             return
                         }
-                        confirmHandler(name, date, colorId, iconName)
+                        confirmHandler(name, date, colorId, iconName, isSubmitted, isUrgent)
                     }
                 }
             }

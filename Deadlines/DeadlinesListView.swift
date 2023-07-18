@@ -105,10 +105,11 @@ struct DeadlinesListView: View {
                     // Close the view
                     newDeadline = false
                 },
-                confirmHandler: { name, date, color, iconName in
-                    // Make a new deadline
-                    let deadline = Deadline(name: name, due: date, icon: iconName, colorId: color)
+                confirmHandler: { name, due, colorId, icon, isSubmitted, isUrgent in
                     // Close the view
+                    let deadline = Deadline(name: name, due: due, icon: icon, colorId: colorId)
+                    deadline.isSubmitted = isSubmitted
+                    deadline.isUrgent = isUrgent
                     newDeadline = false
                     // Save if needed
                     context.insert(deadline)
