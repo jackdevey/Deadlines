@@ -19,8 +19,8 @@ import UIKit
     var isUrgent: Bool = false
     
     // Relationships
-    @Relationship(.cascade, inverse: \DeadlineTodo.deadline) var todos: [DeadlineTodo]?
-    @Relationship(.cascade, inverse: \DeadlineLink.deadline) var links: [DeadlineLink]?
+    @Relationship(inverse: \DeadlineTodo.deadline) var todos: [DeadlineTodo]?
+    @Relationship(inverse: \DeadlineLink.deadline) var links: [DeadlineLink]?
     
     // Generic
     public var id: UUID? = UUID()
@@ -111,3 +111,4 @@ import UIKit
         }
     }
 }
+

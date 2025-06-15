@@ -14,7 +14,7 @@ struct ContentView: View {
     @Environment(\.modelContext) private var context
     
     /// Query to get all the deadlines sorted closest to finish first
-    @Query(sort: \.due, order: .reverse) var deadlines: [Deadline]
+    @Query(sort: \Deadline.due, order: .reverse) var deadlines: [Deadline]
     
     /// Manage navigation path
     @State private var path = NavigationPath()

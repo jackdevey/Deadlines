@@ -18,8 +18,7 @@ struct DCViewModifier: ViewModifier {
             DeadlineLink.self
         ]), configurations: [
             ModelConfiguration(
-                sharedAppContainerIdentifier: "group.uk.jw3.Deadlines",
-                cloudKitContainerIdentifier: "iCloud.uk.jw3.Deadlines"
+                "group.uk.jw3.Deadlines"
             )
         ])
     }

@@ -12,7 +12,7 @@ struct DeadlinesListView: View {
     // Get viewContext
     @Environment(\.modelContext) private var context
     
-    @Query(sort: \.due, order: .reverse) var deadlines: [Deadline]
+    @Query(sort: \Deadline.due, order: .reverse) var deadlines: [Deadline]
     
     @Environment(\.scenePhase) private var scenePhase
     
@@ -45,7 +45,7 @@ struct DeadlinesListView: View {
             }
             .swipeActions(edge: .trailing) {
                 Button(role: .destructive) {
-                    deadline.context?.delete(deadline)
+                    context.delete(deadline)
                     try? context.save()
                 } label: {
                     Label("Delete", systemImage: "bin.xmark")
